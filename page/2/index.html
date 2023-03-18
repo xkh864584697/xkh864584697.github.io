@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
@@ -152,232 +152,788 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-day11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day11"><a href="#day11" class="headerlink" title="day11"></a>day11</h1><h3 id="子类构造器的特点"><a href="#子类构造器的特点" class="headerlink" title="子类构造器的特点"></a>子类构造器的特点</h3><ul>
+<li>子类的全部构造器，都会先调用父类的构造器，再执行自己，即默认在子类构造方法第一行存在一个super（）；（不写也默认存在）</li>
+<li>如果父类没有无参数构造，我们必须手动的在子类构造器添加super（…..）；</li>
+</ul>
+<p><strong>如何快捷生成子类构造</strong></p>
+<p>先实现父类构造，再选择子类成员变量</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是在继承&#x2F;实现情况下的一种现象，表现为:对象多态，行为多态</p>
+<p>父类引用子类对象</p>
+<p><strong>new 对象的快捷键 Ctrl+Alt+V</strong></p>
+<p>变量的类型是什么，就必须给这个变量赋值什么样的类型</p>
+<p><em>注意：如果这个变量是引用类型，赋值赋的是一个对象（本类对象，子类对象）</em></p>
+<h3 id="多态的本质"><a href="#多态的本质" class="headerlink" title="多态的本质"></a>多态的本质</h3><p>多态的本质就是父类指针指向子类对象</p>
+<p>父类只能访问自身可访问的函数；</p>
+<p>在栈里定义父类引用指向堆里子类对象，如果子类和父类都有同样的成员变量 对象里会有两份这个成员变量，对哪个成员变量进行操作依具体情况而定</p>
+<p>如果没有，则子类会直接使用父类成员变量进行操作</p>
+<p>子类对象里会有super的全部属性</p>
+<p><em>instanceof关键字可判断某个对象是否属于某个类</em></p>
+<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><ul>
+<li>final可以修饰类、方法、变量</li>
+<li>修饰类：该类不能被继承</li>
+<li>修饰方法：方法不能被重写</li>
+<li>修饰基本类型变量：该变量只能被赋值一次</li>
+<li>修饰引用类型变量：引用变量地址值不可以改变</li>
+</ul>
+<p>final类似于c++里的const</p>
+<p>快捷键：</p>
+<p>ctrl+shift+U:切换大小写</p>
+<p>Ctrl+Alt+V:自动补全new的代码</p>
+<p>Ctrl+Alt+M:抽取方法</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>&#x3D;&#x3D;抽象类中不一定有抽象方法，有抽象方法的一定是抽象类&#x3D;&#x3D;</li>
+<li>类该有的成员抽象类都可以有</li>
+<li>最关键的特点：抽象类不能有实例，仅仅作为一种特殊父类让子类继承并实现</li>
+<li>一个类继承抽象类，必须写完抽象类的全部抽象方法，否则这个类也必须定义成抽象类</li>
+</ul>
+<p>抽象类的应用：</p>
+<h2 id="模板方法设计模式"><a href="#模板方法设计模式" class="headerlink" title="模板方法设计模式"></a><strong>模板方法设计模式</strong></h2><p>&#x3D;&#x3D;解决方法中存在重复代码的问题&#x3D;&#x3D;</p>
+<p><strong>写法</strong></p>
+<ul>
+<li><p>1.定义一个抽象类</p>
+</li>
+<li><p>2.在里面定义2个方法（一个是模板方法（最好用final修饰）：把相同代码放里面；一个抽象方法：具体实现交给子类完成）</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口中定义的成员变量都是常量——默认被public final static 修饰</p>
+</li>
+</ul>
+<p>接口不能创建对象，可以创建一个接口的实现类来创建对象</p>
+<h3 id="接口的好处"><a href="#接口的好处" class="headerlink" title="接口的好处"></a>接口的好处</h3><ul>
+<li>弥补类单继承的不足</li>
+<li>让程序可以面向接口编程，根据规范开发</li>
+<li>面向接口开发，可以灵活方便的切换各种业务实现</li>
+</ul>
+<h3 id="接口的多继承"><a href="#接口的多继承" class="headerlink" title="接口的多继承"></a>接口的多继承</h3><p>一个接口可以同时继承多个接口</p>
+<h3 id="多继承的好处"><a href="#多继承的好处" class="headerlink" title="多继承的好处"></a>多继承的好处</h3><p>便于实现类去实现</p>
+<h2 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize()方法"></a>finalize()方法</h2><p>类似于c++的析构函数，在对象被销毁时执行，由于Java自动进行垃圾回收，所以不知道JVM何时会执行检查与回收操作，可以使用System.gc();提醒Java检查是否有没被指向的对象，有则进行释放。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day11/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day05"><a href="#day05" class="headerlink" title="day05"></a>day05</h1><h2 id="方法传参"><a href="#方法传参" class="headerlink" title="方法传参"></a><strong>方法传参</strong></h2><p>C++注释：C++有值调用和引用调用。引用参数标有&amp;符号。例如，可以轻松地实现void tripleValue（double&amp;x）方法或void swap（Employee&amp;x，Employee&amp;y）方法实现修改它们的引用参数的目的。</p>
+<p>&#x3D;&#x3D;Java程序设计语言总是采用按值调用。&#x3D;&#x3D;也就是说，方法得到的是所有参数值的一个拷贝，特别是，方法不能修改传递给它的任何参数变量的内容。Java程序设计语言对对象采用的不是引用调用，实际上，对象引用是按值传递的。</p>
+<h2 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h2><p>Java允许重载任何方法，而不只是构造器方法。因此，&#x3D;&#x3D;要完整地描述一个方法，需要指出方法名以及参数类型。&#x3D;&#x3D;这叫做方法的签名（signature）。返回类型不是方法签名的一部分。也就是说，&#x3D;&#x3D;不能有两个名字相同、参数类型也相同却返回不同类型值的方法&#x3D;&#x3D;。</p>
+<h3 id="构造器调用另一个构造器"><a href="#构造器调用另一个构造器" class="headerlink" title="构造器调用另一个构造器"></a>构造器调用另一个构造器</h3><p>关键字this引用方法的隐式参数。然而，这个关键字还有另外一个含义。</p>
+<p>如果构造器的第一个语句形如this（…），这个构造器将调用同一个类的另一个构造器。</p>
+<p>C++注释：在Java中，this引用等价于C++的this指针。但是，在C++中，一个构造器不能调用另一个构造器。在C++中，必须将抽取出的公共初始化代码编写成一个独立的方法。</p>
+<h3 id="对象析构与finalize方法"><a href="#对象析构与finalize方法" class="headerlink" title="对象析构与finalize方法"></a>对象析构与finalize方法</h3><p>有些面向对象的程序设计语言，特别是C++，有显式的析构器方法，其中放置一些当对象不再使用时需要执行的清理代码。在析构器中，最常见的操作是回收分配给对象的存储空间。由于Java有自动的垃圾回收器，不需要人工回收内存，所以Java不支持析构器。</p>
+<p>某些对象使用了内存之外的其他资源，例如，文件或使用了系统资源的另一个对象的句柄。在这种情况下，当资源不再需要时，将其回收和再利用将显得十分重要。</p>
+<p>可以为任何一个类添加finalize方法。finalize方法将在垃圾回收器清除对象之前调用。</p>
+<h2 id="return的作用"><a href="#return的作用" class="headerlink" title="return的作用"></a>return的作用</h2><p>&#x3D;&#x3D;return一旦执行，方法立即结束&#x3D;&#x3D;，</p>
+<p>return可以用在无返回值的方法中，作用是：立即跳出并结束当前方法的执行</p>
+<p>x 1package day_06;2​3import java.util.Arrays;4import java.util.Random;5import java.util.Scanner;6​7public class day06_demo08 {8    &#x2F;&#x2F;    模拟双色球：用户投注一组号码9&#x2F;&#x2F;    6个红球号码的范围是1-33之间，且不能重复；1个蓝球号码的范围在：1-16之间。10    public static void main(String[] args) {11        int[] userNumbers &#x3D; userSelectNumbers();12        int[] luckNumbers &#x3D; createLuckNumbers();13        judge(userNumbers,luckNumbers);14    }15&#x2F;&#x2F; - 6个红球+1个蓝球 ，奖金1000万16&#x2F;&#x2F;- 6个红球+0个蓝球，奖金500万17&#x2F;&#x2F;- 5个红球+1个蓝球，奖金3000块18&#x2F;&#x2F;- 5个红球+0个蓝球，或者4个红球+1个蓝球，奖金200块19&#x2F;&#x2F;- 4个红球+0个蓝球，或者3个红球+1个蓝球，奖金10块20&#x2F;&#x2F;- 小于3个红球+1个蓝球，奖金5块21&#x2F;&#x2F;- 如果前面的都不成立，就中奖，算你为福利事业做贡献了。22&#x2F;&#x2F;用户投注一组号码（前6个是红球，最后一个是篮球），并返回用户投注的号码23​24   public static int[] userSelectNumbers() {25        int[] arr &#x3D; new int[7];26        int red &#x3D; 6;&#x2F;&#x2F;信标27        while(red !&#x3D; 0){28            Scanner scanner &#x3D; new Scanner(System.in);29            System.out.println(“请输入一组要投注的红球号码（1-33之间，不能重复）:”);30            label:for (int i &#x3D; 0; i &lt; arr.length - 1; i++){&#x2F;&#x2F;循环遍历填充数组31                    int number &#x3D; scanner.nextInt();32                    if (number &gt; 33 || number &lt; 1){&#x2F;&#x2F;如果超范围，则重置数组和信标33                        System.out.println(“红球号码的范围是1-33之间,请重新输入:”);34                        red &#x3D; 6;35                        Arrays.fill(arr,0);36                        break;37                    }else {38                        for (int j &#x3D; 0;j&lt;&#x3D; i;j++){&#x2F;&#x2F;如果有重复数据，则重置数组和信标39                            if (arr[j] &#x3D;&#x3D; number){40                                System.out.println(“不能有重复号码！请重新输入:”);41                                red &#x3D; 6;42                                Arrays.fill(arr,0);43                                break label;44                            }45                        }46                        arr[i] &#x3D; number;47                        red–;48                    }49                }50        }51​52        System.out.println(“请输入要投注的蓝球号码:”);53        int blue &#x3D; 1;54        while (blue!&#x3D;0){55            Scanner scanner &#x3D; new Scanner(System.in);56            int number &#x3D; scanner.nextInt();57            if (number&gt;16 || number&lt;0 ){58                System.out.println(“蓝球号码的范围是1-16之间,请重新输入:”);59            }else{60                arr[arr.length-1]&#x3D;number;61                blue–;62            }63        }64        System.out.println(“下注的号码组为: “+Arrays.toString(arr));65        return arr;66    }67​68    public static int[] createLuckNumbers() {69        int[] arr &#x3D; new int[7];70        int red &#x3D; 6;71        int blue &#x3D; 1;72        Random random &#x3D; new Random();73        for (int i &#x3D; 0;i&lt;red;i++){74            arr[i] &#x3D; random.nextInt(33)+1;75        }76        arr[arr.length-1] &#x3D; random.nextInt(16)+1;77        System.out.println(“开奖的号码组为: “+Arrays.toString(arr));78        return arr;79    }80​81&#x2F;&#x2F; - 6个红球+1个蓝球 ，奖金1000万82&#x2F;&#x2F;- 6个红球+0个蓝球，奖金500万83&#x2F;&#x2F;- 5个红球+1个蓝球，奖金3000块84&#x2F;&#x2F;- 5个红球+0个蓝球，或者4个红球+1个蓝球，奖金200块85&#x2F;&#x2F;- 4个红球+0个蓝球，或者3个红球+1个蓝球，奖金10块86&#x2F;&#x2F;- 小于3个红球+1个蓝球，奖金5块87&#x2F;&#x2F;- 如果前面的都不成立，就中奖，算你为福利事业做贡献了。88​89    public static void judge(int[] userNumbers, int[] LuckNumbers) {90        int red &#x3D; 0;&#x2F;&#x2F;红球相等个数91        if (userNumbers[userNumbers.length-1] &#x3D;&#x3D; LuckNumbers[LuckNumbers.length-1]){&#x2F;&#x2F;如果蓝色球一样，再遍历红色球一样的个数92            for (int i &#x3D; 0;i&lt;userNumbers.length-1;i++){93                for (int j &#x3D; 0;j&lt;LuckNumbers.length-1;j++){94                    if (userNumbers[i]&#x3D;&#x3D;LuckNumbers[j]){95                        red++;96                    }97                }98            }99            switch (red){100                case 6:101                    System.out.println(“奖金1000万”);102                    break;103                case 5:104                    System.out.println(“奖金3000块”);105                    break;106                case 4:107                    System.out.println(“奖金200块”);108                    break;109                case 3:110                    System.out.println(“奖金10块”);111                    break;112                default:113                    System.out.println(“奖金5块”);114            }115        }else{116            for (int i &#x3D; 0;i&lt;userNumbers.length-1;i++){117                for (int j &#x3D; 0;j&lt;LuckNumbers.length-1;j++){118                    if (userNumbers[i]&#x3D;&#x3D;LuckNumbers[j]){119                        red++;120                    }121                }122            }123            switch (red){124                case 6:125                    System.out.println(“奖金500万”);126                    break;127                case 5:128                    System.out.println(“奖金3000块”);129                    break;130                case 4:131                    System.out.println(“奖金10块”);132                    break;133                default:134                    System.out.println(“你为福利事业做贡献了”);135            }136        }137    }138}java</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day06"><a href="#day06" class="headerlink" title="day06"></a>day06</h1><h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h2 id="demo01"><a href="#demo01" class="headerlink" title="demo01"></a>demo01</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo01</span>&#123;</span><br><span class="line"><span class="comment">//    用户购买机票时，机票原价会按照淡季、旺季，头等舱还是经济舱的情况进行相应的优惠，优惠方案如下：</span></span><br><span class="line"><span class="comment">//    5-10月为旺季，头等舱9折，经济舱8.5折； 11月到来年4月为淡季，头等舱7折，经济舱6.5折，</span></span><br><span class="line"><span class="comment">//    请开发程序计算出用户当前机票的优惠价。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">discount</span><span class="params">( String Class, <span class="type">float</span> price)</span> &#123;<span class="comment">//economy class/first class</span></span><br><span class="line">        <span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line">        System.out.println(<span class="string">&quot;当前时间为:&quot;</span>+date);</span><br><span class="line">        <span class="type">int</span> <span class="variable">month</span> <span class="operator">=</span> date.getMonthValue();<span class="comment">//month保存当前月份</span></span><br><span class="line">        <span class="keyword">if</span> (Class.equals(<span class="string">&quot;经济舱&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (month &gt;= <span class="number">5</span> &amp;&amp; month &lt;= <span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.85</span> * price;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.65</span> * price;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Class.equals(<span class="string">&quot;头等舱&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (month &gt;= <span class="number">5</span> &amp;&amp; month &lt;= <span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.9</span> * price;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.7</span> * price;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.print(<span class="string">&quot;请输入你要买的舱位等级(头等舱/经济舱):&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">level</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">        System.out.print(<span class="string">&quot;请输入当前机票价格:&quot;</span>);</span><br><span class="line">        <span class="type">float</span> <span class="variable">price</span> <span class="operator">=</span>scanner.nextFloat();</span><br><span class="line">        System.out.println(<span class="string">&quot;当前机票的优惠价为:&quot;</span>+discount(level,price));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo02"><a href="#demo02" class="headerlink" title="demo02"></a>demo02</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo02</span> &#123;</span><br><span class="line"><span class="comment">//    开发一个程序，可以生成指定位数的验证码，每位可以是数字、大小写字母。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] verify(<span class="type">int</span> n)&#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        String[] arr= <span class="keyword">new</span> <span class="title class_">String</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i&lt; arr.length;i++)&#123;</span><br><span class="line">            <span class="keyword">switch</span> (random.nextInt(<span class="number">2</span>))&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                    arr[i] = String.valueOf(random.nextInt(<span class="number">10</span>));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">if</span> (random.nextBoolean())&#123;</span><br><span class="line">                        arr[i] = String.valueOf((<span class="type">char</span>)(random.nextInt(<span class="number">26</span>)+<span class="number">66</span>));</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        arr[i] = String.valueOf((<span class="type">char</span>)(random.nextInt(<span class="number">26</span>)+<span class="number">98</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(<span class="string">&quot;随机验证码为:&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ;i &lt;arr.length;i++)&#123;</span><br><span class="line">            System.out.print(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        System.out.println(Arrays.toString(arr));</span></span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要创建验证码的位数:&quot;</span>);</span><br><span class="line">        verify(scanner.nextInt());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo03"><a href="#demo03" class="headerlink" title="demo03"></a>demo03</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo03</span> &#123;</span><br><span class="line">    <span class="comment">//    在唱歌比赛中，可能有多名评委要给选手打分，分数是[0 - 100]之间的整数。</span></span><br><span class="line"><span class="comment">//    选手最后得分为：去掉最高分、最低分后剩余分数的平均分，请编写程序能够录入多名评委的分数，并算出选手的最终得分。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">getScore</span><span class="params">(<span class="type">int</span>[] score)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> score[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> score[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; score.length; i++) &#123;</span><br><span class="line">            max = max &gt; score[i] ? max : score[i];</span><br><span class="line">            min = min &lt; score[i] ? min : score[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; score.length; i++) &#123;</span><br><span class="line">            sum += score[i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;最终得分是:&quot;</span>+(sum-(max+min))/(score.length-<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入评委人数:&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span>[] arr= <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt; arr.length;i++)&#123;</span><br><span class="line">            arr[i] = random.nextInt(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">        getScore(arr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo04"><a href="#demo04" class="headerlink" title="demo04"></a>demo04</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo04</span> &#123;</span><br><span class="line"><span class="comment">//    某系统的数字密码是一个四位数，如1983，为了安全，需要加密后再传输，加密规则是：</span></span><br><span class="line"><span class="comment">//    对密码中的每位数，都加5 ,再对10求余，最后将所有数字顺序反转，得到一串加密后的新数，请设计出满足本需求的加密程序！</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">encode</span><span class="params">(<span class="type">int</span>[] arr)</span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">                arr[i] = (arr[i]+<span class="number">5</span>)%<span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;+5%10后:&quot;</span>+ Arrays.toString(arr));</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; arr.length/<span class="number">2</span>;i++)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> arr[i];</span><br><span class="line">                arr[i] = arr[arr.length-<span class="number">1</span>-i];</span><br><span class="line">                arr[arr.length-<span class="number">1</span>-i] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;翻转后:&quot;</span>+ Arrays.toString(arr));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入密码位数:&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span>[] arr= <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt; arr.length;i++)&#123;</span><br><span class="line">            arr[i] = random.nextInt(<span class="number">10</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(arr));</span><br><span class="line">        encode(arr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo05"><a href="#demo05" class="headerlink" title="demo05"></a>demo05</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo05</span> &#123;</span><br><span class="line"><span class="comment">//     请把一个整型数组，例如存了数据：11，22，33，拷贝成一个一模一样的新数组出来。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] arrCopy(<span class="type">int</span>[] arr)&#123;</span><br><span class="line">        <span class="type">int</span>[] aCopyArr = <span class="keyword">new</span> <span class="title class_">int</span>[arr.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">            aCopyArr[i] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> aCopyArr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入数组位数:&quot;</span>);</span><br><span class="line">        <span class="type">int</span>[] arr= <span class="keyword">new</span> <span class="title class_">int</span>[scanner.nextInt()];</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt; arr.length;i++)&#123;</span><br><span class="line">            arr[i] = random.nextInt(<span class="number">10</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;原始数组为:&quot;</span>+Arrays.toString(arr));</span><br><span class="line"><span class="comment">//        int[]aCopyArr = new int[arr.length];</span></span><br><span class="line">        <span class="type">int</span>[]aCopyArr = arrCopy(arr);</span><br><span class="line">        System.out.println(<span class="string">&quot;拷贝数组为:&quot;</span>+Arrays.toString(aCopyArr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo06"><a href="#demo06" class="headerlink" title="demo06"></a>demo06</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo06</span> &#123;</span><br><span class="line">    <span class="comment">/*一个大V直播时发起了抢红包活动，分别有：9、666、188、520、99999五个红包。</span></span><br><span class="line"><span class="comment">    请模拟粉丝来抽奖，按照先来先得，随机抽取，抽完即止，注意：一个红包只能被抽一次，先抽或后抽哪一个红包是随机的，</span></span><br><span class="line"><span class="comment">    示例如下（不一定是下面的顺序）：</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">pullRedPacket</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;<span class="comment">//必中</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> arr.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">while</span> (length != <span class="number">0</span>)&#123;</span><br><span class="line">            System.out.print(<span class="string">&quot;请按任意键完成抽奖:&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">            <span class="keyword">if</span> (arr.length == <span class="number">1</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;恭喜你，抽中了:&quot;</span>+arr[<span class="number">0</span>]);</span><br><span class="line">                System.out.println(<span class="string">&quot;活动结束。。。。。&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            index = random.nextInt(arr.length-<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">while</span> (arr[index] == <span class="number">0</span>)&#123;</span><br><span class="line">                    index = random.nextInt(arr.length-<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">&quot;恭喜你，抽中了:&quot;</span>+arr[index]);</span><br><span class="line">                arr[index] = arr[arr.length-<span class="number">1</span>];</span><br><span class="line">                arr[arr.length-<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">                length--;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;活动结束。。。。。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">pull</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;<span class="comment">//有几率中</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">            System.out.print(<span class="string">&quot;请按任意键完成抽奖:&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">            <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> random.nextInt(arr.length);</span><br><span class="line">            <span class="keyword">if</span> (arr[index] == <span class="number">0</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;该红包已经被抽完了&quot;</span>);</span><br><span class="line">                i--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;抽中了&quot;</span>+arr[index]+<span class="string">&quot;元&quot;</span>);</span><br><span class="line">                arr[index] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;活动结束。。。。。&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] makePacket()&#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入红包个数:&quot;</span>);</span><br><span class="line">        <span class="type">int</span>[] arr= <span class="keyword">new</span> <span class="title class_">int</span>[scanner.nextInt()];</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt; arr.length;i++)&#123;</span><br><span class="line">            arr[i] = random.nextInt(<span class="number">5</span>)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;红包为:&quot;</span>+ Arrays.toString(arr));</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        pull(makePacket());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo07"><a href="#demo07" class="headerlink" title="demo07"></a>demo07</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo07</span> &#123;</span><br><span class="line"><span class="comment">//    判断101-200之间有多少个素数，并输出所有素数</span></span><br><span class="line"><span class="comment">//    说明：除了1和它本身以外，不能被其他正整数整除，就叫素数。</span></span><br><span class="line"><span class="comment">//    比如：3、7就是素数，而9、21等等不是素数。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">judgePrimeNumber</span><span class="params">(<span class="type">int</span> min,<span class="type">int</span> max)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> max - min +<span class="number">1</span>;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> min ;i &lt;max+<span class="number">1</span>;i++)&#123;</span><br><span class="line">        System.out.println(min+<span class="string">&quot;到&quot;</span>+max+<span class="string">&quot;之间的素数:&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">2</span>;j&lt;i/<span class="number">2</span>;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i%j==<span class="number">0</span>)&#123;<span class="comment">//如果不是素数，则count--</span></span><br><span class="line">               count --;</span><br><span class="line">               flag = <span class="literal">false</span>;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag)&#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(min+<span class="string">&quot;到&quot;</span>+max+<span class="string">&quot;素数共有:&quot;</span>+count+<span class="string">&quot;个&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;素数个数:&quot;</span>+judgePrimeNumber(<span class="number">101</span>,<span class="number">200</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo08"><a href="#demo08" class="headerlink" title="demo08"></a>demo08</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> day_06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">day06_demo08</span> &#123;</span><br><span class="line">    <span class="comment">//    模拟双色球：用户投注一组号码</span></span><br><span class="line"><span class="comment">//    6个红球号码的范围是1-33之间，且不能重复；1个蓝球号码的范围在：1-16之间。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] userNumbers = userSelectNumbers();</span><br><span class="line">        <span class="type">int</span>[] luckNumbers = createLuckNumbers();</span><br><span class="line">        judge(userNumbers,luckNumbers);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// - 6个红球+1个蓝球 ，奖金1000万</span></span><br><span class="line"><span class="comment">//- 6个红球+0个蓝球，奖金500万</span></span><br><span class="line"><span class="comment">//- 5个红球+1个蓝球，奖金3000块</span></span><br><span class="line"><span class="comment">//- 5个红球+0个蓝球，或者4个红球+1个蓝球，奖金200块</span></span><br><span class="line"><span class="comment">//- 4个红球+0个蓝球，或者3个红球+1个蓝球，奖金10块</span></span><br><span class="line"><span class="comment">//- 小于3个红球+1个蓝球，奖金5块</span></span><br><span class="line"><span class="comment">//- 如果前面的都不成立，就中奖，算你为福利事业做贡献了。</span></span><br><span class="line"><span class="comment">//用户投注一组号码（前6个是红球，最后一个是篮球），并返回用户投注的号码</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] userSelectNumbers() &#123;</span><br><span class="line">        <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">7</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">red</span> <span class="operator">=</span> <span class="number">6</span>;<span class="comment">//信标</span></span><br><span class="line">        <span class="keyword">while</span>(red != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            System.out.println(<span class="string">&quot;请输入一组要投注的红球号码（1-33之间，不能重复）:&quot;</span>);</span><br><span class="line">            label:<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++)&#123;<span class="comment">//循环遍历填充数组</span></span><br><span class="line">                    <span class="type">int</span> <span class="variable">number</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">                    <span class="keyword">if</span> (number &gt; <span class="number">33</span> || number &lt; <span class="number">1</span>)&#123;<span class="comment">//如果超范围，则重置数组和信标</span></span><br><span class="line">                        System.out.println(<span class="string">&quot;红球号码的范围是1-33之间,请重新输入:&quot;</span>);</span><br><span class="line">                        red = <span class="number">6</span>;</span><br><span class="line">                        Arrays.fill(arr,<span class="number">0</span>);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j&lt;= i;j++)&#123;<span class="comment">//如果有重复数据，则重置数组和信标</span></span><br><span class="line">                            <span class="keyword">if</span> (arr[j] == number)&#123;</span><br><span class="line">                                System.out.println(<span class="string">&quot;不能有重复号码！请重新输入:&quot;</span>);</span><br><span class="line">                                red = <span class="number">6</span>;</span><br><span class="line">                                Arrays.fill(arr,<span class="number">0</span>);</span><br><span class="line">                                <span class="keyword">break</span> label;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        arr[i] = number;</span><br><span class="line">                        red--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;请输入要投注的蓝球号码:&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">blue</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (blue!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">int</span> <span class="variable">number</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">            <span class="keyword">if</span> (number&gt;<span class="number">16</span> || number&lt;<span class="number">0</span> )&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;蓝球号码的范围是1-16之间,请重新输入:&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                arr[arr.length-<span class="number">1</span>]=number;</span><br><span class="line">                blue--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;下注的号码组为: &quot;</span>+Arrays.toString(arr));</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] createLuckNumbers() &#123;</span><br><span class="line">        <span class="type">int</span>[] arr = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">7</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">red</span> <span class="operator">=</span> <span class="number">6</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">blue</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;red;i++)&#123;</span><br><span class="line">            arr[i] = random.nextInt(<span class="number">33</span>)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[arr.length-<span class="number">1</span>] = random.nextInt(<span class="number">16</span>)+<span class="number">1</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;开奖的号码组为: &quot;</span>+Arrays.toString(arr));</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// - 6个红球+1个蓝球 ，奖金1000万</span></span><br><span class="line"><span class="comment">//- 6个红球+0个蓝球，奖金500万</span></span><br><span class="line"><span class="comment">//- 5个红球+1个蓝球，奖金3000块</span></span><br><span class="line"><span class="comment">//- 5个红球+0个蓝球，或者4个红球+1个蓝球，奖金200块</span></span><br><span class="line"><span class="comment">//- 4个红球+0个蓝球，或者3个红球+1个蓝球，奖金10块</span></span><br><span class="line"><span class="comment">//- 小于3个红球+1个蓝球，奖金5块</span></span><br><span class="line"><span class="comment">//- 如果前面的都不成立，就中奖，算你为福利事业做贡献了。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">judge</span><span class="params">(<span class="type">int</span>[] userNumbers, <span class="type">int</span>[] LuckNumbers)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">red</span> <span class="operator">=</span> <span class="number">0</span>;<span class="comment">//红球相等个数</span></span><br><span class="line">        <span class="keyword">if</span> (userNumbers[userNumbers.length-<span class="number">1</span>] == LuckNumbers[LuckNumbers.length-<span class="number">1</span>])&#123;<span class="comment">//如果蓝色球一样，再遍历红色球一样的个数</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;userNumbers.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j&lt;LuckNumbers.length-<span class="number">1</span>;j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (userNumbers[i]==LuckNumbers[j])&#123;</span><br><span class="line">                        red++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">switch</span> (red)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金1000万&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金3000块&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金200块&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金10块&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金5块&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;userNumbers.length-<span class="number">1</span>;i++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;j&lt;LuckNumbers.length-<span class="number">1</span>;j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span> (userNumbers[i]==LuckNumbers[j])&#123;</span><br><span class="line">                        red++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">switch</span> (red)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金500万&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金3000块&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;奖金10块&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    System.out.println(<span class="string">&quot;你为福利事业做贡献了&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day06/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day07"><a href="#day07" class="headerlink" title="day07"></a>day07</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象三大特性：封装、继承、多态</p>
+<h2 id="类设计技巧"><a href="#类设计技巧" class="headerlink" title="类设计技巧"></a>类设计技巧</h2><h4 id="1-一定要保证数据私有"><a href="#1-一定要保证数据私有" class="headerlink" title="1.一定要保证数据私有"></a>1.一定要保证数据私有</h4><p>这是最重要的；绝对不要破坏封装性。</p>
+<h4 id="2-一定要对数据初始化"><a href="#2-一定要对数据初始化" class="headerlink" title="2.一定要对数据初始化"></a>2.一定要对数据初始化</h4><p>Java不对局部变量进行初始化，但是会对对象的实例域进行初始化。&#x3D;&#x3D;最好不要依赖于系统的默认值，而是应该显式地初始化所有的数据&#x3D;&#x3D;，具体的初始化方式可以是提供默认值，也可以是在所有构造器中设置默认值。</p>
+<h4 id="3-不要在类中使用过多的基本类型"><a href="#3-不要在类中使用过多的基本类型" class="headerlink" title="3.不要在类中使用过多的基本类型"></a>3.不要在类中使用过多的基本类型</h4><p>就是说，用其他的类代替多个相关的基本类型的使用。这样会使类更加易于理解且易于修改。</p>
+<h4 id="4-不是所有的域都需要独立的域访问器和域更改器"><a href="#4-不是所有的域都需要独立的域访问器和域更改器" class="headerlink" title="4.不是所有的域都需要独立的域访问器和域更改器"></a>4.不是所有的域都需要独立的域访问器和域更改器</h4><p>在对象中，常常包含一些不希望别人获得或设置的实例域（可不设置get、set方法）</p>
+<h4 id="5-将职责过多的类进行分解"><a href="#5-将职责过多的类进行分解" class="headerlink" title="5.将职责过多的类进行分解"></a>5.将职责过多的类进行分解</h4><p>如果明显地可以将一个复杂的类分解成两个更为简单的类，就应该将其分解</p>
+<h4 id="6-类名和方法名要能够体现它们的职责"><a href="#6-类名和方法名要能够体现它们的职责" class="headerlink" title="6.类名和方法名要能够体现它们的职责"></a>6.类名和方法名要能够体现它们的职责</h4><p>与变量应该有一个能够反映其含义的名字一样，类也应该如此；</p>
+<p>命名类名的良好习惯是采用一个名词，&#x3D;&#x3D;类用名词，方法用动词&#x3D;&#x3D;</p>
+<p>不可变的类：没有方法能修改对象的状态</p>
+<p>有些方法并不是更改对象，而是返回状态已修改的新对象。</p>
+<p>更改对象的问题在于，&#x3D;&#x3D;如果多个线程试图同时更新一个对象，就会发生并发更改&#x3D;&#x3D;。其结果是不可预料的。&#x3D;&#x3D;如果类是不可变的，就可以安全地在多个线程间共享其对象&#x3D;&#x3D;。因此，要尽可能让类是不可变的</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>C++注释：Java与C++定义继承类的方式十分相似。Java用关键字extends代替了C++中的冒号（：）。在Java中，&#x3D;&#x3D;所有的继承都是公有继承，而没有C++中的私有继承和保护继承&#x3D;&#x3D;。</p>
+<h2 id="this与super"><a href="#this与super" class="headerlink" title="this与super"></a>this与super</h2><p>关键字this有两个用途：一是引用隐式参数，二是调用该类其他的构造器。</p>
+<p>super关键字也有两个用途：一是调用超类的方法，二是调用超类的构造器。</p>
+<p>&#x3D;&#x3D;this（）和super（）都必须放在构造器第一行，所以this与super不能同时存在&#x3D;&#x3D;</p>
+<h2 id="子类方法重载"><a href="#子类方法重载" class="headerlink" title="子类方法重载"></a>子类方法重载</h2><p>C++注释：在Java中，不需要将方法声明为虚拟方法。动态绑定是默认的处理方式。如果不希望让一个方法具有虚拟特征，可以将它标记为final</p>
+<p>在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。特别是，如果超类方法是public，子类方法一定要声明为public。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>在Java中，&#x3D;&#x3D;子类数组的引用可以转换成超类数组的引用，而不需要采用强制类型转换&#x3D;&#x3D;。</p>
+<h3 id="阻止继承：final类和方法"><a href="#阻止继承：final类和方法" class="headerlink" title="阻止继承：final类和方法"></a>阻止继承：final类和方法</h3><p>不允许扩展的类被称为final类。如果在定义类的时候使用了final修饰符就表明这个类是final类。（&#x3D;&#x3D;final类中的所有方法自动地成为final方法&#x3D;&#x3D;）。</p>
+<p>域也可以被声明为final。对于final域来说，构造对象之后就不允许改变它们的值了。不过，如果将一个类声明为final，只有其中的方法自动地成为final，而不包括域。</p>
+<p>将方法或类声明为final主要目的是：确保它们不会在子类中改变语义。</p>
+<p>String类也是final类，这意味着不允许任何人定义String的子类。换言之，如果有一个String的引用，它引用的一定是一个String对象，而不可能是其他类的对象。</p>
+<h3 id="类的强制类型转换"><a href="#类的强制类型转换" class="headerlink" title="类的强制类型转换"></a>类的强制类型转换</h3><p>对象引用的转换语法与数值表达式的类型转换类似，仅需要用一对圆括号将目标类名括起来，并放置在需要转换的对象引用之前就可以了。</p>
+<p>&#x3D;&#x3D;包含一个或多个抽象方法的类本身必须被声明为抽象的&#x3D;&#x3D;。</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>C++注释：在C++中，有一种在尾部用&#x3D;0标记的抽象方法，称为纯虚函数，只要有一个纯虚函数，这个类就是抽象类。</p>
+<p>抽象类不能被实例化。也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。</p>
+<p>包含一个或多个抽象方法的类本身必须被声明为抽象的。</p>
+<p>抽象方法充当着占位的角色，它们的具体实现在子类中。</p>
+<p>类即使不含抽象方法，也可以将类声明为抽象类。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day07/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day08" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day08"><a href="#day08" class="headerlink" title="day08"></a>day08</h1><h2 id="Object：所有类的超类"><a href="#Object：所有类的超类" class="headerlink" title="Object：所有类的超类"></a>Object：所有类的超类</h2><p>Object类是Java中所有类的始祖，在Java中每个类都是由它扩展而来的。如果没有明确地指出超类，Object就被认为是这个类的超类。</p>
+<p>可以使用Object类型的变量引用任何类型的对象</p>
+<p>C++注释：在C++中没有所有类的根类，不过，每个指针都可以转换成void*指针。</p>
+<h3 id="equals方法"><a href="#equals方法" class="headerlink" title="equals方法"></a>equals方法</h3><p>Object类中的equals方法用于检测一个对象是否等于另外一个对象。在Object类中，这个方法将判断两个对象是否具有相同的引用。如果两个对象具有相同的引用，它们一定是相等的。</p>
+<p>Java语言规范要求equals方法具有下面的特性：</p>
+<p>1）自反性：对于任何非空引用x，x.equals（x）应该返回true。</p>
+<p>2）对称性：对于任何引用x和y，当且仅当y.equals（x）返回true，x.equals（y）也应该返回true。</p>
+<p>3）传递性：对于任何引用x、y和z，如果x.equals（y）返回true，y.equals（z）返回true，x.equals（z）也应该返回true。</p>
+<p>4）一致性：如果x和y引用的对象没有发生变化，反复调用x.equals（y）应该返回同样的结果。</p>
+<p>5）对于任意非空引用x，x.equals（null）应该返回false。</p>
+<p>编写一个完美的equals方法的建议：</p>
+<p>1）显式参数命名为otherObject，稍后需要将它转换成另一个叫做other的变量。</p>
+<p>2）检测this与otherObject是否引用同一个对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(this == otherObject) return true;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://localhost:8000/3c657d70-b89b-4f46-868b-bcf06ae1f124/OEBPS/Images/8796093022951081638.jpg.jpg" alt="img"></p>
+<p>这条语句只是一个优化。实际上，这是一种经常采用的形式。因为计算这个等式要比一个一个地比较类中的域所付出的代价小得多。</p>
+<p>3）检测otherObject是否为null，如果为null，返回false。这项检测是很必要的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(otherObject == null)return false;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://localhost:8000/3c657d70-b89b-4f46-868b-bcf06ae1f124/OEBPS/Images/8796093022951079475.jpg.jpg" alt="img"></p>
+<p>4）比较this与otherObject是否属于同一个类。如果equals的语义在每个子类中有所改变，就使用getClass检测：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(getClass()!= otherObject.getClass) return false;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://localhost:8000/3c657d70-b89b-4f46-868b-bcf06ae1f124/OEBPS/Images/8796093022951083551.jpg.jpg" alt="img"></p>
+<p>如果所有的子类都拥有统一的语义，就使用instanceof检测：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(!(otherObject instanceof ClassName))return false;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://localhost:8000/3c657d70-b89b-4f46-868b-bcf06ae1f124/OEBPS/Images/8796093022951081387.jpg.jpg" alt="img"></p>
+<p>5）将otherObject转换为相应的类类型变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName other = (ClassName) otherObject;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://localhost:8000/3c657d70-b89b-4f46-868b-bcf06ae1f124/OEBPS/Images/8796093022951084551.jpg.jpg" alt="img"></p>
+<p>6）现在开始对所有需要比较的域进行比较了。使用&#x3D;&#x3D;比较基本类型域，使用equals比较对象域。如果所有的域都匹配，就返回true；否则返回false。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">return field1 == other.field1 </span><br><span class="line">			&amp;&amp; Objects.equals(field2,other.field2)</span><br><span class="line">			&amp;&amp;.....;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://localhost:8000/3c657d70-b89b-4f46-868b-bcf06ae1f124/OEBPS/Images/8796093022951080352.jpg.jpg" alt="img"></p>
+<p>如果在子类中重新定义equals，就要在其中包含调用super.equals（other）。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day08/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day02"><a href="#day02" class="headerlink" title="day02"></a>day02</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>略</p>
+<p><strong>注意</strong>：空串””是长度为0的字符串。空串是一个Java对象，有自己的串长度（0）和内容（空）。不过，String变量还可以存放一个特殊的值，名为null，这表示目前没有任何对象与该变量关联。</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p><strong>自动类型转换：</strong>小范围类型的变量——&gt;大范围的变量</p>
+<p>数据范围小的变量可以直接赋值给数据范围大的变量（byte、short 和char在表达式中是直接转换成int类型参与运算的）</p>
+<p><img src="C:\Users\xkh\AppData\Roaming\Typora\typora-user-images\image-20230218110324069.png" alt="image-20230218110324069"></p>
+<p><strong>byte→short→int→long→float→double</strong></p>
+<p>​						    <strong>↑</strong></p>
+<p>​						<strong>char</strong></p>
+<p><strong>强制类型转换：</strong>大范围类型的变量——&gt;小范围的变量</p>
+<p>可能造成数据失真</p>
+<p><code>注意：byte a = 3;</code> </p>
+<p>​			<code>byte b = 4;</code> </p>
+<p>​			<code>byte c = a+b;//会报错，变量的值不确定，有可能a+b的值大于byte的最大值</code></p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p><strong>各种运算符：</strong>略</p>
+<p><strong>运算符优先级：</strong>&amp;&amp;的优先级比||的高，所以表达式 a&amp;&amp;b||c 等价于(a&amp;&amp;b)||c ；</p>
+<p>+&#x3D;是右结合运算符，所以表达式a+&#x3D;b+&#x3D;c等价于a+&#x3D;（b+&#x3D;c），也就是将b+&#x3D;c的结果（加上c之后的b）加到a上。；</p>
+<p><img src="C:\Users\xkh\AppData\Roaming\Typora\typora-user-images\image-20230220091855227.png" alt="image-20230220091855227"></p>
+<p><strong><em>“+”运算符可以拼接字符串</em>：</strong></p>
+<p>Java语言允许使用+号连接（拼接）两个字符串。</p>
+<p>当将一个字符串与一个非字符串的值进行拼接时，后者被转换成字符串</p>
+<h2 id="Java里String字符串实现原理"><a href="#Java里String字符串实现原理" class="headerlink" title="Java里String字符串实现原理"></a>Java里String字符串实现原理</h2><p>C&#x2F;C++里面的String是字符型数组，类似于：<code>char str[] = &quot;Hello&quot;;</code></p>
+<p>但Java不是，Java字符串大致类似于char*指针:<code>char* str = &quot;Hello&quot;;</code></p>
+<p>当采用另一个字符串替换str的时候，Java代码内部大致进行下列操作：</p>
+<p><code>char* temp = malloc(6);</code></p>
+<p><code>strncpy(temp,str,3)</code></p>
+<p><code>strncpy(temp,&quot;P!&quot;,3)</code></p>
+<p><code>str = temp;</code></p>
+<p>在java中我们只需要一句代码：<code>str = &quot;Help! &quot;</code>即可实现上述操作。</p>
+<p><strong>字符串替换后原始字符串内存的释放：</strong></p>
+<p>这样做会不会产生内存遗漏呢？毕竟，原始字符串放置在堆中。十分幸运，Java将自动地进行垃圾回收。如果一块内存不再使用了，系统最终会将其回收。</p>
+<h3 id="检测字符串是否相等"><a href="#检测字符串是否相等" class="headerlink" title="检测字符串是否相等"></a>检测字符串是否相等</h3><p>可以使用equals方法检测两个字符串是否相等。</p>
+<p>一定不要使用&#x3D;&#x3D;运算符检测两个字符串是否相等！这个运算符只能够确定两个字符串是否放置在同一个位置上。当然，如果字符串放置在同一个位置上，它们必然相等。但是，完全有可能将内容相同的多个字符串的拷贝放置在不同的位置上。</p>
+<p>如果虚拟机始终将相同的字符串共享，就可以使用&#x3D;&#x3D; 运算符检测是否相等。但实际上只有字符串常量是共享的，而+或substring等操作产生的结果并不是共享的。因此，千万不要使用&#x3D;&#x3D; 运算符测试字符串的相等性，以免在程序中出现糟糕的bug。从表面上看，这种bug很像随机产生的间歇性错误。</p>
+<p>&#x3D;&#x3D;相同的字符串在内存常量池中只有一份，字符串常量是共享的&#x3D;&#x3D;。</p>
+<p>通过“ ”定义字符串内存在常量池</p>
+<p>如：</p>
+<p><code> String s1= “abc”;</code></p>
+<p><code>String s2 =&quot;abc&quot;;</code></p>
+<p>s1和s2指向同一个地址。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day03"><a href="#day03" class="headerlink" title="day03"></a>day03</h1><p>Java的控制流程结构与C和C++的控制流程结构一样，只有很少的例外情况。没有goto语句，但break语句可以带标签，可以利用它实现从内层循环跳出的目的（这种情况C语言采用goto语句实现）。</p>
+<p>在C++中，可以在嵌套的块中重定义一个变量。在内层定义的变量会覆盖在外层定义的变量。这样，有可能会导致程序设计错误，因此在Java中不允许这样做。</p>
+<p>&#x3D;&#x3D;一定不要使用 &#x3D;&#x3D;运算符检测两个字符串是否相等&#x3D;&#x3D;这个运算符只能够确定两个字符串是否放置在同一个位置上。当然，如果字符串放置在同一个位置上，它们必然相等。但是，完全有可能将内容相同的多个字符串的拷贝放置在不同的位置上。</p>
+<h3 id="for-each循环"><a href="#for-each循环" class="headerlink" title="for each循环"></a>for each循环</h3><p>Java有一种功能很强的循环结构，可以用来依次处理数组中的每个元素（其他类型的元素集合亦可）而不必为指定下标值而分心。</p>
+<p>for each循环语句的循环变量将会遍历数组中的每个元素，而不需要使用下标值。</p>
+<h3 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h3><p>在Java中，允许将一个数组变量拷贝给另一个数组变量。这时，两个变量将引用同一个数组（浅拷贝）</p>
+<p>如果希望将一个数组的所有值拷贝到一个新的数组中去，就要使用Arrays类的copyOf方法（深拷贝）</p>
+<p>Java数组与C++数组在堆栈上有很大不同，但基本上与分配在堆（heap）上的数组指针一样。</p>
+<p>Java中的[]运算符被预定义为检查数组边界，而且没有指针运算，即不能通过a加1得到数组的下一个元素。</p>
+<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>每一个Java应用程序都有一个带String arg[]参数的main方法。这个参数表明main方法将接收一个字符串数组，也就是命令行参数。</p>
+<p>在Java应用程序的main方法中，程序名并没有存储在args数组中。</p>
+<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><p>要想对数值型数组进行排序，可以使用Arrays类中的sort方法</p>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><p>for each循环语句不能自动处理二维数组的每一个元素。它是按照行，也就是一维数组处理的。要想访问二维数组a的所有元素，需要使用两个嵌套的循环。</p>
+<h3 id="不规则数组"><a href="#不规则数组" class="headerlink" title="不规则数组"></a>不规则数组</h3><p>Java实际上没有多维数组，只有一维数组。多维数组被解释为“数组的数组。”</p>
+<p>可以方便地构造一个“不规则”数组，即数组的每一行有不同的长度。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day03/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day04"><a href="#day04" class="headerlink" title="day04"></a>day04</h1><p><img src="C:\Users\xkh\AppData\Roaming\Typora\typora-user-images\image-20230221102128130.png" alt="image-20230221102128130"></p>
+<h2 id="内存分配："><a href="#内存分配：" class="headerlink" title="内存分配："></a>内存分配：</h2><p>栈：普通变量 数据名 对象名……</p>
+<p>堆：new出来的对象</p>
+<p>方法区：字面量、常量 字节码文件</p>
+<p>在内存中，操作的都是内存地址，而不是数据值</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day04/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-day01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java入门"><a href="#java入门" class="headerlink" title="java入门"></a>java入门</h1><h2 id="常识"><a href="#常识" class="headerlink" title="常识"></a>常识</h2><p><strong>快捷方式：</strong>本质上链接到了真正的程序上，使用方便；</p>
+<p><strong>环境变量：</strong>环境变量是操作系统中的一个配置，专门用来配置路径的，配置到环境变量中的路径，可以在任何地方访问或使用（仅限于命令行窗口）；当我们在某个路径下面执行A程序时，计算机优先从当前目录下找A,如果没有，就去环境变量中查找</p>
+<p><strong>IDE（Integrated Development Environment）:</strong> 集成开发环境</p>
+<h2 id="Java手动配置环境变量"><a href="#Java手动配置环境变量" class="headerlink" title="Java手动配置环境变量"></a>Java手动配置环境变量</h2><p>java相关的一些开发工具，需要用到Java和Javac等程序，例如idea、eclipse…，需要知道java和Javac的路径，通过查环境变量使用，以下列出两种配置环境变量的方式(推荐使用方式二，后续IDE直接使用JAVA_HOME,更加便捷)</p>
+<p>方式一：将jdk的文件路径（如D:\Java\jdk17\bin）加到path环境变量中</p>
+<p>方式二：</p>
+<p>1.先自定义一个变量JAVA_HOME，将jdk路径（不加bin目录，如D:\Java\jdk17）添加到JAVA_HOME中</p>
+<p>2.往path中加入%JAVA_HOME%\bin(%作用是取JAVA_HOME路径)</p>
+<h2 id="第一个java程序"><a href="#第一个java程序" class="headerlink" title="第一个java程序"></a>第一个java程序</h2><p>创建文件HelloWorld.java(文件名需与类名一致)代码如下：</p>
+<p><code>public class HelloWorld&#123;     public static void main(String[] args)&#123;     System.out.println(&quot;HelloWorld!&quot;);     &#125; &#125;</code></p>
+<p>在控制台运行程序</p>
+<p><code>javac HelloWorld.java</code></p>
+<p><code>java HelloWorld</code></p>
+<p>输出结果如下：</p>
+<p>HelloWorld!</p>
+<p>执行命令解析：</p>
+<p><strong>javac</strong>（编译） 后面跟着的是java文件的文件名，例如HelloWorld.java。该命令用于将Java源文件编译成class字节码文件，编译成功后会出现一个HelloWorld.class文件</p>
+<p><strong>java</strong>（运行） 后面跟着的是Java文件中的类名，如HelloWorld。java命令后不用加.class</p>
+<p><em>注：JDK11开始支持Java直接编译运行源代码文件</em></p>
+<h2 id="程序的执行过程"><a href="#程序的执行过程" class="headerlink" title="程序的执行过程"></a>程序的执行过程</h2><p><strong>机器语言：</strong>二进制 01 最原始 最高效</p>
+<p><strong>高级语言：</strong>更接近人类使用的语言 更容易</p>
+<p>编译器将高级语言编译成机器可识别的机器语言</p>
+<h2 id="JDK的组成"><a href="#JDK的组成" class="headerlink" title="JDK的组成"></a>JDK的组成</h2><p><strong>JDK（Java Development kit）：</strong></p>
+<ul>
+<li><p>JVM(Java Virtual Machine):	Java虚拟机	</p>
+</li>
+<li><p>核心类库</p>
+</li>
+<li><p>java&#x2F;javac等工具</p>
+</li>
+</ul>
+<p><em><strong>JRE(Java Runtime Environment)：</strong>Java运行环境（JRE包含JVM和核心类库）</em></p>
+<h2 id="Java跨平台的原理"><a href="#Java跨平台的原理" class="headerlink" title="Java跨平台的原理"></a>Java跨平台的原理</h2><p><strong>Java跨平台原理：</strong>源文件（.java）—–&gt;字节码文件(.class)(二进制文件)—–&gt;解释—–&gt;Windows、Linux等机器。</p>
+<p>这一系列的步骤都由JVM来进行实现。</p>
+<h2 id="IDEA管理Java程序的结构"><a href="#IDEA管理Java程序的结构" class="headerlink" title="IDEA管理Java程序的结构"></a>IDEA管理Java程序的结构</h2><ul>
+<li>project（项目、工程）</li>
+<li>module（模块）</li>
+<li>package（包）</li>
+<li>class（类）</li>
+</ul>
+<p>project —&gt; module —&gt; package —&gt; class</p>
+<h2 id="IDEA常用快捷键"><a href="#IDEA常用快捷键" class="headerlink" title="IDEA常用快捷键"></a>IDEA常用快捷键</h2><table>
+<thead>
+<tr>
+<th><strong>快捷键</strong></th>
+<th><strong>功能效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>main&#x2F;psvm、sout、…</td>
+<td>快速键入相关代码</td>
+</tr>
+<tr>
+<td>Ctrl + D</td>
+<td>复制当前行数据到下一行</td>
+</tr>
+<tr>
+<td>Ctrl + Y</td>
+<td>删除所在行，建议用Ctrl + X</td>
+</tr>
+<tr>
+<td>Ctrl + ALT + L</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td>ALT + SHIFT + ↑ , ALT + SHIFT + ↓</td>
+<td>上下移动当前代码</td>
+</tr>
+<tr>
+<td>Ctrl + &#x2F; , Ctrl + Shift + &#x2F;</td>
+<td>对代码进行注释</td>
+</tr>
+</tbody></table>
+<h2 id="java数据类型"><a href="#java数据类型" class="headerlink" title="java数据类型"></a>java数据类型</h2><p>1.基本数据类型：四类八种</p>
+<p>2.引用数据类型</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><strong>1.为什么要使用变量？</strong></p>
+<p>​	程序中有很多数据要存储，然后再进行各种操作</p>
+<p>​	程序中有很多数据都在变化</p>
+<p><strong>2.如何使用变量？</strong></p>
+<p>​	数据类型 变量名 &#x3D; 值；</p>
+<p>​	int age &#x3D; 18; &#x2F;&#x2F;定义了一个名字叫age的变量用来存储整数，然后将18存到	变量中；</p>
+<p><strong>3.变量底层是如何存储数据的？</strong></p>
+<p>​	程序都是在内存中运行的</p>
+<p>​	程序中的数据也是在内存中</p>
+<p>​	变量就是内存中的一块儿区域，用来存储数据</p>
+<p><strong>变量有啥好处？</strong></p>
+<p>​	使用变量记要处理的数据，编写的代码更灵活，管理代码更方便。</p>
+<p>​	</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
+  	<time datetime="2023-03-18T06:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -401,9 +957,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day07面向对象面向对象三大特性：封装、继承、多态 类设计技巧1.一定要保证数据私有这是最重要的；绝对不要破坏封装性。 2.一定要对数据初始化Java不对局部变量进行初始化，但是会对对象的实例域进行初始化。&#x3D;&#x3D;最好不要依赖于系统的默认值，而是应该显式地初始化所有的数据&#x3D;&#x3D;，具体的初始化方式可以是提供默认值，也可以是在所有构造器中设置默认值。 3.不要在类中">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day07/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day07面向对象面向对象三大特性：封装、继承、多态 类设计技巧1.一定要保证数据私有这是最重要的；绝对不要破坏封装性。 2.一定要对数据初始化Java不对局部变量进行初始化，但是会对对象的实例域进行初始化。&#x3D;&#x3D;最好不要依赖于系统的默认值，而是应该显式地初始化所有的数据&#x3D;&#x3D;，具体的初始化方式可以是提供默认值，也可以是在所有构造器中设置默认值。 3.不要在类中">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.890Z">
+<meta property="article:modified_time" content="2023-03-18T01:24:08.570Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day07" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day07"><a href="#day07" class="headerlink" title="day07"></a>day07</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><p>面向对象三大特性：封装、继承、多态</p>
+<h2 id="类设计技巧"><a href="#类设计技巧" class="headerlink" title="类设计技巧"></a>类设计技巧</h2><h4 id="1-一定要保证数据私有"><a href="#1-一定要保证数据私有" class="headerlink" title="1.一定要保证数据私有"></a>1.一定要保证数据私有</h4><p>这是最重要的；绝对不要破坏封装性。</p>
+<h4 id="2-一定要对数据初始化"><a href="#2-一定要对数据初始化" class="headerlink" title="2.一定要对数据初始化"></a>2.一定要对数据初始化</h4><p>Java不对局部变量进行初始化，但是会对对象的实例域进行初始化。&#x3D;&#x3D;最好不要依赖于系统的默认值，而是应该显式地初始化所有的数据&#x3D;&#x3D;，具体的初始化方式可以是提供默认值，也可以是在所有构造器中设置默认值。</p>
+<h4 id="3-不要在类中使用过多的基本类型"><a href="#3-不要在类中使用过多的基本类型" class="headerlink" title="3.不要在类中使用过多的基本类型"></a>3.不要在类中使用过多的基本类型</h4><p>就是说，用其他的类代替多个相关的基本类型的使用。这样会使类更加易于理解且易于修改。</p>
+<h4 id="4-不是所有的域都需要独立的域访问器和域更改器"><a href="#4-不是所有的域都需要独立的域访问器和域更改器" class="headerlink" title="4.不是所有的域都需要独立的域访问器和域更改器"></a>4.不是所有的域都需要独立的域访问器和域更改器</h4><p>在对象中，常常包含一些不希望别人获得或设置的实例域（可不设置get、set方法）</p>
+<h4 id="5-将职责过多的类进行分解"><a href="#5-将职责过多的类进行分解" class="headerlink" title="5.将职责过多的类进行分解"></a>5.将职责过多的类进行分解</h4><p>如果明显地可以将一个复杂的类分解成两个更为简单的类，就应该将其分解</p>
+<h4 id="6-类名和方法名要能够体现它们的职责"><a href="#6-类名和方法名要能够体现它们的职责" class="headerlink" title="6.类名和方法名要能够体现它们的职责"></a>6.类名和方法名要能够体现它们的职责</h4><p>与变量应该有一个能够反映其含义的名字一样，类也应该如此；</p>
+<p>命名类名的良好习惯是采用一个名词，&#x3D;&#x3D;类用名词，方法用动词&#x3D;&#x3D;</p>
+<p>不可变的类：没有方法能修改对象的状态</p>
+<p>有些方法并不是更改对象，而是返回状态已修改的新对象。</p>
+<p>更改对象的问题在于，&#x3D;&#x3D;如果多个线程试图同时更新一个对象，就会发生并发更改&#x3D;&#x3D;。其结果是不可预料的。&#x3D;&#x3D;如果类是不可变的，就可以安全地在多个线程间共享其对象&#x3D;&#x3D;。因此，要尽可能让类是不可变的</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>C++注释：Java与C++定义继承类的方式十分相似。Java用关键字extends代替了C++中的冒号（：）。在Java中，&#x3D;&#x3D;所有的继承都是公有继承，而没有C++中的私有继承和保护继承&#x3D;&#x3D;。</p>
+<h2 id="this与super"><a href="#this与super" class="headerlink" title="this与super"></a>this与super</h2><p>关键字this有两个用途：一是引用隐式参数，二是调用该类其他的构造器。</p>
+<p>super关键字也有两个用途：一是调用超类的方法，二是调用超类的构造器。</p>
+<p>&#x3D;&#x3D;this（）和super（）都必须放在构造器第一行，所以this与super不能同时存在&#x3D;&#x3D;</p>
+<h2 id="子类方法重载"><a href="#子类方法重载" class="headerlink" title="子类方法重载"></a>子类方法重载</h2><p>C++注释：在Java中，不需要将方法声明为虚拟方法。动态绑定是默认的处理方式。如果不希望让一个方法具有虚拟特征，可以将它标记为final</p>
+<p>在覆盖一个方法的时候，子类方法不能低于超类方法的可见性。特别是，如果超类方法是public，子类方法一定要声明为public。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>在Java中，&#x3D;&#x3D;子类数组的引用可以转换成超类数组的引用，而不需要采用强制类型转换&#x3D;&#x3D;。</p>
+<h3 id="阻止继承：final类和方法"><a href="#阻止继承：final类和方法" class="headerlink" title="阻止继承：final类和方法"></a>阻止继承：final类和方法</h3><p>不允许扩展的类被称为final类。如果在定义类的时候使用了final修饰符就表明这个类是final类。（&#x3D;&#x3D;final类中的所有方法自动地成为final方法&#x3D;&#x3D;）。</p>
+<p>域也可以被声明为final。对于final域来说，构造对象之后就不允许改变它们的值了。不过，如果将一个类声明为final，只有其中的方法自动地成为final，而不包括域。</p>
+<p>将方法或类声明为final主要目的是：确保它们不会在子类中改变语义。</p>
+<p>String类也是final类，这意味着不允许任何人定义String的子类。换言之，如果有一个String的引用，它引用的一定是一个String对象，而不可能是其他类的对象。</p>
+<h3 id="类的强制类型转换"><a href="#类的强制类型转换" class="headerlink" title="类的强制类型转换"></a>类的强制类型转换</h3><p>对象引用的转换语法与数值表达式的类型转换类似，仅需要用一对圆括号将目标类名括起来，并放置在需要转换的对象引用之前就可以了。</p>
+<p>&#x3D;&#x3D;包含一个或多个抽象方法的类本身必须被声明为抽象的&#x3D;&#x3D;。</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><p>C++注释：在C++中，有一种在尾部用&#x3D;0标记的抽象方法，称为纯虚函数，只要有一个纯虚函数，这个类就是抽象类。</p>
+<p>抽象类不能被实例化。也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。</p>
+<p>包含一个或多个抽象方法的类本身必须被声明为抽象的。</p>
+<p>抽象方法充当着占位的角色，它们的具体实现在子类中。</p>
+<p>类即使不含抽象方法，也可以将类声明为抽象类。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day07/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day06/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day08/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +348,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

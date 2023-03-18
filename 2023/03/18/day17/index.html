@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day17可变参数 就是说一种特殊形参，定义在方法、构造器的形参列表里，格式是：数据类型…参数名称  可变参数的1特点与好处 特点：可以不传数据给它，可以传一个或者同时多个数据给它；也可以传一个数组给它  好处：常常用来灵活的接受数据   可变参数的本质就是一个数组 可变参数的注意事项 可变参数在方法内部就是一个数组 可变参数必须放在形参列表的最后面 一个形参列表的可变参数只能有一个  可变参数的">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day17/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day17可变参数 就是说一种特殊形参，定义在方法、构造器的形参列表里，格式是：数据类型…参数名称  可变参数的1特点与好处 特点：可以不传数据给它，可以传一个或者同时多个数据给它；也可以传一个数组给它  好处：常常用来灵活的接受数据   可变参数的本质就是一个数组 可变参数的注意事项 可变参数在方法内部就是一个数组 可变参数必须放在形参列表的最后面 一个形参列表的可变参数只能有一个  可变参数的">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.910Z">
+<meta property="article:modified_time" content="2023-03-18T03:03:03.921Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,500 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day17" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day17"><a href="#day17" class="headerlink" title="day17"></a>day17</h1><h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><ul>
+<li>就是说一种特殊形参，定义在方法、构造器的形参列表里，格式是：数据类型…参数名称</li>
+</ul>
+<h3 id="可变参数的1特点与好处"><a href="#可变参数的1特点与好处" class="headerlink" title="可变参数的1特点与好处"></a>可变参数的1特点与好处</h3><ul>
+<li><p>特点：可以不传数据给它，可以传一个或者同时多个数据给它；也可以传一个数组给它</p>
+</li>
+<li><p>好处：常常用来灵活的接受数据</p>
+</li>
+</ul>
+<p><em>可变参数的本质就是一个数组</em></p>
+<h3 id="可变参数的注意事项"><a href="#可变参数的注意事项" class="headerlink" title="可变参数的注意事项"></a>可变参数的注意事项</h3><ul>
+<li>可变参数在方法内部就是一个数组</li>
+<li>可变参数必须放在形参列表的最后面</li>
+<li>一个形参列表的可变参数只能有一个</li>
+</ul>
+<h3 id="可变参数的应用场景"><a href="#可变参数的应用场景" class="headerlink" title="可变参数的应用场景"></a>可变参数的应用场景</h3><ul>
+<li>可以很方便的创建集合对象</li>
+</ul>
+<p>Collections是一个集合工具类，方便操作集合</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static <T> boolean <strong>addAll(Collection&lt;? super T&gt; c, T… elements)</strong></td>
+<td>给集合批量添加元素</td>
+</tr>
+<tr>
+<td>public static void <strong>shuffle(List&lt;?&gt; list)</strong></td>
+<td>打乱List集合中的元素顺序</td>
+</tr>
+<tr>
+<td>public static <T> void <strong>sort(List<T> list)</strong></td>
+<td>对List集合中的元素进行升序排序</td>
+</tr>
+<tr>
+<td>public static <T> void <strong>sort(List<T> list，Comparator&lt;? super T&gt; c)</strong></td>
+<td>对List集合中元素，按照比较器对象指定的规则进行排序</td>
+</tr>
+</tbody></table>
+<h2 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h2><ul>
+<li>Map集合称为双列集合，格式：｛key1 &#x3D; value1,key2 &#x3D; value2,…｝一次需要存一对数据作为一个元素</li>
+<li>Map集合的每个元素“Key&#x3D;value”称为一个键值对&#x2F;键值对对象&#x2F;一个Entry对象，Map集合也被叫做键值对集合</li>
+<li>Map集合的所有键是不允许重复的，但是值可以重复，键和值是一一对应的，每一个键只能找到自己对应的值</li>
+</ul>
+<p>调用put方法时，如果添加重复的Key，会覆盖Key的value值</p>
+<h3 id="Map集合体系的特点"><a href="#Map集合体系的特点" class="headerlink" title="Map集合体系的特点"></a>Map集合体系的特点</h3><p><em>注意：Map系列集合的特点都是由键决定的，值只是一个附属品，值是不作要求的</em></p>
+<ul>
+<li>HashMap（由键决定特点）：无序、不重复、无索引；（用的最多）</li>
+<li>LinkedHashMap（由键决定特点）：有序、不重复、无索引</li>
+<li>TreeMap（由键决定特点）：无序、不重复、无索引</li>
+</ul>
+<h3 id="Map集合常用方法"><a href="#Map集合常用方法" class="headerlink" title="Map集合常用方法"></a>Map集合常用方法</h3><ul>
+<li>Map集合是双列集合的祖宗，他的功能是全部双列集合都可以继承过来使用的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public V put(K key,V value)</td>
+<td>添加元素</td>
+</tr>
+<tr>
+<td>public int size()</td>
+<td>获取集合的大小</td>
+</tr>
+<tr>
+<td>public void clear()</td>
+<td>清空集合</td>
+</tr>
+<tr>
+<td>public boolean isEmpty()</td>
+<td>判断集合是否为空，为空返回true , 反之</td>
+</tr>
+<tr>
+<td>public V get(Object key)</td>
+<td>根据键获取对应值</td>
+</tr>
+<tr>
+<td>public V remove(Object key)</td>
+<td>根据键删除整个元素</td>
+</tr>
+<tr>
+<td>public boolean containsKey(Object key)</td>
+<td>判断是否包含某个键</td>
+</tr>
+<tr>
+<td>public boolean containsValue(Object value)</td>
+<td>判断是否包含某个值</td>
+</tr>
+<tr>
+<td>public Set<K> keySet()</td>
+<td>获取全部键的集合</td>
+</tr>
+<tr>
+<td>public Collection<V> values()</td>
+<td>获取Map集合的全部值</td>
+</tr>
+</tbody></table>
+<h3 id="遍历Map集合的三种方式"><a href="#遍历Map集合的三种方式" class="headerlink" title="遍历Map集合的三种方式"></a>遍历Map集合的三种方式</h3><ol>
+<li><p>获取所有Key的集合然后遍历，通过Key值获取对应的value值</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Set<K> keySet()</td>
+<td>获取所有键的集合</td>
+</tr>
+<tr>
+<td>public V get(Object key)</td>
+<td>根据键获取其对应的值</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>把键值对看成一个整体进行遍历（难度较大）</p>
+<table>
+<thead>
+<tr>
+<th><strong>Map提供的方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet()</td>
+<td>获取所有“键值对”的集合</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>Map.Entry</strong>提供的方法</th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>K getKey()</td>
+<td>获取键</td>
+</tr>
+<tr>
+<td>V getValue()</td>
+<td>获取值</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Lambda表达式</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default void forEach(BiConsumer&lt;? super K, ? super V&gt; action)</td>
+<td>结合lambda遍历Map集合</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">forDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        HashMap&lt;String, Integer&gt; maps = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        String[] arr = &#123;<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>,<span class="string">&quot;D&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i &lt; <span class="number">80</span>;i++)&#123;</span><br><span class="line">            <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> arr[random.nextInt(arr.length)];</span><br><span class="line">            <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> maps.getOrDefault(s,<span class="number">0</span>);<span class="comment">//HashMap 的 getOrDefault(Object key, V defaultValue) 方法用于获取指定键对应的值，如果键不存在，则返回默认值。</span></span><br><span class="line">            maps.put(s,v+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//循环遍历 keySet</span></span><br><span class="line">        Set&lt;String&gt; keySet = maps.keySet();</span><br><span class="line">        <span class="keyword">for</span> (String key : keySet) &#123;</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">value</span> <span class="operator">=</span> maps.get(key);</span><br><span class="line">            System.out.println(key +<span class="string">&quot;--&quot;</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------------------&quot;</span>);</span><br><span class="line">        <span class="comment">//entrySet</span></span><br><span class="line">        Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entries = maps.entrySet();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : entries) &#123;</span><br><span class="line">            System.out.println(entry.getKey()+<span class="string">&quot;---&quot;</span>+entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------------------&quot;</span>);</span><br><span class="line"><span class="comment">//forEach</span></span><br><span class="line">        maps.forEach(<span class="keyword">new</span> <span class="title class_">BiConsumer</span>&lt;String, Integer&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(String s, Integer integer)</span> &#123;</span><br><span class="line">                System.out.println(s+<span class="string">&quot;----&quot;</span>+integer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">       <span class="comment">//forEach+lambda </span></span><br><span class="line">        maps.forEach((key,value)-&gt; System.out.println(key +<span class="string">&quot;-&quot;</span>+value));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><h4 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h4><p><strong>哈希表</strong></p>
+<p>HashMap的底层实现是一个数组和链表（或红黑树）的结合体，它通过哈希函数将键映射到数组中的一个位置上，并将对应的值存储在这个位置上。</p>
+<p><strong>HashMap的底层原理如下：</strong></p>
+<ol>
+<li><p>初始化：HashMap创建时会创建一个默认大小的数组，这个数组大小是16，同时会计算出一个装载因子0.75，表示当数组中的元素数量达到总容量的75%时，就需要扩容。</p>
+</li>
+<li><p>插入：当用户调用put()方法插入键值对时，首先会根据键的哈希值计算出它在数组中的索引位置。如果这个位置还没有元素，则将这个键值对直接存储在这个位置上；如果这个位置已经存在元素，就需要遍历这个位置上的链表（或红黑树），找到对应的键值对，并更新它的值。</p>
+</li>
+<li><p>扩容：当HashMap中元素的数量达到总容量的75%时，就会自动进行扩容。具体来说，它会创建一个新的数组，大小是原来的两倍，并将所有元素重新插入到新的数组中。</p>
+</li>
+<li><p>查询：当用户调用get()方法查询某个键对应的值时，HashMap会根据键的哈希值计算出它在数组中的索引位置，并在该位置上的链表（或红黑树）中查找对应的键值对。</p>
+</li>
+<li><p>删除：当用户调用remove()方法删除某个键值对时，HashMap会根据键的哈希值计算出它在数组中的索引位置，并在该位置上的链表（或红黑树）中查找对应的键值对，并将它从链表（或红黑树）中删除。</p>
+<h3 id="HashMap特点"><a href="#HashMap特点" class="headerlink" title="HashMap特点"></a>HashMap特点</h3></li>
+</ol>
+<p>HashMap集合是一种增删改查数据，性能都比较好的集合</p>
+<p>他是无序，不能重复，没有索引支持的（由键决定特点）</p>
+<p>HashMap的键依赖HashCode方法和equals方法保证键的唯一</p>
+<p>如果键存储的是自定义类型的对象，可以通过重写HashCode和equals，这样可以保证多个对象内容一样时，HashMap集合就能认去重了</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><ul>
+<li>有序 不重复 无索引</li>
+</ul>
+<h4 id="底层原理-1"><a href="#底层原理-1" class="headerlink" title="底层原理"></a>底层原理</h4><p>LinkedHashMap是HashMap的一个子类，它的底层实现方式基本上和HashMap相同，只不过在HashMap的基础上增加了一个双向链表来维护插入顺序或访问顺序，因此它既可以保持键值对的插入顺序，也可以按照访问顺序进行遍历。</p>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><ul>
+<li>无序、不可重复、无索引、但可按照指定规则排序</li>
+</ul>
+<p>TreeMap是Java集合框架中的一种实现，它是一种基于红黑树的有序映射表。在TreeMap中，每个键值对都存储在一个节点中，节点按照键的大小顺序排列组成一颗红黑树，这样就可以快速地查找、插入和删除节点。</p>
+<h3 id="TreeMap底层原理"><a href="#TreeMap底层原理" class="headerlink" title="TreeMap底层原理"></a>TreeMap底层原理</h3><p>下面是TreeMap底层的具体实现原理：</p>
+<ol>
+<li>数据结构：TreeMap底层使用红黑树作为存储数据的数据结构。红黑树是一种自平衡的二叉查找树，它可以保证在最坏情况下，查找、插入和删除操作的时间复杂度都为O(logn)。</li>
+<li>排序：TreeMap中的节点按照键的大小顺序排列。如果两个键的比较结果相同，那么它们被视为相等，只能存储一个键值对。TreeMap提供了两种比较方式：使用键的自然顺序（Natural Ordering）或者使用一个Comparator进行比较。</li>
+<li>插入：在TreeMap中插入节点时，会根据键的大小顺序找到要插入的位置。如果要插入的键已经存在，那么它的值会被更新。插入节点后，需要保持红黑树的平衡性质。</li>
+<li>删除：在TreeMap中删除节点时，会根据键的大小顺序找到要删除的节点。如果要删除的节点有两个子节点，那么需要找到它的后继节点（即大于该节点的最小节点）来替换它。删除节点后，需要保持红黑树的平衡性质。</li>
+<li>遍历：TreeMap支持三种遍历方式：按键的自然顺序升序遍历、按键的自然顺序降序遍历、按照指定的Comparator进行遍历。这些遍历方式都是基于红黑树的中序遍历实现的。</li>
+</ol>
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p>简化集合、数组操作的API.结合了Lambda表达式</p>
+<ul>
+<li><p>也叫Stream流，JDK8开始新增的一套API,可以用于操作集合或者数组的数据。</p>
+</li>
+<li><p>优势：Stream流大量结合了Lambda的语法风格来编程，提供了一种更加强大，更加简单的方式操作集合或者数组中的数据，代码更简洁，可读性更好</p>
+</li>
+</ul>
+<p>Stream 的操作可以分为两类：中间操作和终止操作。中间操作可以返回一个新的 Stream 对象，终止操作则可以将 Stream 转换为另外一种数据类型（如 List、Set、Map、数组等），或对集合进行统计、归约等操作。</p>
+<h3 id="Stream操作步骤"><a href="#Stream操作步骤" class="headerlink" title="Stream操作步骤"></a>Stream操作步骤</h3><h4 id="2-获取Stream流"><a href="#2-获取Stream流" class="headerlink" title="2.获取Stream流"></a>2.获取Stream流</h4><p>获取集合的Stream流</p>
+<table>
+<thead>
+<tr>
+<th><strong>Collection提供的如下方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default  <strong>Stream<E> stream()</strong></td>
+<td>获取当前集合对象的Stream流</td>
+</tr>
+</tbody></table>
+<p>获取数组的Stream流</p>
+<table>
+<thead>
+<tr>
+<th><strong>Arrays类提供的如下 方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  static <T> Stream<T> <strong>stream(T[] array)</strong></td>
+<td>获取当前数组的Stream流</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>Stream类提供的如下 方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  static<T> Stream<T> <strong>of(T… values)</strong></td>
+<td>获取当前接收数据的Stream流</td>
+</tr>
+</tbody></table>
+<h4 id="2-Stream流的中间方法"><a href="#2-Stream流的中间方法" class="headerlink" title="2.Stream流的中间方法"></a>2.Stream流的中间方法</h4><ul>
+<li>中间方法指的是调用完成后会返回新的Stream流，可以继续使用(支持链式编程)。</li>
+</ul>
+<ol>
+<li><p><code>filter(Predicate&lt;T&gt; predicate)</code>：过滤出符合条件的元素。</p>
+</li>
+<li><p><code>map(Function&lt;T, R&gt; mapper)</code>：将元素进行映射，返回一个新的 Stream。</p>
+</li>
+<li><p><code>flatMap(Function&lt;T, Stream&lt;R&gt;&gt; mapper)</code>：将元素进行映射，并将所有 Stream 中的元素合并为一个 Stream。</p>
+</li>
+<li><p><code>sorted(Comparator&lt;T&gt; comparator)</code>：对元素进行排序。</p>
+</li>
+<li><p><code>distinct()</code>：去除重复的元素。</p>
+</li>
+<li><p><code>limit(long maxSize)</code>：截取前 maxSize 个元素。</p>
+</li>
+<li><p><code>skip(long n)</code>：跳过前 n 个元素。</p>
+</li>
+<li><p><code>reduce(T identity, BinaryOperator&lt;T&gt; accumulator)</code>：将元素聚合为一个值。</p>
+</li>
+<li><p><code>collect(Collector&lt;T, A, R&gt; collector)</code>：将元素收集到一个容器中。</p>
+</li>
+<li><p><code>forEach(Consumer&lt;T&gt; action)</code>：对每个元素执行操作。</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th><strong>Stream</strong>提供的常用中间方法</th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Stream<T>  <strong>filter</strong>(Predicate&lt;? super T&gt; predicate)</td>
+<td>用于对流中的数据进行过滤。</td>
+</tr>
+<tr>
+<td><a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">Stream</a><T> <strong>sorted</strong>()</td>
+<td>对元素进行升序排序</td>
+</tr>
+<tr>
+<td><a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">Stream</a><T> <strong>sorted</strong>(<a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/Comparator.html">Comparator</a>&lt;? super <a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">T</a>&gt; comparator)</td>
+<td>按照指定规则排序</td>
+</tr>
+<tr>
+<td>Stream<T>  <strong>limit</strong>(long  maxSize)</td>
+<td>获取前几个元素</td>
+</tr>
+<tr>
+<td>Stream<T>  <strong>skip</strong>(long  n)</td>
+<td>跳过前几个元素</td>
+</tr>
+<tr>
+<td>Stream<T>  <strong>distinct</strong>()</td>
+<td>去除流中重复的元素。</td>
+</tr>
+<tr>
+<td><R> <a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">Stream</a><R> <strong>map</strong>(<a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/function/Function.html">Function</a>&lt;? super <a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">T</a>,? extends R&gt; mapper)</td>
+<td>对元素进行加工，并返回对应的新流</td>
+</tr>
+<tr>
+<td>static  <T> Stream<T> <strong>concat</strong>(Stream a, Stream b)</td>
+<td>合并a和b两个流为一个流</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h4 id="3-Stream流常见的终结方法"><a href="#3-Stream流常见的终结方法" class="headerlink" title="3.Stream流常见的终结方法"></a>3.Stream流常见的终结方法</h4><ul>
+<li>收集Stream流：就是把Stream流操作后的结果转回到集合或者数组中去返回</li>
+<li>Stream流：方便操作集合&#x2F;数组的手段；</li>
+<li>集合&#x2F;数组：才是开发中的目的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Stream</strong>提供的常用终结方法</th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void  forEach(Consumer  action)</td>
+<td>对此流运算后的元素执行遍历</td>
+</tr>
+<tr>
+<td>long count()</td>
+<td>统计此流运算后的元素个数</td>
+</tr>
+<tr>
+<td><a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/Optional.html">Optional</a><T> max(<a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/Comparator.html">Comparator</a>&lt;? super <a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">T</a>&gt; comparator)</td>
+<td>获取此流运算后的最大值元素</td>
+</tr>
+<tr>
+<td><a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/Optional.html">Optional</a><T> min(<a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/Comparator.html">Comparator</a>&lt;? super <a href="mk:@MSITStore:C:\双元视频\API文档\jdk-11中文api修订版.CHM::/java.base/java/util/stream/Stream.html">T</a>&gt; comparator)</td>
+<td>获取此流运算后的最小值元素</td>
+</tr>
+</tbody></table>
+<h4 id="Stream的注意事项"><a href="#Stream的注意事项" class="headerlink" title="Stream的注意事项"></a>Stream的注意事项</h4><ol>
+<li>Stream流中无法直接修改集合，数组等数据源中的数据</li>
+<li>同一个Stream对象只能调用一次方法</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day17/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day16/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day10(javaSEPro)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +671,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

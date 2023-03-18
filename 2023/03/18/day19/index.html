@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day19释放资源的方式close()try-catch-finallyfinally代码区的特点：无论try中的程序是正常执行了，还是出现了异常，最后都一定会执行finally区，除非JVM终止。 作用：一般用于在程序执行完成后进行资源的释放操作（专业级做法）。 try-with-resourcetry(定义资源1;定义资源2;…）{     可能出现异常的代码; }catch(异常类名 变量名">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day19/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day19释放资源的方式close()try-catch-finallyfinally代码区的特点：无论try中的程序是正常执行了，还是出现了异常，最后都一定会执行finally区，除非JVM终止。 作用：一般用于在程序执行完成后进行资源的释放操作（专业级做法）。 try-with-resourcetry(定义资源1;定义资源2;…）{     可能出现异常的代码; }catch(异常类名 变量名">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.921Z">
+<meta property="article:modified_time" content="2023-03-18T03:49:07.556Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,640 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day19" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day19"><a href="#day19" class="headerlink" title="day19"></a>day19</h1><h2 id="释放资源的方式"><a href="#释放资源的方式" class="headerlink" title="释放资源的方式"></a>释放资源的方式</h2><h3 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h3><h3 id="try-catch-finally"><a href="#try-catch-finally" class="headerlink" title="try-catch-finally"></a><strong>try-catch-finally</strong></h3><p>finally代码区的特点：无论try中的程序是正常执行了，还是出现了异常，最后都一定会执行finally区，除非JVM终止。</p>
+<p>作用：一般用于在程序执行完成后进行资源的释放操作（专业级做法）。</p>
+<h3 id="try-with-resource"><a href="#try-with-resource" class="headerlink" title="try-with-resource"></a>try-with-resource</h3><p>try(定义资源1;定义资源2;…）{<br>     可能出现异常的代码;<br> }catch(异常类名 变量名){<br>     异常的处理代码;<br> }</p>
+<p><strong>该资源使用完毕后，会自动调用其close()方法，完成对资源的释放！</strong></p>
+<ul>
+<li>() 中只能放置资源，否则报错</li>
+<li>&#x3D;&#x3D;资源一般指的是最终实现了AutoCloseable接口。&#x3D;&#x3D;</li>
+</ul>
+<h2 id="IO流——字符流"><a href="#IO流——字符流" class="headerlink" title="IO流——字符流"></a>IO流——字符流</h2><h3 id="FileReader（文件字符输入流）"><a href="#FileReader（文件字符输入流）" class="headerlink" title="FileReader（文件字符输入流）"></a><strong>FileReader（文件字符输入流）</strong></h3><p>作用：以内存为基准，可以把文件中的数据以字符的形式读入到内存中去。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public <strong>FileReader</strong>(File file)</td>
+<td>创建字符输入流管道与源文件接通</td>
+</tr>
+<tr>
+<td>public <strong>FileReader</strong>(String pathname)</td>
+<td>创建字符输入流管道与源文件接通</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int <strong>read()</strong></td>
+<td>每次读取一个字符返回，如果发现没有数据可读会返回-1.</td>
+</tr>
+<tr>
+<td>public int **read(**char[]  buffer)</td>
+<td>每次用一个字符数组去读取数据，返回字符数组读取了多少个字符，如果发现没有数据可读会返回-1.</td>
+</tr>
+</tbody></table>
+<h3 id="FileWriter-文件字符输出流"><a href="#FileWriter-文件字符输出流" class="headerlink" title="FileWriter(文件字符输出流)"></a><strong>FileWriter(文件字符输出流)</strong></h3><p>l作用：以内存为基准，把内存中的数据以字符的形式写出到文件中去。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public <strong>FileWriter(File file)</strong></td>
+<td>创建字节输出流管道与源文件对象接通</td>
+</tr>
+<tr>
+<td>public <strong>FileWriter(String filepath)</strong></td>
+<td>创建字节输出流管道与源文件路径接通</td>
+</tr>
+<tr>
+<td>public <strong>FileWriter(File file，boolean append)</strong></td>
+<td>创建字节输出流管道与源文件对象接通，可追加数据</td>
+</tr>
+<tr>
+<td>public <strong>FileWriter(String filepath，boolean append)</strong></td>
+<td>创建字节输出流管道与源文件路径接通，可追加数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void  <strong>write</strong>(int c)</td>
+<td>写一个字符</td>
+</tr>
+<tr>
+<td>void  <strong>write</strong>(String str)</td>
+<td>写一个字符串</td>
+</tr>
+<tr>
+<td>void  <strong>write</strong>(String str, int off, int len)</td>
+<td>写一个字符串的一部分</td>
+</tr>
+<tr>
+<td>void  <strong>write</strong>(char[] cbuf)</td>
+<td>写入一个字符数组</td>
+</tr>
+<tr>
+<td>void  <strong>write</strong>(char[] cbuf, int off, int len)</td>
+<td>写入字符数组的一部分</td>
+</tr>
+</tbody></table>
+<p><strong>字符输出流写出数据后，必须刷新流，或者关闭流，写出去的数据才能生效</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  void flush() throws IOException</td>
+<td>刷新流，就是将内存中缓存的数据立即写到文件中去生效！</td>
+</tr>
+<tr>
+<td>public  void close() throws IOException</td>
+<td>关闭流的操作，包含了刷新！</td>
+</tr>
+</tbody></table>
+<p><strong>字节流适合做一切文件数据的拷贝（音视频，文本）；字节流不适合读取中文内容输出</strong></p>
+<p><strong>字符流适合做文本文件的操作（读，写）。</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><strong>字节缓冲流的作用</strong></p>
+<p>原理：字节缓冲输入流自带了8KB缓冲池；字节缓冲输出流也自带了8KB缓冲池。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BufferedInputStream(InputStream is)</td>
+<td>把低级的字节输入流包装成一个高级的缓冲字节输入流，从而提高读数据的性能</td>
+</tr>
+<tr>
+<td>public BufferedOutputStream(OutputStream os)</td>
+<td>把低级的字节输出流包装成一个高级的缓冲字节输出流，从而提高写数据的性能</td>
+</tr>
+</tbody></table>
+<h3 id="BufferedReader-字符缓冲输入流"><a href="#BufferedReader-字符缓冲输入流" class="headerlink" title="BufferedReader(字符缓冲输入流)"></a><strong>BufferedReader(字符缓冲输入流)</strong></h3><p>作用：自带8K（8192）的字符缓冲池，可以提高字符输入流读取字符数据的性能</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  BufferedReader(Reader r)</td>
+<td>把低级的字符输入流包装成字符缓冲输入流管道，从而提高字符输入流读字符数据的性能</td>
+</tr>
+</tbody></table>
+<p><strong>字符缓冲输入流新增的功能：按照行读取字符</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  String readLine()</td>
+<td>读取一行数据返回，如果没有数据可读了，会返回null</td>
+</tr>
+</tbody></table>
+<h3 id="BufferedWriter-字符缓冲输出流"><a href="#BufferedWriter-字符缓冲输出流" class="headerlink" title="BufferedWriter(字符缓冲输出流)"></a><strong>BufferedWriter(字符缓冲输出流)</strong></h3><p>作用：自带8K的字符缓冲池，可以提高字符输出流写字符数据的性能。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  BufferedWriter(Writer r)</td>
+<td>把低级的字符输出流包装成一个高级的缓冲字符输出流管道，从而提高字符输出流写数据的性能</td>
+</tr>
+</tbody></table>
+<p><strong>字符缓冲输出流新增的功能：换行</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  void newLine()</td>
+<td>换行  (可兼容各个系统)</td>
+</tr>
+</tbody></table>
+<h2 id="IO流-转换流"><a href="#IO流-转换流" class="headerlink" title="IO流-转换流"></a>IO流-转换流</h2><p>不同编码读取出现乱码的问题</p>
+<p>如果代码编码和被读取的文本文件的编码是一致的，使用字符流读取文本文件时不会出现乱码！</p>
+<p>如果代码编码和被读取的文本文件的编码是不一致的，使用字符流读取文本文件时就会出现乱码！</p>
+<h3 id="InputStreamReader（字符输入转换流）"><a href="#InputStreamReader（字符输入转换流）" class="headerlink" title="InputStreamReader（字符输入转换流）"></a>InputStreamReader（字符输入转换流）</h3><p>解决不同编码时，字符流读取文本内容乱码的问题。<br>解决思路：先获取文件的原始字节流，再将其按真实的字符集编码转成字符输入流，这样字符输入流中的字符就不乱码了。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public InputStreamReader(InputStream is)</td>
+<td>把原始的字节输入流，按照代码默认编码转成字符输入流（与直接用FileReader的效果一样）</td>
+</tr>
+<tr>
+<td>public InputStreamReader(InputStream  is ，String  charset)</td>
+<td>把原始的字节输入流，按照指定字符集编码转成字符输入流(重点)</td>
+</tr>
+</tbody></table>
+<h3 id="OutputStreamWriter字符输出转换流"><a href="#OutputStreamWriter字符输出转换流" class="headerlink" title="OutputStreamWriter字符输出转换流"></a><strong>OutputStreamWriter字符输出转换流</strong></h3><p>作用：可以控制写出去的字符使用什么字符集编码。<br>解决思路：获取字节输出流，再按照指定的字符集编码将其转换成字符输出流，以后写出去的字符就会用该字符集编码了。</p>
+<table>
+<thead>
+<tr>
+<th>构造器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public OutputStreamWriter(OutputStream os)</td>
+<td>可以把原始的字节输出流，按照代码默认编码转换成字符输出流。</td>
+</tr>
+<tr>
+<td>public <strong>OutputStreamWriter</strong>(OutputStream os，String charset)</td>
+<td>可以把原始的字节输出流，按照指定编码转换成字符输出流(重点)</td>
+</tr>
+</tbody></table>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="IO流-打印流"><a href="#IO流-打印流" class="headerlink" title="IO流-打印流"></a>IO流-打印流</h2><h3 id="PrintStream-x2F-PrintWriter（打印流）"><a href="#PrintStream-x2F-PrintWriter（打印流）" class="headerlink" title="PrintStream&#x2F;PrintWriter（打印流）"></a>PrintStream&#x2F;PrintWriter（打印流）</h3><p>作用：打印流可以实现更方便、更高效的打印数据出去，能实现打印啥出去就是啥出去。</p>
+<p><strong>PrintStream提供的打印数据的方案</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  <strong>PrintStream</strong>(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/OutputStream.html">OutputStream</a>&#x2F;<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/File.html">File</a>&#x2F;<strong><a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a></strong>)</td>
+<td>打印流直接通向字节输出流&#x2F;文件&#x2F;文件路径</td>
+</tr>
+<tr>
+<td>public PrintStream(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a> fileName, <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/nio/charset/Charset.html">Charset</a> charset)</td>
+<td>可以指定写出去的字符编码</td>
+</tr>
+<tr>
+<td>public PrintStream(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/OutputStream.html">OutputStream</a> out,  boolean autoFlush)</td>
+<td>可以指定实现自动刷新</td>
+</tr>
+<tr>
+<td>public PrintStream(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/OutputStream.html">OutputStream</a> out,  boolean autoFlush, <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a> encoding)</td>
+<td>可以指定实现自动刷新，并可指定字符的编码</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  void <strong>println</strong>(Xxx  <strong>xx)</strong></td>
+<td>打印任意类型的数据出去</td>
+</tr>
+<tr>
+<td>public  void write(int&#x2F;byte[]&#x2F;byte[]一部分)</td>
+<td>可以支持写字节数据出去</td>
+</tr>
+</tbody></table>
+<h3 id="PrintWriter提供的打印数据的方案"><a href="#PrintWriter提供的打印数据的方案" class="headerlink" title="PrintWriter提供的打印数据的方案"></a><strong>PrintWriter提供的打印数据的方案</strong></h3><table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  <strong>PrinWriter</strong>(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/OutputStream.html">OutputStream</a>&#x2F;Writer&#x2F;<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/File.html">File</a>&#x2F;<strong><a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a></strong>)</td>
+<td>打印流直接通向字节输出流&#x2F;文件&#x2F;文件路径</td>
+</tr>
+<tr>
+<td>public PrintWriter(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a> fileName, <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/nio/charset/Charset.html">Charset</a> charset)</td>
+<td>可以指定写出去的字符编码</td>
+</tr>
+<tr>
+<td>public PrintWriter(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/OutputStream.html">OutputStream</a> out&#x2F;Writer,  boolean autoFlush)</td>
+<td>可以指定实现自动刷新</td>
+</tr>
+<tr>
+<td>public PrintWriter(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/OutputStream.html">OutputStream</a> out,  boolean autoFlush, <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a> encoding)</td>
+<td>可以指定实现自动刷新，并可指定字符的编码</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  void <strong>println</strong>(Xxx  xx)</td>
+<td>打印任意类型的数据出去</td>
+</tr>
+<tr>
+<td>public  void write(int&#x2F;String&#x2F;char[]&#x2F;..)</td>
+<td>可以支持写字符数据出去</td>
+</tr>
+</tbody></table>
+<p>PrintStream和PrintWriter的区别<br>打印数据的功能上是一模一样的：都是使用方便，性能高效（核心优势）<br>PrintStream继承自字节输出流OutputStream，因此支持写字节数据的方法。<br>PrintWriter继承自字符输出流Writer，因此支持写字符数据出去。</p>
+<h2 id="IO流-数据流"><a href="#IO流-数据流" class="headerlink" title="IO流-数据流"></a>IO流-数据流</h2><p>鸡肋，没啥用</p>
+<h3 id="DataOutputStream-数据输出流"><a href="#DataOutputStream-数据输出流" class="headerlink" title="DataOutputStream(数据输出流)"></a><strong>DataOutputStream(数据输出流)</strong></h3><p>允许把数据和其类型一并写出去。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  <strong>DataOutputStream</strong>(OutputStream out)</td>
+<td>创建新数据输出流包装基础的字节输出流</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  final void <strong>writeByte</strong>(int v)  throws <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>将byte类型的数据写入基础的字节输出流</td>
+</tr>
+<tr>
+<td>public  final void <strong>writeInt</strong>(int v) throws  <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>将int类型的数据写入基础的字节输出流</td>
+</tr>
+<tr>
+<td>public  final void <strong>writeDouble</strong>(Double v) throws  <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>将double类型的数据写入基础的字节输出流</td>
+</tr>
+<tr>
+<td>public  final void <strong>writeUTF</strong>(String str)  throws <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>将字符串数据以UTF-8编码成字节写入基础的字节输出流</td>
+</tr>
+<tr>
+<td>public  void write(int&#x2F;byte[]&#x2F;byte[]一部分)</td>
+<td>支持写字节数据出去</td>
+</tr>
+</tbody></table>
+<h3 id="DataInputStream-数据输入流"><a href="#DataInputStream-数据输入流" class="headerlink" title="DataInputStream(数据输入流)"></a>DataInputStream(数据输入流)</h3><p>用于读取数据输出流写出去的数据。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  <strong>DataInputStream</strong>(InputStreamis)</td>
+<td>创建新数据输入流包装基础的字节输入流</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Public  final byte readByte()  throws <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>读取字节数据返回</td>
+</tr>
+<tr>
+<td>public  final int <strong>readInt</strong>() throws  <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>读取int类型的数据返回</td>
+</tr>
+<tr>
+<td>public  final double <strong>readDouble</strong>() throws  <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>读取double类型的数据返回</td>
+</tr>
+<tr>
+<td>public  final String <strong>readUTF</strong>() throws <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/io/IOException.html">IOException</a></td>
+<td>读取字符串数（UTF-8）据返回</td>
+</tr>
+<tr>
+<td>public  int readInt()&#x2F;read(byte[])</td>
+<td>支持读字节数据进来</td>
+</tr>
+</tbody></table>
+<h2 id="序列化流"><a href="#序列化流" class="headerlink" title="序列化流"></a>序列化流</h2><p>就是将一个Java对象写到一个硬盘文件中</p>
+<p>注意：如果对象需要序列化，必须实现序列化接口</p>
+<p>想要将Java对象写到一个硬盘上文件中必须实现序列化接口</p>
+<p>为什么：默认创建的对象只能在本机电脑的内存中使用，Serializable</p>
+<p>transient关键字：当某个成员属性不想序列化到硬盘中，可以使用这个关键字</p>
+<h3 id="ObjectOutputStream-对象字节输出流"><a href="#ObjectOutputStream-对象字节输出流" class="headerlink" title="ObjectOutputStream(对象字节输出流)"></a>ObjectOutputStream(对象字节输出流)</h3><p>l可以把Java对象进行序列化：把Java对象存入到文件中去。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  <strong>ObjectOutputStream</strong>(OutputStream out)</td>
+<td>创建对象字节输出流，包装基础的字节输出流</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  final void <strong>writeObject</strong>(Object o) throws  [IOException]</td>
+<td>把对象写出去</td>
+</tr>
+</tbody></table>
+<h3 id="ObjectInputStream-对象字节输入流"><a href="#ObjectInputStream-对象字节输入流" class="headerlink" title="ObjectInputStream(对象字节输入流)"></a>ObjectInputStream(对象字节输入流)</h3><p>可以把Java对象进行反序列化：把存储在文件中的Java对象读入到内存中来。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  <strong>ObjectInputStream</strong>(InputStream is)</td>
+<td>创建对象字节输入流，包装基础的字节输入流</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  final Object readObject()</td>
+<td>把存储在文件中的Java对象读出来</td>
+</tr>
+</tbody></table>
+<p>lCommons-io是apache开源基金组织提供的一组有关IO操作的小框架，目的是提高IO流的开发效率。</p>
+<table>
+<thead>
+<tr>
+<th>FileUtils类提供的部分方法展示</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static void <strong>copyFile</strong>(File  srcFile, File destFile)</td>
+<td>复制文件。</td>
+</tr>
+<tr>
+<td>public static void <strong>copyDirectory</strong>(File  srcDir, File destDir)</td>
+<td>复制文件夹</td>
+</tr>
+<tr>
+<td>public static void <strong>deleteDirectory</strong>(File  directory)</td>
+<td>删除文件夹</td>
+</tr>
+<tr>
+<td>public static String <strong>readFileToString</strong>(File  file, String encoding)</td>
+<td>读数据</td>
+</tr>
+<tr>
+<td>public static void <strong>writeStringToFile</strong>(File  file, String data, String charname, boolean append)</td>
+<td>写数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>IOUtils类提供的部分方法展示</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static int <strong>copy</strong>(InputStream inputStream, OutputStream outputStream)</td>
+<td>复制文件。</td>
+</tr>
+<tr>
+<td>public static int <strong>copy</strong>(Reader  reader, Writer writer)</td>
+<td>复制文件。</td>
+</tr>
+<tr>
+<td>public static void <strong>write</strong>(String  data, OutputStream output, String charsetName)</td>
+<td>写数据</td>
+</tr>
+</tbody></table>
+<h2 id="第三方jar包的使用步骤"><a href="#第三方jar包的使用步骤" class="headerlink" title="第三方jar包的使用步骤"></a>第三方jar包的使用步骤</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.在模块的目录下，新建一个lib文件夹</span><br><span class="line">2.把jar包复制粘贴到lib文件夹下</span><br><span class="line">3.选择lib下的jar包，右键点击Add As Library，然后就可以用了。</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day19/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day18/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day14/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +811,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

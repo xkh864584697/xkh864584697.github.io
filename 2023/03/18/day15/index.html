@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day15正则表达式 由一些特定的字符组成，代表的是一个规则  作用 用来校验数据格式是否合法、、 在一段文本中查找满足要求的内容  []:只能匹配单个字符 . :任意字符 \：转义字符 \d:0-9 \s:一个空白字符 \S:一个非空白字符 \w:[a-zA-Z_0-9] \W:非[a-zA-Z_0-9] ？: 0或1次 *:0次or多次 +：1次或多次 ｛n,m｝：n-m次 异常代码在编译或者">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day15/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day15正则表达式 由一些特定的字符组成，代表的是一个规则  作用 用来校验数据格式是否合法、、 在一段文本中查找满足要求的内容  []:只能匹配单个字符 . :任意字符 \：转义字符 \d:0-9 \s:一个空白字符 \S:一个非空白字符 \w:[a-zA-Z_0-9] \W:非[a-zA-Z_0-9] ？: 0或1次 *:0次or多次 +：1次或多次 ｛n,m｝：n-m次 异常代码在编译或者">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.910Z">
+<meta property="article:modified_time" content="2023-03-18T02:39:46.617Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,227 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day15" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day15"><a href="#day15" class="headerlink" title="day15"></a>day15</h1><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><ul>
+<li>由一些特定的字符组成，代表的是一个规则</li>
+</ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
+<li>用来校验数据格式是否合法、、</li>
+<li>在一段文本中查找满足要求的内容</li>
+</ul>
+<p>[]:只能匹配单个字符</p>
+<p>. :任意字符</p>
+<p>\：转义字符</p>
+<p>\d:0-9</p>
+<p>\s:一个空白字符</p>
+<p>\S:一个非空白字符</p>
+<p>\w:[a-zA-Z_0-9]</p>
+<p>\W:非[a-zA-Z_0-9]</p>
+<p>？: 0或1次</p>
+<p>*:0次or多次</p>
+<p>+：1次或多次</p>
+<p>｛n,m｝：n-m次</p>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>代码在编译或者执行过程中可能出现的错误</p>
+<p>分类：</p>
+<ul>
+<li><p>RuntimeException：运行时报错</p>
+</li>
+<li><p>编译时异常：编译时报错，没有继承runtimeException的异常</p>
+</li>
+</ul>
+<h3 id="JVM的默认处理方式"><a href="#JVM的默认处理方式" class="headerlink" title="JVM的默认处理方式"></a>JVM的默认处理方式</h3><p>程序出错后，Java底层会自动帮我们创建一个异常对象，封装异常信息new Exception(“Exception msg”);</p>
+<p>如果没有任何处理异常的操作，就会交给JVM处理：</p>
+<ol>
+<li>将异常信息以红色的字体打印到控制台</li>
+<li>终止程序运行</li>
+</ol>
+<h3 id="声明异常throws"><a href="#声明异常throws" class="headerlink" title="声明异常throws"></a>声明异常throws</h3><p>明确告诉调用者，方法可能会出现异常</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方法 throws 异常1，2，3｛</span><br><span class="line"></span><br><span class="line">……</span><br><span class="line"></span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：如果声明的是运行时异常调用者可以不处理，如果声明的是编译时异常，调用者必须处理</strong></p>
+<h3 id="捕获异常（try…catch）"><a href="#捕获异常（try…catch）" class="headerlink" title="捕获异常（try…catch）"></a>捕获异常（try…catch）</h3><p>代码出现异常之后，可以让后面的代码继续执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line"><span class="comment">//监视可能出现异常的代码</span></span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">1</span> 变量)&#123;</span><br><span class="line"><span class="comment">//处理异常</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类型<span class="number">2</span> 变量)&#123;</span><br><span class="line"><span class="comment">//处理异常</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>try:可能出异常的代码</p>
+<p>catch：出现异常之后才执行</p>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p>作用：</p>
+<ul>
+<li>可以见名知意</li>
+<li>在方法内部使用throw抛出异常对象，告诉调用者出现了问题</li>
+</ul>
+<p>两个异常：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 运行时异常继承RuntimeException</span><br><span class="line">- 编译时异常继承Exception</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>自定义运行时异常（不建议，因为编译阶段不报错）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 定义一个异常类继承RuntimeException</span><br><span class="line">- 提供构造器</span><br><span class="line">- 通过throw new 异常类（xxx）来创建异常对象并抛出</span><br></pre></td></tr></table></figure>
+
+<p><strong>自定义编译时异常(建议使用)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 定义一个异常类继承Exception</span><br><span class="line">- 提供构造器</span><br><span class="line">- 通过throw new 异常类（xxx）来创建异常对象并抛出</span><br></pre></td></tr></table></figure>
+
+
+
+<p>throw抛出一个异常对象之后，本方法中下面的代码不会执行了</p>
+<p><strong>如果在方法中使用throw抛出一个编译时异常对象，那么在方法上面必须使用throws声明该异常</strong></p>
+<p>throws：声明异常</p>
+<p>throw：抛出异常</p>
+<p>可能出现多个异常时：</p>
+<ol>
+<li>直接捕获一个最大的异常</li>
+<li>写多个catch 进行捕获</li>
+</ol>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="集合分类"><a href="#集合分类" class="headerlink" title="集合分类"></a>集合分类</h3><p>单列集合:  collection</p>
+<p>双列集合:  Map</p>
+<p>collection代表单列集合，每个元素（数据）只包含一个值</p>
+<p>Map代表双列集合，每个元素包含两个值</p>
+<h3 id="单列集合"><a href="#单列集合" class="headerlink" title="单列集合"></a>单列集合</h3><p>List系列集合：有序，可重复，有索引</p>
+<p>set系列集合：无序（添加元素的顺序与取元素的顺序不一致），不重复，无索引</p>
+<p>迭代器</p>
+<p>Iterator<E> iterator():得到迭代器对象，默认指向集合的第0个元素</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>ctrl+Alt+T:快速生成代码</p>
+<p>​	</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day15/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day14/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day16/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +398,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

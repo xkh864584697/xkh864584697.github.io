@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day05方法传参C++注释：C++有值调用和引用调用。引用参数标有&amp;符号。例如，可以轻松地实现void tripleValue（double&amp;x）方法或void swap（Employee&amp;x，Employee&amp;y）方法实现修改它们的引用参数的目的。 &#x3D;&#x3D;Java程序设计语言总是采用按值调用。&#x3D;&#x3D;也就是说，方法得到的是所有参">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day05/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day05方法传参C++注释：C++有值调用和引用调用。引用参数标有&amp;符号。例如，可以轻松地实现void tripleValue（double&amp;x）方法或void swap（Employee&amp;x，Employee&amp;y）方法实现修改它们的引用参数的目的。 &#x3D;&#x3D;Java程序设计语言总是采用按值调用。&#x3D;&#x3D;也就是说，方法得到的是所有参">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.890Z">
+<meta property="article:modified_time" content="2023-03-18T01:08:11.639Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day05" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day05"><a href="#day05" class="headerlink" title="day05"></a>day05</h1><h2 id="方法传参"><a href="#方法传参" class="headerlink" title="方法传参"></a><strong>方法传参</strong></h2><p>C++注释：C++有值调用和引用调用。引用参数标有&amp;符号。例如，可以轻松地实现void tripleValue（double&amp;x）方法或void swap（Employee&amp;x，Employee&amp;y）方法实现修改它们的引用参数的目的。</p>
+<p>&#x3D;&#x3D;Java程序设计语言总是采用按值调用。&#x3D;&#x3D;也就是说，方法得到的是所有参数值的一个拷贝，特别是，方法不能修改传递给它的任何参数变量的内容。Java程序设计语言对对象采用的不是引用调用，实际上，对象引用是按值传递的。</p>
+<h2 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h2><p>Java允许重载任何方法，而不只是构造器方法。因此，&#x3D;&#x3D;要完整地描述一个方法，需要指出方法名以及参数类型。&#x3D;&#x3D;这叫做方法的签名（signature）。返回类型不是方法签名的一部分。也就是说，&#x3D;&#x3D;不能有两个名字相同、参数类型也相同却返回不同类型值的方法&#x3D;&#x3D;。</p>
+<h3 id="构造器调用另一个构造器"><a href="#构造器调用另一个构造器" class="headerlink" title="构造器调用另一个构造器"></a>构造器调用另一个构造器</h3><p>关键字this引用方法的隐式参数。然而，这个关键字还有另外一个含义。</p>
+<p>如果构造器的第一个语句形如this（…），这个构造器将调用同一个类的另一个构造器。</p>
+<p>C++注释：在Java中，this引用等价于C++的this指针。但是，在C++中，一个构造器不能调用另一个构造器。在C++中，必须将抽取出的公共初始化代码编写成一个独立的方法。</p>
+<h3 id="对象析构与finalize方法"><a href="#对象析构与finalize方法" class="headerlink" title="对象析构与finalize方法"></a>对象析构与finalize方法</h3><p>有些面向对象的程序设计语言，特别是C++，有显式的析构器方法，其中放置一些当对象不再使用时需要执行的清理代码。在析构器中，最常见的操作是回收分配给对象的存储空间。由于Java有自动的垃圾回收器，不需要人工回收内存，所以Java不支持析构器。</p>
+<p>某些对象使用了内存之外的其他资源，例如，文件或使用了系统资源的另一个对象的句柄。在这种情况下，当资源不再需要时，将其回收和再利用将显得十分重要。</p>
+<p>可以为任何一个类添加finalize方法。finalize方法将在垃圾回收器清除对象之前调用。</p>
+<h2 id="return的作用"><a href="#return的作用" class="headerlink" title="return的作用"></a>return的作用</h2><p>&#x3D;&#x3D;return一旦执行，方法立即结束&#x3D;&#x3D;，</p>
+<p>return可以用在无返回值的方法中，作用是：立即跳出并结束当前方法的执行</p>
+<p>x 1package day_06;2​3import java.util.Arrays;4import java.util.Random;5import java.util.Scanner;6​7public class day06_demo08 {8    &#x2F;&#x2F;    模拟双色球：用户投注一组号码9&#x2F;&#x2F;    6个红球号码的范围是1-33之间，且不能重复；1个蓝球号码的范围在：1-16之间。10    public static void main(String[] args) {11        int[] userNumbers &#x3D; userSelectNumbers();12        int[] luckNumbers &#x3D; createLuckNumbers();13        judge(userNumbers,luckNumbers);14    }15&#x2F;&#x2F; - 6个红球+1个蓝球 ，奖金1000万16&#x2F;&#x2F;- 6个红球+0个蓝球，奖金500万17&#x2F;&#x2F;- 5个红球+1个蓝球，奖金3000块18&#x2F;&#x2F;- 5个红球+0个蓝球，或者4个红球+1个蓝球，奖金200块19&#x2F;&#x2F;- 4个红球+0个蓝球，或者3个红球+1个蓝球，奖金10块20&#x2F;&#x2F;- 小于3个红球+1个蓝球，奖金5块21&#x2F;&#x2F;- 如果前面的都不成立，就中奖，算你为福利事业做贡献了。22&#x2F;&#x2F;用户投注一组号码（前6个是红球，最后一个是篮球），并返回用户投注的号码23​24   public static int[] userSelectNumbers() {25        int[] arr &#x3D; new int[7];26        int red &#x3D; 6;&#x2F;&#x2F;信标27        while(red !&#x3D; 0){28            Scanner scanner &#x3D; new Scanner(System.in);29            System.out.println(“请输入一组要投注的红球号码（1-33之间，不能重复）:”);30            label:for (int i &#x3D; 0; i &lt; arr.length - 1; i++){&#x2F;&#x2F;循环遍历填充数组31                    int number &#x3D; scanner.nextInt();32                    if (number &gt; 33 || number &lt; 1){&#x2F;&#x2F;如果超范围，则重置数组和信标33                        System.out.println(“红球号码的范围是1-33之间,请重新输入:”);34                        red &#x3D; 6;35                        Arrays.fill(arr,0);36                        break;37                    }else {38                        for (int j &#x3D; 0;j&lt;&#x3D; i;j++){&#x2F;&#x2F;如果有重复数据，则重置数组和信标39                            if (arr[j] &#x3D;&#x3D; number){40                                System.out.println(“不能有重复号码！请重新输入:”);41                                red &#x3D; 6;42                                Arrays.fill(arr,0);43                                break label;44                            }45                        }46                        arr[i] &#x3D; number;47                        red–;48                    }49                }50        }51​52        System.out.println(“请输入要投注的蓝球号码:”);53        int blue &#x3D; 1;54        while (blue!&#x3D;0){55            Scanner scanner &#x3D; new Scanner(System.in);56            int number &#x3D; scanner.nextInt();57            if (number&gt;16 || number&lt;0 ){58                System.out.println(“蓝球号码的范围是1-16之间,请重新输入:”);59            }else{60                arr[arr.length-1]&#x3D;number;61                blue–;62            }63        }64        System.out.println(“下注的号码组为: “+Arrays.toString(arr));65        return arr;66    }67​68    public static int[] createLuckNumbers() {69        int[] arr &#x3D; new int[7];70        int red &#x3D; 6;71        int blue &#x3D; 1;72        Random random &#x3D; new Random();73        for (int i &#x3D; 0;i&lt;red;i++){74            arr[i] &#x3D; random.nextInt(33)+1;75        }76        arr[arr.length-1] &#x3D; random.nextInt(16)+1;77        System.out.println(“开奖的号码组为: “+Arrays.toString(arr));78        return arr;79    }80​81&#x2F;&#x2F; - 6个红球+1个蓝球 ，奖金1000万82&#x2F;&#x2F;- 6个红球+0个蓝球，奖金500万83&#x2F;&#x2F;- 5个红球+1个蓝球，奖金3000块84&#x2F;&#x2F;- 5个红球+0个蓝球，或者4个红球+1个蓝球，奖金200块85&#x2F;&#x2F;- 4个红球+0个蓝球，或者3个红球+1个蓝球，奖金10块86&#x2F;&#x2F;- 小于3个红球+1个蓝球，奖金5块87&#x2F;&#x2F;- 如果前面的都不成立，就中奖，算你为福利事业做贡献了。88​89    public static void judge(int[] userNumbers, int[] LuckNumbers) {90        int red &#x3D; 0;&#x2F;&#x2F;红球相等个数91        if (userNumbers[userNumbers.length-1] &#x3D;&#x3D; LuckNumbers[LuckNumbers.length-1]){&#x2F;&#x2F;如果蓝色球一样，再遍历红色球一样的个数92            for (int i &#x3D; 0;i&lt;userNumbers.length-1;i++){93                for (int j &#x3D; 0;j&lt;LuckNumbers.length-1;j++){94                    if (userNumbers[i]&#x3D;&#x3D;LuckNumbers[j]){95                        red++;96                    }97                }98            }99            switch (red){100                case 6:101                    System.out.println(“奖金1000万”);102                    break;103                case 5:104                    System.out.println(“奖金3000块”);105                    break;106                case 4:107                    System.out.println(“奖金200块”);108                    break;109                case 3:110                    System.out.println(“奖金10块”);111                    break;112                default:113                    System.out.println(“奖金5块”);114            }115        }else{116            for (int i &#x3D; 0;i&lt;userNumbers.length-1;i++){117                for (int j &#x3D; 0;j&lt;LuckNumbers.length-1;j++){118                    if (userNumbers[i]&#x3D;&#x3D;LuckNumbers[j]){119                        red++;120                    }121                }122            }123            switch (red){124                case 6:125                    System.out.println(“奖金500万”);126                    break;127                case 5:128                    System.out.println(“奖金3000块”);129                    break;130                case 4:131                    System.out.println(“奖金10块”);132                    break;133                default:134                    System.out.println(“你为福利事业做贡献了”);135            }136        }137    }138}java</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day05/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day11/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day06/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

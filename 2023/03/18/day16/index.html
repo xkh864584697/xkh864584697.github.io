@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day16集合遍历的三种方式 迭代器 增强for循环 foreach循环  迭代器迭代器代码的原理如下：  当调用iterator()方法获取迭代器时，当前指向第一个元素 hasNext()方法则判断这个位置是否有元素，如果有则返回true，进入循环 调用next()方法获取元素，并将当月元素指向下一个位置， 等下次循环时，则获取下一个元素，依此内推  增强for循环增强for不适用于要对集合元素">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day16/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day16集合遍历的三种方式 迭代器 增强for循环 foreach循环  迭代器迭代器代码的原理如下：  当调用iterator()方法获取迭代器时，当前指向第一个元素 hasNext()方法则判断这个位置是否有元素，如果有则返回true，进入循环 调用next()方法获取元素，并将当月元素指向下一个位置， 等下次循环时，则获取下一个元素，依此内推  增强for循环增强for不适用于要对集合元素">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.910Z">
+<meta property="article:modified_time" content="2023-03-18T02:51:15.269Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,289 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day16" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day16"><a href="#day16" class="headerlink" title="day16"></a>day16</h1><h2 id="集合遍历的三种方式"><a href="#集合遍历的三种方式" class="headerlink" title="集合遍历的三种方式"></a>集合遍历的三种方式</h2><ol>
+<li>迭代器</li>
+<li>增强for循环</li>
+<li>foreach循环</li>
+</ol>
+<h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><p>迭代器代码的原理如下：</p>
+<ul>
+<li>当调用iterator()方法获取迭代器时，当前指向第一个元素</li>
+<li>hasNext()方法则判断这个位置是否有元素，如果有则返回true，进入循环</li>
+<li>调用next()方法获取元素，并将当月元素指向下一个位置，</li>
+<li>等下次循环时，则获取下一个元素，依此内推</li>
+</ul>
+<h3 id="增强for循环"><a href="#增强for循环" class="headerlink" title="增强for循环"></a>增强for循环</h3><p>增强for不适用于要对集合元素进行修改的操作</p>
+<p>可以遍历集合和数组</p>
+<ul>
+<li>遍历集合时，底层是迭代器</li>
+<li>遍历数组时，底层就是普通的for循环</li>
+</ul>
+<h3 id="foreach遍历"><a href="#foreach遍历" class="headerlink" title="foreach遍历"></a>foreach遍历</h3><p>foreach方法的参数是一个函数式接口Consumer所以可用lambda表达式简化匿名内部类book</p>
+<p>接口里面有一个accept方法，方法的形参就是集合中的每一个元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list.forEach((String s )-&gt;&#123;System.out.println(s)&#125;);</span><br><span class="line"></span><br><span class="line">list.forEach(( s -&gt;System.out.println(s));</span><br></pre></td></tr></table></figure>
+
+<h2 id="List集合"><a href="#List集合" class="headerlink" title="List集合"></a>List集合</h2><h3 id="list集合特有方法"><a href="#list集合特有方法" class="headerlink" title="list集合特有方法"></a>list集合特有方法</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void add(int index,E element)</td>
+<td>在此集合中的指定位置插入指定的元素</td>
+</tr>
+<tr>
+<td>E remove(int index)</td>
+<td>删除指定索引处的元素，返回被删除的元素</td>
+</tr>
+<tr>
+<td>E set(int index,E element)</td>
+<td>修改指定索引处的元素，返回被修改的元素</td>
+</tr>
+<tr>
+<td>E get(int index)</td>
+<td>返回指定索引处的元素</td>
+</tr>
+</tbody></table>
+<h3 id="List系列集合特点"><a href="#List系列集合特点" class="headerlink" title="List系列集合特点"></a>List系列集合特点</h3><p>有序，可重复，有索引</p>
+<p>ArrayList和LinkedList</p>
+<p>ArrayList：数组链表</p>
+<p>LinkedList：双向链表</p>
+<p>适合使用队列和栈的操作，适用于对首尾进行操作</p>
+<h2 id="Set集合特点"><a href="#Set集合特点" class="headerlink" title="Set集合特点"></a>Set集合特点</h2><p>HashSet、TreeSet：无序，不重复，无索引</p>
+<p>LinkedHashSet：有序、不重复、无索引</p>
+<p>set集合与collection集合拥有一样的方法，没有增加新方法</p>
+<h3 id="HashSet底层原理"><a href="#HashSet底层原理" class="headerlink" title="HashSet底层原理"></a>HashSet底层原理</h3><h4 id="哈希值"><a href="#哈希值" class="headerlink" title="哈希值"></a><strong>哈希值</strong></h4><ul>
+<li>就是一个int类型的数值，Java中每个对象都有一个哈希值</li>
+<li>Java中的所有对象都可以调用Objective类提供的hashCode方法，返回该对象自己的哈希值</li>
+</ul>
+<p>对象哈希值的特点</p>
+<ul>
+<li>同一个对象的哈希值永远不会变多次调用hashCode（）返回的值不会变</li>
+<li>不同的对象，他们的哈希值一般不相同，但也有可能会相同（哈希碰撞）</li>
+</ul>
+<h4 id="HashSet底层"><a href="#HashSet底层" class="headerlink" title="HashSet底层"></a><strong>HashSet底层</strong></h4><ul>
+<li>基于哈希表实现</li>
+<li>哈希表是一种增删改查数据，性能都较好的数据结构</li>
+</ul>
+<h4 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a><strong>哈希表</strong></h4><ul>
+<li>JDK8之前，哈希表 &#x3D; 数组+链表</li>
+<li>JDK8之后，哈希表 &#x3D; 数组+链表+红黑树</li>
+</ul>
+<h4 id="JDK8之前，哈希表-x3D-数组-链表实现"><a href="#JDK8之前，哈希表-x3D-数组-链表实现" class="headerlink" title="JDK8之前，哈希表 &#x3D; 数组+链表实现"></a><strong>JDK8之前，哈希表 &#x3D; 数组+链表实现</strong></h4><p>创建一个默认长度为length的数组，默认加载因子为0.75，数组名table（默认因子的作用是用来扩容的，当集合里的元素添加到length*默认因子个数时，数组扩容2倍）</p>
+<ol>
+<li>使用元素的哈希值对数组长度求余计算出应存入的位置</li>
+<li>判断当前位置是否为null，如果是null直接存入</li>
+<li>如果不为null，表示有元素，则调用equals方法比较，相等，则不存；不相等，则存入数组<ul>
+<li>JDK8之前，新元素存入数组，占老元素位置，老元素挂下面</li>
+<li>JDK8之后，新元素直接挂老元素下面</li>
+</ul>
+</li>
+</ol>
+<h4 id="为什么添加的元素无序，不重复，无索引？"><a href="#为什么添加的元素无序，不重复，无索引？" class="headerlink" title="为什么添加的元素无序，不重复，无索引？"></a><strong>为什么添加的元素无序，不重复，无索引？</strong></h4><p>添加数据的顺序和取元素的顺序不一致</p>
+<p>调用equals方法比较，相等，则不存；</p>
+<p>因为存的位置是通过计算来存的，所以不能确定索引</p>
+<h4 id="JDK8之后，哈希表-x3D-数组-链表实现-红黑树"><a href="#JDK8之后，哈希表-x3D-数组-链表实现-红黑树" class="headerlink" title="JDK8之后，哈希表 &#x3D; 数组+链表实现+红黑树"></a><strong>JDK8之后，哈希表 &#x3D; 数组+链表实现+红黑树</strong></h4><p><em>JDK8之后，当链表长度超过8，且数组长度&gt;&#x3D;64,自动将链表转换为红黑树</em></p>
+<p><strong>数据结构-树</strong></p>
+<p><strong>二叉树：</strong></p>
+<p>每个节点存值：父节点地址、左子节点地址、右子节点地址</p>
+<p>度：每个节点的子节点数量</p>
+<p>树高：树的总层数</p>
+<p>根节点：最顶层的节点</p>
+<p><strong>二叉查找树（二叉排序树）：</strong></p>
+<p>小的存左边，大的存右边，一样的不存（左子节点&lt;父节点&lt;右子节点）</p>
+<p>平衡二叉树</p>
+<ul>
+<li><p>在满足查找二叉树的大小规则下，让树尽可能矮小，以此提高查询数据的性能</p>
+</li>
+<li><p>红黑树，就是可以自动平衡的二叉树</p>
+</li>
+<li><p>红黑树是一种增删改查都比较高效的数据结构</p>
+</li>
+</ul>
+<p><strong>红黑树</strong></p>
+<ul>
+<li>每个节点要么是红色，要么是黑色。</li>
+<li>根节点是黑色的。</li>
+<li>每个叶子节点（NIL节点，空节点）是黑色的。</li>
+<li>如果一个节点是红色的，则其子节点必须是黑色的。</li>
+<li>从任意一个节点到其每个叶子节点的所有路径都包含相同数目的黑色节点。</li>
+</ul>
+<p><strong>深入理解HashSet集合去重复的机制</strong></p>
+<p>HashSet集合默认不能对内容一样的两个对象去重</p>
+<p>因为两个对象的内容一样但是哈希值不一定一样</p>
+<p>可以利用重写hashCode和equals方法去重</p>
+<p>重写hashCode方法之后，利用属性值计算哈希值，这样内容一样的对象的hashCode就会一样</p>
+<p>如果希望Set集合认为2个内容一样的对象是重复的，必须重写对象的hashCode和equals方法，没重写之前是用地址值比较，重写之后利用属性值比较</p>
+<h3 id="LinkedListSet底层原理"><a href="#LinkedListSet底层原理" class="headerlink" title="LinkedListSet底层原理"></a>LinkedListSet底层原理</h3><ul>
+<li>依旧是基于哈希表（数组+链表实现+红黑树）实现的</li>
+<li>但是，他的每个元素都额外的多了一个双链表的机制记录它前后元素的位置</li>
+</ul>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><ul>
+<li>特点：不重复、无索引、无序（添加顺序和打印顺序不以言）可排序（默认升序，按照元素的大小，由小到大排序）</li>
+<li>底层数据结构是红黑树</li>
+</ul>
+<h4 id="TreeSet排序规则"><a href="#TreeSet排序规则" class="headerlink" title="TreeSet排序规则"></a>TreeSet排序规则</h4><p>TreeSet集合的内部排序机制有两种方式：自然排序和定制排序。</p>
+<p>自然排序是指根据元素的自然顺序来排序，例如整数按照大小排序，字符串按照字典序排序。自然排序要求元素实现Comparable接口，并重写compareTo方法。</p>
+<p>定制排序是指根据提供的比较器来排序，例如按照元素的长度或者其他属性排序。定制排序要求创建一个实现Comparator接口的类，并重写compare方法2。然后在创建TreeSet集合时，传入该比较器的实例。</p>
+<p><strong>为什么Comparable接口重写compareTo方法里this.属性-object.属性是按照升序排序？</strong></p>
+<p>并不是重写了方法this.属性-object.属性就是按照升序排序</p>
+<p>compareTo方法只返回三个值正数 0 和负数，排序时，根据compareTo的返回值来进行指定排序规则，具体规则得看集合或者方法的具体实现方式。</p>
+<h3 id="集合的并发修改异常"><a href="#集合的并发修改异常" class="headerlink" title="集合的并发修改异常"></a>集合的并发修改异常</h3><ul>
+<li>使用迭代器遍历集合时，又同时在删除集合中的数据，程序就会出现并发修改异常的错误</li>
+<li>由于增强for循环遍历集合就是迭代器遍历集合的简化写法，因此，使用增强for循环遍历集合，又在同时删除集合中的数据时，程序也会出现并发修改异常的错误</li>
+</ul>
+<p><strong>怎么保证遍历集合同时删除数据时不出bug？</strong></p>
+<ul>
+<li><p>使用迭代器遍历集合，但使用迭代器自己的删除方法删除数据即可</p>
+</li>
+<li><p>如果用for循环遍历时：可以倒着遍历并删除；或者从前往后遍历，但删除元素后做i–操作</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day16/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day15/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day17/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +460,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

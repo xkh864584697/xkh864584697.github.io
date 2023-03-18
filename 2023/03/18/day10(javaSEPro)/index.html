@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day10static 关键字static叫静态，只能修饰成员变量、成员方法，不能修饰类，也不能修饰局部的东西 static修饰成员变量static修饰成员变量的特点：  被类的所有对象共享 可以通过类名调用，也可以通过对象名调用，推荐使用类名调用  注意：&#x3D;&#x3D;static成员变量执行时自动在堆里开辟空间存储static成员变量（无需创建对象就在堆里有空间）&#x3D;&amp;#x3">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day10(javaSEPro)/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day10static 关键字static叫静态，只能修饰成员变量、成员方法，不能修饰类，也不能修饰局部的东西 static修饰成员变量static修饰成员变量的特点：  被类的所有对象共享 可以通过类名调用，也可以通过对象名调用，推荐使用类名调用  注意：&#x3D;&#x3D;static成员变量执行时自动在堆里开辟空间存储static成员变量（无需创建对象就在堆里有空间）&#x3D;&amp;#x3">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.900Z">
+<meta property="article:modified_time" content="2023-03-18T01:51:51.885Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,255 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day10(javaSEPro)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day10"><a href="#day10" class="headerlink" title="day10"></a>day10</h1><h2 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h2><p>static叫静态，只能修饰成员变量、成员方法，不能修饰类，也不能修饰局部的东西</p>
+<h3 id="static修饰成员变量"><a href="#static修饰成员变量" class="headerlink" title="static修饰成员变量"></a>static修饰成员变量</h3><p><strong>static修饰成员变量的特点：</strong></p>
+<ol>
+<li>被类的所有对象共享</li>
+<li>可以通过类名调用，也可以通过对象名调用，推荐使用类名调用</li>
+</ol>
+<p>注意：&#x3D;&#x3D;static成员变量执行时自动在堆里开辟空间存储static成员变量（无需创建对象就在堆里有空间）&#x3D;&#x3D;</p>
+<p><strong>类变量（静态变量）：</strong>属于类，与类一起加载到内存，只加载一次在内存中只有一份，可以被类和类的所有对象共享</p>
+<p><strong>实例变量（对象变量）</strong>：属于对象，每个对象中都有一份，只能用对象访问</p>
+<p>如果某个数据只需要一份，其他所有对象都需要用到</p>
+<p>，就可以使用类变量</p>
+<p><strong>注意：</strong></p>
+<p>在本类中调用类变量，类名可以省略不写，其他类中必须写类名</p>
+<p>类变量一般都是使用public修饰</p>
+<h3 id="static修饰成员方法"><a href="#static修饰成员方法" class="headerlink" title="static修饰成员方法"></a>static修饰成员方法</h3><p>类方法（静态方法）</p>
+<p><strong>用法：</strong></p>
+<p>类名.类方法</p>
+<p>对象名.类方法</p>
+<p><strong>类方法最常见的应用场景是做工具类</strong></p>
+<p><strong>工具类：</strong>&#x3D;&#x3D;工具类里面只有类方法没有成员变量&#x3D;&#x3D;，供开发人员调用方便，提高代码复用性，提高开发效率</p>
+<p>&#x3D;&#x3D;私有化构造器（将构造方法设为private）可以禁止其他人创建对象，直接使用工具类名调用方法&#x3D;&#x3D;</p>
+<h3 id="static的注意事项"><a href="#static的注意事项" class="headerlink" title="static的注意事项"></a>static的注意事项</h3><ul>
+<li><p>类方法中可以直接访问类成员，不可以直接访问实例成员（因为调用类方法时候，可能并没有创建类的对象）</p>
+</li>
+<li><p>实例方法中既可以直接访问类成员，也可以直接访问实例成员</p>
+</li>
+<li><p>&#x3D;&#x3D;实例方法中可以出现this关键字，类方法中不可以出现this关键字&#x3D;&#x3D;</p>
+</li>
+</ul>
+<p>类方法如何访问实例成员？new 一个对象</p>
+<h3 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a><strong>静态代码块</strong></h3><p><strong>格式：</strong></p>
+<p>static{</p>
+<p>语句</p>
+<p>}</p>
+<p><strong>特点：</strong></p>
+<p>&#x3D;&#x3D;类加载时候自动执行，由于类只会加载一次，所以静态代码也只会执行一次&#x3D;&#x3D;</p>
+<p><strong>作用：</strong></p>
+<p>完成类的初始化，例如：对类变量的初始化赋值</p>
+<p>复杂类变量使用赋值时候可以用static代码块</p>
+<p><strong>注：idea 快捷键</strong></p>
+<p>ctrl+shift+R:搜索</p>
+<h3 id="实例代码块"><a href="#实例代码块" class="headerlink" title="实例代码块"></a>实例代码块</h3><p><strong>格式：</strong></p>
+<p>｛｝</p>
+<p><strong>特点：</strong>&#x3D;&#x3D;每次创建对象时，执行实例代码块，并在构造器之前执行&#x3D;&#x3D;</p>
+<p><strong>作用：</strong>类中有多个构造方法，并且多个构造方法中有共性的代码时，可以使用实例代码块</p>
+<h3 id="static应用：单例设计模式"><a href="#static应用：单例设计模式" class="headerlink" title="static应用：单例设计模式"></a>static应用：单例设计模式</h3><ul>
+<li>设计模式可以帮我们解决开发中遇到的问题</li>
+<li>具体问题的最优解决方案</li>
+</ul>
+<p><strong>单例设计模式</strong></p>
+<p><strong>解决问题：</strong>&#x3D;&#x3D;确保一个类只有一个对象&#x3D;&#x3D;</p>
+<h4 id="饿汉式单例模式"><a href="#饿汉式单例模式" class="headerlink" title="饿汉式单例模式"></a><strong>饿汉式单例模式</strong></h4><ul>
+<li>&#x3D;&#x3D;加载类时，就创建对象&#x3D;&#x3D;</li>
+</ul>
+<p><strong>写法：</strong></p>
+<ul>
+<li>类的构造器私有化</li>
+<li>定义一个类变量记住本类的一个对象</li>
+<li>定义一个类方法，返回对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="title function_">A</span><span class="params">()</span>&#123;<span class="comment">//类的构造器私有化</span></span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">A</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();<span class="comment">//定义一个类变量记住本类的一个对象(A是类变量(即静态变量)，只会执行一次)</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> A <span class="title function_">getA</span><span class="params">()</span>&#123;<span class="comment">//定义一个类方法，返回对象</span></span><br><span class="line">		<span class="keyword">return</span> a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="懒汉式单例模式"><a href="#懒汉式单例模式" class="headerlink" title="懒汉式单例模式"></a>懒汉式单例模式</h4><ul>
+<li>&#x3D;&#x3D;拿对象时，才开始创建（延迟加载对象）&#x3D;&#x3D;</li>
+</ul>
+<p><strong>写法</strong></p>
+<ul>
+<li>把类的构造器私有</li>
+<li>定义一个私有类变量用于存储对象</li>
+<li>提供一个类方法保证返回的是同一个对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> B&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> B b;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> B <span class="title function_">getB</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(b==<span class="literal">null</span>)&#123;</span><br><span class="line">        b = <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;<em>使用频繁选择饿汉式</em>&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;<em>偶尔使用选择懒汉式</em>&#x3D;&#x3D;</p>
+<p><strong>单例模式的应用场景</strong></p>
+<ul>
+<li>任务管理器对象(ctrl+x可打开)</li>
+</ul>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>使用extends关键字，让一个类和另一个类建立起父子关系</p>
+<p>&#x3D;&#x3D;Java是单继承的，Java的类中不支持多继承，但是支持多层继承&#x3D;&#x3D;。</p>
+<p><strong>特点</strong></p>
+<p>子类可以直接使用父类的非私有成员</p>
+<p><strong>好处</strong></p>
+<p>减少重复代码的编写</p>
+<p>&#x3D;&#x3D;子类对象实际上是由子父类共同创建出来的&#x3D;&#x3D;</p>
+<h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><p>四个权限修饰符</p>
+<ol>
+<li>private:只能本类</li>
+<li>default(缺省)：本类、同一个包的类</li>
+<li>protected：本类，同一个包中的类、子孙类中</li>
+<li>public：任意位置</li>
+</ol>
+<p>private &lt; default &lt; protected &lt; public</p>
+<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>子类觉得父类中的某个方法不好用时，可以重写一个方法覆盖父类的方法。</p>
+<p>重写后，方法的访问遵循就近原则。</p>
+<p>就近原则：先子类局部范围找，再子类成员变量找，然后父类成员范围找，如果父类范围还没找到则报错</p>
+<p><strong>方法重写的注意事项</strong></p>
+<ul>
+<li>使用override注解，他可以指定Java编译器，检查我们方法重写的格式是否正确，提高代码可读性</li>
+<li>子类重写父类方法时，访问权限必须大于或者等于父类该方法的权限（public&gt;protected&gt;default）</li>
+<li>重写的方法返回值类型，必须与被重写的方法返回值类型一样，或者范围更小（不是数值范围，子类重写方法返回值只能是父类方法返回值的子类或者本身）</li>
+<li>私有方法、静态方法不能被重写，如果重写会报错</li>
+</ul>
+<p><strong>方法重写实例</strong></p>
+<p>重写toString()方法</p>
+<p>如果打印的是一个引用类型对象，println()方法底层会自动调用toString()，并且答应该方法的返回值</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day10(javaSEPro)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2023/03/18/day17/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/18/day09/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +426,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

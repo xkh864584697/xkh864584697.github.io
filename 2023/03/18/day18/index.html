@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="day18File类和io流File类只能对文件本身进行操作，不能读写文件里面存储的数据。 File：代表文本 Io流：读写数据 File类对象的创建    构造器 说明    public File(String pathname) 根据文件路径创建文件对象   public File(String parent, String child) 根据父路径和子路径名字创建文件对象   public">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2023/03/18/day18/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="day18File类和io流File类只能对文件本身进行操作，不能读写文件里面存储的数据。 File：代表文本 Io流：读写数据 File类对象的创建    构造器 说明    public File(String pathname) 根据文件路径创建文件对象   public File(String parent, String child) 根据父路径和子路径名字创建文件对象   public">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-18T07:15:19.921Z">
+<meta property="article:modified_time" content="2023-03-18T03:21:42.536Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,235 +154,453 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-day18" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day18"><a href="#day18" class="headerlink" title="day18"></a>day18</h1><h2 id="File类和io流"><a href="#File类和io流" class="headerlink" title="File类和io流"></a>File类和io流</h2><p>File类只能对文件本身进行操作，不能读写文件里面存储的数据。</p>
+<p>File：代表文本</p>
+<p>Io流：读写数据</p>
+<p>File类对象的创建</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public <strong>File(String pathname)</strong></td>
+<td>根据文件路径创建文件对象</td>
+</tr>
+<tr>
+<td>public <strong>File(String parent, String child)</strong></td>
+<td>根据父路径和子路径名字创建文件对象</td>
+</tr>
+<tr>
+<td>public <strong>File(File parent, String child)</strong></td>
+<td>根据父路径对应文件对象和子路径名字创建文件对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>&#x3D;&#x3D;注意事项：实际开发中路径的定义使用的都是&#x2F;（左斜杠）mac、linux只支持左斜杠&#x3D;&#x3D;</p>
+</li>
+<li><p>&#x3D;&#x3D;File对象即可以代表一个文件，也可以代表文件夹&#x3D;&#x3D;</p>
+</li>
+<li><p>&#x3D;&#x3D;file封装的对象仅仅是一个路径名，这个路径可以是存在的，也可以是不存在的&#x3D;&#x3D;</p>
+</li>
+</ul>
+<h3 id="绝对路径、相对路径"><a href="#绝对路径、相对路径" class="headerlink" title="绝对路径、相对路径"></a>绝对路径、相对路径</h3><ul>
+<li>绝对路径：从盘符开始，确定时候不会发生改变</li>
+<li>相对路径：不带盘符，默认直接到当前工程下的目录寻找文件</li>
+</ul>
+<p>file提供的判断文件类型、获取文件信息功能</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public boolean exists()</td>
+<td>判断当前文件对象，对应的文件路径是否存在，存在返回true</td>
+</tr>
+<tr>
+<td>public boolean isFile()</td>
+<td>判断当前文件对象指代的是否是文件，是文件返回true，反之。</td>
+</tr>
+<tr>
+<td>public boolean isDirectory()</td>
+<td>判断当前文件对象指代的是否是文件夹，是文件夹返回true，反之。</td>
+</tr>
+<tr>
+<td>public String getName()</td>
+<td>获取文件的名称（包含后缀）</td>
+</tr>
+<tr>
+<td>public long length()</td>
+<td>获取文件的大小，返回字节个数</td>
+</tr>
+<tr>
+<td>public long lastModified()</td>
+<td>获取文件的最后修改时间。</td>
+</tr>
+<tr>
+<td>public String getPath()</td>
+<td>获取创建文件对象时，使用的路径</td>
+</tr>
+<tr>
+<td>public String getAbsolutePath()</td>
+<td>获取绝对路径</td>
+</tr>
+</tbody></table>
+<p>File类创建和删除文件的功能</p>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public boolean createNewFile()</td>
+<td>创建一个新的空的文件</td>
+</tr>
+<tr>
+<td>public boolean mkdir()</td>
+<td>只能创建一级文件夹</td>
+</tr>
+<tr>
+<td>public boolean mkdirs()</td>
+<td>可以创建多级文件夹</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public boolean delete()</td>
+<td>删除文件、空文件夹</td>
+</tr>
+</tbody></table>
+<p><em>注意：&#x3D;&#x3D;如果删除的是文件夹，只能删除空文件夹，不走回收站&#x3D;&#x3D;</em></p>
+<p>File类提供的遍历文件夹的功能</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public String[] list()</td>
+<td>获取当前目录下所有的”一级文件名称”到一个字符串数组中去返回。</td>
+</tr>
+<tr>
+<td>public File[] listFiles()</td>
+<td>获取当前目录下所有的”一级文件对象”到一个文件对象数组中去返回（重点）</td>
+</tr>
+</tbody></table>
+<p>注意事项</p>
+<ul>
+<li>当主调是文件，或者路径不存在时，返回null</li>
+<li>当主调是空文件夹时，返回一个长度为0的数组</li>
+<li>当主调是一个有内容的文件夹时，将里面所有一级文件和文件夹的路径放在File数组中返回</li>
+<li>当主调是一个文件夹，且里面有隐藏文件时，将里面所有文件和文件夹的路径放在File数组中返回，包含隐藏文件</li>
+<li>&#x3D;&#x3D;当主调是一个文件夹，但是没有权限访问该文件夹时，返回null&#x3D;&#x3D;</li>
+</ul>
+<h3 id="递归："><a href="#递归：" class="headerlink" title="递归："></a>递归：</h3><p>递归函数通常需要定义一个基本情况和一个或多个递归情况。当递归情况被调用时，它会通过不断调用自身来解决问题，直到最终达到基本情况并返回结果。</p>
+<p>方法调用自己的形式称为方法递归</p>
+<p>递归遍历文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">findFile</span><span class="params">(File f,String obj)</span>&#123;</span><br><span class="line">     <span class="type">SimpleDateFormat</span> <span class="variable">sdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy/MM/dd HH:mm&quot;</span>);</span><br><span class="line">     <span class="keyword">if</span> (!f.exists()) <span class="keyword">return</span> ;</span><br><span class="line">     <span class="keyword">if</span> (f.isFile()&amp;&amp;f.getName().contains(obj))&#123;</span><br><span class="line">         System.out.println(f.getName()+ <span class="string">&quot;  &quot;</span>+f.getAbsolutePath()+<span class="string">&quot;  &quot;</span>+f.length()+<span class="string">&quot;  &quot;</span>+sdf.format(f.lastModified()));</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">if</span> (f.isDirectory()) &#123;</span><br><span class="line">         File[] files = f.listFiles();</span><br><span class="line">         <span class="keyword">if</span> (files == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">         <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">             findFile(file,obj);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项</p>
+<ol>
+<li>隐藏文件也能获取到</li>
+<li>如果主调代表的文件夹不存在，或者需要权限才能访问，返回null</li>
+<li>如果主调代表的文件夹是空文件夹，返回长度为0的空数组</li>
+</ol>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>Java代码完成对字符的编码</p>
+<table>
+<thead>
+<tr>
+<th><strong>String</strong>提供了如下<strong>方法</strong></th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte[] <strong>getBytes()</strong></td>
+<td>使用平台的默认字符集将该 String编码为一系列字节，将结果存储到新的字节数组中</td>
+</tr>
+<tr>
+<td>byte[] <strong>getBytes(String charsetName)</strong></td>
+<td>使用指定的字符集将该 String编码为一系列字节，将结果存储到新的字节数组中</td>
+</tr>
+</tbody></table>
+<p>Java代码完成对字符的解码</p>
+<table>
+<thead>
+<tr>
+<th><strong>String</strong>提供了如下方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>String(byte[] bytes)</strong></td>
+<td>通过使用平台的默认字符集解码指定的字节数组来构造新的 String</td>
+</tr>
+<tr>
+<td><strong>String(byte[] bytes, String charsetName)</strong></td>
+<td>通过指定的字符集解码指定的字节数组来构造新的 String</td>
+</tr>
+</tbody></table>
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><p>用来读写数据</p>
+<h3 id="按照流的方向"><a href="#按照流的方向" class="headerlink" title="按照流的方向"></a>按照流的方向</h3><ul>
+<li>I指的是input，称为输入流：负责把数据读到内存中去，即输入到内存</li>
+<li>o代表output，称为输出流：负责写数据到硬盘，即内存输出到硬盘</li>
+</ul>
+<p>按流中数据的最小单位，分为：</p>
+<ul>
+<li>字节流：适合操作所有类型的文件</li>
+<li>字符流：只适合操作纯文本文件</li>
+</ul>
+<p>综上所述：</p>
+<ul>
+<li>字节输入流 InputStream（读字节数据的）</li>
+<li>字节输出流 OutoutStream（写字节数据出去的）</li>
+<li>字符输入流 Reader（读字符数据的）</li>
+<li>字符输出流 Writer（写字符数据出去的）</li>
+</ul>
+<h3 id="FileInputStream（文件字节输入流）"><a href="#FileInputStream（文件字节输入流）" class="headerlink" title="FileInputStream（文件字节输入流）"></a>FileInputStream（文件字节输入流）</h3><p>作用：以内存为基准，可以把磁盘文件中的数据以字节的形式读入到内存中去。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public <strong>FileInputStream(File file)</strong></td>
+<td>创建字节输入流管道与源文件接通</td>
+</tr>
+<tr>
+<td>public <strong>FileInputStream(String pathname)</strong></td>
+<td>创建字节输入流管道与源文件接通</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int <strong>read()</strong></td>
+<td>每次读取一个字节返回，如果发现没有数据可读会返回-1.</td>
+</tr>
+<tr>
+<td>public int <strong>read(byte[] buffer)</strong></td>
+<td>每次用一个字节数组去读取数据，返回字节数组读取了多少个字节，如果发现没有数据可读会返回-1.</td>
+</tr>
+</tbody></table>
+<p>使用read()读取时注意：</p>
+<ul>
+<li>流使用完毕之后，必须关闭，释放系统资源。</li>
+<li>读取数据的性能很差，因为每次都只读取一个字节</li>
+<li>读取汉字输出会出乱码，无法避免（因为中文不止一个字节）</li>
+</ul>
+<p>文件字节输入流：一次读取完全部字节</p>
+<p>方式一：自己定义一个字节数组与被读取的文件大小一样大，然后使用该字节数组，一次读完文件的全部字节。</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int <strong>read(byte[] buffer)</strong></td>
+<td>每次用一个字节数组去读取，返回字节数组读取了多少个字节，如果发现没有数据可读会返回-1.</td>
+</tr>
+</tbody></table>
+<p>方式二：Java官方为InputStream提供了如下方法，可以直接把文件的全部字节读取到一个字节数组中返回。</p>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public byte[] <strong>readAllBytes()</strong> throws IOException</td>
+<td>直接将当前字节输入流对应的文件对象的字节数据装到一个字节数组返回</td>
+</tr>
+</tbody></table>
+<p>FileOutputStream(文件字节输出流)<br>作用：以内存为基准，把内存中的数据以字节的形式写出到文件中去。</p>
+<table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public <strong>FileOutputStream(File file)</strong></td>
+<td>创建字节输出流管道与源文件对象接通</td>
+</tr>
+<tr>
+<td>public <strong>FileOutputStream(String filepath)</strong></td>
+<td>创建字节输出流管道与源文件路径接通</td>
+</tr>
+<tr>
+<td>public <strong>FileOutputStream(File file，boolean append)</strong></td>
+<td>创建字节输出流管道与源文件对象接通，可追加数据</td>
+</tr>
+<tr>
+<td>public <strong>FileOutputStream(String filepath，boolean append)</strong></td>
+<td>创建字节输出流管道与源文件路径接通，可追加数据</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名称</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public void <strong>write(int a)</strong></td>
+<td>写一个字节出去</td>
+</tr>
+<tr>
+<td>public void <strong>write(byte[] buffer)</strong></td>
+<td>写一个字节数组出去</td>
+</tr>
+<tr>
+<td>public void <strong>write(byte[] buffer , int pos , int len)</strong></td>
+<td>写一个字节数组的一部分出去。</td>
+</tr>
+<tr>
+<td>public void <strong>close()</strong> throws IOException</td>
+<td>关闭流。</td>
+</tr>
+</tbody></table>
+<p>任何文件的底层都是字节，字节流做复制，是一字不漏的转移完全部字节，只要复制后的文件格式一致就没问题!</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day18/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/18/day18/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day19/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.921Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day14/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2023/03/18/day19/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day15/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day16/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        
+        
+    </div>
+</aside>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day17/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.910Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day10(javaSEPro)/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day09/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day12/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/18/day13/" class="archive-article-date">
-  	<time datetime="2023-03-18T07:15:19.900Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -402,8 +624,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
