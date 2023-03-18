@@ -1844,6 +1844,59 @@
 
 
   
+    <article id="post-day09" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day09"><a href="#day09" class="headerlink" title="day09"></a>day09</h1><p>利用所学基本知识实现一个简易ATM银行系统</p>
+<h3 id="Account类"><a href="#Account类" class="headerlink" title="Account类"></a>Account类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">package day09;</span><br><span class="line">//定义一个账户类Account，至少需要包含（卡号、姓名、性别、密码、余额、每次取现额度）</span><br><span class="line">public class Account &#123;</span><br><span class="line">    private String  cardId;//卡号</span><br><span class="line">    private String userName;//用户名</span><br><span class="line">    private char sex;//性别</span><br><span class="line">    private String password;//密码</span><br><span class="line">    private double balance;//余额</span><br><span class="line">    private double limit;//限额</span><br><span class="line"></span><br><span class="line">    public Account() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account(String cardId, String userName, char sex, String password, double balance, double limit) &#123;</span><br><span class="line">        this.cardId = cardId;</span><br><span class="line">        this.userName = userName;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">        this.password = password;</span><br><span class="line">        this.balance = balance;</span><br><span class="line">        this.limit = limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getCardId() &#123;</span><br><span class="line">        return cardId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCardId(String cardId) &#123;</span><br><span class="line">        this.cardId = cardId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUserName() &#123;</span><br><span class="line">        return userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUserName(String userName) &#123;</span><br><span class="line">        this.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public char getSex() &#123;</span><br><span class="line">        return sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSex(char sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getPassword() &#123;</span><br><span class="line">        return password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPassword(String password) &#123;</span><br><span class="line">        this.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getBalance() &#123;</span><br><span class="line">        return balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBalance(double balance) &#123;</span><br><span class="line">        this.balance = balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getLimit() &#123;</span><br><span class="line">        return limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setLimit(double limit) &#123;</span><br><span class="line">        this.limit = limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return &quot;用户名:&quot;+userName+&quot;,卡号:&quot;+cardId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ATM类"><a href="#ATM类" class="headerlink" title="ATM类"></a>ATM类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br></pre></td><td class="code"><pre><span class="line">package day09;</span><br><span class="line">//定义一个账户类Account，至少需要包含（卡号、姓名、性别、密码、余额、每次取现额度）</span><br><span class="line">//定义一个ATM类，用来代表ATM系统，负责提供所有的业务需求，比如：展示ATM的系统欢迎页、开通帐户、转账……</span><br><span class="line">//定义一个测试类Test，负责对我们开发的ATM系统进行测试。</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Random;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">/**</span><br><span class="line"> * 此类专门用来实现功能</span><br><span class="line"> */</span><br><span class="line">public class ATM &#123;</span><br><span class="line">    private static final int CARD_ID_LENGTH = 8;</span><br><span class="line">    ArrayList&lt;Account&gt; accounts = new ArrayList&lt;&gt;();</span><br><span class="line">    Scanner sc = new Scanner(System.in);</span><br><span class="line">    Account m_account;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 开始界面</span><br><span class="line">     */</span><br><span class="line">        public void start()&#123;</span><br><span class="line"></span><br><span class="line">            accounts.add(new Account(&quot;123456&quot;,&quot;李倍杰&quot;,&#x27;男&#x27;,&quot;123456&quot;,1000,20000.0));</span><br><span class="line">            accounts.add(new Account(&quot;666666&quot;,&quot;夏开宏&quot;,&#x27;男&#x27;,&quot;123456&quot;,1000,20000.0));</span><br><span class="line">            System.out.println(accounts);</span><br><span class="line">            while (true)&#123;</span><br><span class="line">                System.out.println(&quot;==欢迎进入ATM系统==&quot;);</span><br><span class="line">                System.out.println(&quot;1.用户登录&quot;);</span><br><span class="line">                System.out.println(&quot;2.用户开户&quot;);</span><br><span class="line">                System.out.println(&quot;请选择:&quot;);</span><br><span class="line">                int command = sc.nextInt();</span><br><span class="line">                switch (command)&#123;</span><br><span class="line">                    case 1:</span><br><span class="line">                        System.out.println(&quot;进入登录界面&quot;);</span><br><span class="line">                        login();</span><br><span class="line">                        break;</span><br><span class="line">                    case 2:</span><br><span class="line">                        System.out.println(&quot;进入开户界面&quot;);</span><br><span class="line">                        creatAccount();</span><br><span class="line">                        break;</span><br><span class="line">                    default:</span><br><span class="line">                        System.out.println(&quot;错误指令&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 实现开户功能</span><br><span class="line">     */</span><br><span class="line">    public void creatAccount()&#123;</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        Account account = new Account();</span><br><span class="line">        //设置账户名称</span><br><span class="line">        System.out.println(&quot;请输入您的账户名称:&quot;);</span><br><span class="line">        String name = sc.next();</span><br><span class="line">        account.setUserName(name);</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;请输入性别&quot;);</span><br><span class="line">            char sex = sc.next().charAt(0);</span><br><span class="line">            if (sex == &#x27;男&#x27; ||sex == &#x27;女&#x27; ) &#123;account.setSex(sex);</span><br><span class="line">                break;&#125;</span><br><span class="line">            else System.out.println(&quot;输入错误,请重新输入&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //设置账户密码</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;请输入密码&quot;);</span><br><span class="line">            String pwd1 = sc.next();</span><br><span class="line">            System.out.println(&quot;请再次输入密码&quot;);</span><br><span class="line">            String pwd2 = sc.next();</span><br><span class="line"></span><br><span class="line">            if (pwd1.equals(pwd2))&#123; account.setPassword(pwd1);break;&#125;</span><br><span class="line">            else System.out.println(&quot;你输入的2次密码不一致，请您确认&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //设置限额</span><br><span class="line">        System.out.println(&quot;请输入限额&quot;);</span><br><span class="line">        double limit = sc.nextDouble();</span><br><span class="line">        account.setLimit(limit);</span><br><span class="line"></span><br><span class="line">        //生成卡号</span><br><span class="line">        //todo</span><br><span class="line">        account.setCardId(creatCardId());</span><br><span class="line"></span><br><span class="line">        //把账号对象存入集合</span><br><span class="line">        accounts.add(account);</span><br><span class="line">        System.out.println(&quot;恭喜您开户成功!&quot;);</span><br><span class="line">        System.out.println(accounts);</span><br><span class="line">        System.out.println(&quot;按任意键+Enter退出...&quot;);</span><br><span class="line">        String s = sc.next();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 返回一个包含8位数字的字符串</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public String creatId()&#123;</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        String Id = &quot;&quot;;</span><br><span class="line">        for (int i = 0;i&lt;CARD_ID_LENGTH;i++)&#123;</span><br><span class="line">            Id += random.nextInt(10);</span><br><span class="line">        &#125;</span><br><span class="line">        return Id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 创建一个CardId</span><br><span class="line">     * @return CardId</span><br><span class="line">     */</span><br><span class="line">    public String creatCardId()&#123;</span><br><span class="line">        String cardId = creatId();</span><br><span class="line">        for (Account account : accounts) &#123;</span><br><span class="line">            while (account.getCardId().equals(cardId)) &#123;</span><br><span class="line">                cardId = creatId();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return cardId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 实现用户的登录功能</span><br><span class="line">     */</span><br><span class="line">    public void login()&#123;</span><br><span class="line">        System.out.println(&quot;==系统登录==&quot;);</span><br><span class="line">        if (accounts.size()==0)&#123;</span><br><span class="line">            System.out.println(&quot;当前系统数据库无任何账户,请先创建账户再登录&quot;);</span><br><span class="line">            return;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            label:while (true)&#123;</span><br><span class="line">                System.out.println(&quot;请输入登录卡号:&quot;);</span><br><span class="line">                String userInput = sc.next();</span><br><span class="line">                for (Account account : accounts) &#123;</span><br><span class="line">                    if (userInput.equals(account.getCardId())) &#123;</span><br><span class="line">                        System.out.println(&quot;请输入密码:&quot;);</span><br><span class="line">                        String password = sc.next();</span><br><span class="line">                        if (password.equals(account.getPassword())) &#123;</span><br><span class="line">                            System.out.println(&quot;登陆成功！&quot;);</span><br><span class="line">                            m_account = account;</span><br><span class="line">                            showUserCommand();</span><br><span class="line">                            break label;</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            System.out.println(&quot;密码错误,请重新输入&quot;);</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(&quot;卡号不存在,请重新输入&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 展示登录后的操作界面</span><br><span class="line">     */</span><br><span class="line">    public void showUserCommand()&#123;</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;恭喜&quot; + m_account.getUserName() + &quot;成功登录ATM系统,您的卡号为:&quot; + m_account.getCardId());</span><br><span class="line">            System.out.println(&quot;您可以选择如下功能对您的账户进行处理:&quot;);</span><br><span class="line">            System.out.println(&quot;1、查询账户&quot;);</span><br><span class="line">            System.out.println(&quot;2、存款&quot;);</span><br><span class="line">            System.out.println(&quot;3、取款&quot;);</span><br><span class="line">            System.out.println(&quot;4、转账&quot;);</span><br><span class="line">            System.out.println(&quot;5、密码修改&quot;);</span><br><span class="line">            System.out.println(&quot;6、退出&quot;);</span><br><span class="line">            System.out.println(&quot;7、注销账户&quot;);</span><br><span class="line">            System.out.println(&quot;请选择:&quot;);</span><br><span class="line">            int command = sc.nextInt();</span><br><span class="line">            switch (command)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    System.out.println(&quot;查询账户&quot;);</span><br><span class="line">                    showLoginAccount();</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    System.out.println(&quot;存款&quot;);</span><br><span class="line">                    depositMoney();</span><br><span class="line">                    break;</span><br><span class="line">                case 3:</span><br><span class="line">                    System.out.println(&quot;取款&quot;);</span><br><span class="line">                    drawMoney();</span><br><span class="line">                    break;</span><br><span class="line">                case 4:</span><br><span class="line">                    System.out.println(&quot;转账&quot;);</span><br><span class="line">                    transferMoney();</span><br><span class="line">                    break;</span><br><span class="line">                case 5:</span><br><span class="line">                    System.out.println(&quot;5、密码修改&quot;);</span><br><span class="line">                    updatePassWord();</span><br><span class="line"></span><br><span class="line">                    break;</span><br><span class="line">                case 6:</span><br><span class="line">                    System.out.println(&quot;已退出&quot;);</span><br><span class="line">                    return;</span><br><span class="line">                case 7:</span><br><span class="line">                    System.out.println(&quot;7、注销账户&quot;);</span><br><span class="line">                        if (deleteAccount())&#123;</span><br><span class="line">                            return;</span><br><span class="line">                        &#125;</span><br><span class="line">                    break;</span><br><span class="line">                default:</span><br><span class="line">                    System.out.println(&quot;指令错误&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查询账户</span><br><span class="line">     */</span><br><span class="line">    private void showLoginAccount()&#123;</span><br><span class="line">        System.out.println(&quot;==当前您的账户信息如下：==&quot;);</span><br><span class="line">        System.out.println(&quot;卡号：&quot; + m_account.getCardId());</span><br><span class="line">        System.out.println(&quot;户主：&quot; + m_account.getUserName());</span><br><span class="line">        System.out.println(&quot;性别：&quot; + m_account.getSex());</span><br><span class="line">        System.out.println(&quot;余额：&quot; + m_account.getBalance());</span><br><span class="line">        System.out.println(&quot;每次取现额度：&quot; + m_account.getLimit());</span><br><span class="line"></span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 存钱</span><br><span class="line">     */</span><br><span class="line">    private void depositMoney()&#123;</span><br><span class="line">            System.out.println(&quot;==存款操作==&quot;);</span><br><span class="line">            System.out.println(&quot;请输入存款金额&quot;);</span><br><span class="line">            double money = sc.nextDouble();</span><br><span class="line">            if (money &gt;=0)&#123;</span><br><span class="line">                m_account.setBalance(m_account.getBalance()+money);</span><br><span class="line">                System.out.println(&quot;存款成功，当前余额为&quot;+m_account.getBalance());</span><br><span class="line">            &#125;else System.out.println(&quot;您的输入错误!&quot;);</span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 取钱</span><br><span class="line">     */</span><br><span class="line">    private void drawMoney()&#123;</span><br><span class="line">        if (m_account.getBalance()&lt;100) &#123;</span><br><span class="line">            System.out.println(&quot;您的余额不足,你的账户余额是&quot;+m_account.getBalance()+&quot;元&quot;);</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            System.out.println(&quot;请输入取款金额:&quot;);</span><br><span class="line">            double draw = sc.nextDouble();</span><br><span class="line">                if (draw&gt; m_account.getLimit())&#123;</span><br><span class="line">                    System.out.println(&quot;每次只能取&quot;+m_account.getLimit()+&quot;限额的钱&quot;);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    m_account.setBalance(m_account.getBalance()-draw);</span><br><span class="line">                    System.out.println(&quot;取款成功，当前余额为&quot;+m_account.getBalance());</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 转账</span><br><span class="line">     */</span><br><span class="line">    private void transferMoney()&#123;</span><br><span class="line">        System.out.println(&quot;==用户转账==&quot;);</span><br><span class="line">        if (accounts.size()&lt;2)&#123;</span><br><span class="line">            System.out.println(&quot;当前系统中只有你一个账户，无法为其他账户转账~~&quot;);</span><br><span class="line">            exitTip();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (m_account.getBalance() == 0)&#123;</span><br><span class="line">            System.out.println(&quot;您自己都没钱，就别转了~~&quot;);</span><br><span class="line">            exitTip();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;输入对方卡号:&quot;);</span><br><span class="line">        String objectId = sc.next();</span><br><span class="line">        if (m_account.getCardId().equals(objectId))&#123;</span><br><span class="line">            System.out.println(&quot;不能给自己转账&quot;);</span><br><span class="line">            exitTip();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0;i &lt; accounts.size();i++)&#123;</span><br><span class="line">            if (accounts.get(i).getCardId().equals(objectId))&#123;</span><br><span class="line">                Account objectAccount = accounts.get(i);</span><br><span class="line">                System.out.println(&quot;*&quot;+objectAccount.getUserName().substring(1));</span><br><span class="line">                System.out.println(&quot;请输入对方姓氏:&quot;);</span><br><span class="line">                char firstName = sc.next().charAt(0);</span><br><span class="line">                if (objectAccount.getUserName().charAt(0) != firstName )&#123;</span><br><span class="line">                    System.out.println(&quot;对不起，您输入的姓氏有问题，转账失败！&quot;);</span><br><span class="line">                    exitTip();</span><br><span class="line">                    return;</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    System.out.println(&quot;请输入转账金额:&quot;);</span><br><span class="line">                    double transfer = sc.nextDouble();</span><br><span class="line">                    if (transfer&gt; m_account.getBalance())&#123;</span><br><span class="line">                        System.out.println(&quot;对不起，余额不足，转账失败!&quot;);</span><br><span class="line">                        exitTip();</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;else &#123;</span><br><span class="line">                        m_account.setBalance(m_account.getBalance()-transfer);</span><br><span class="line">                        objectAccount.setBalance(objectAccount.getBalance()+transfer);</span><br><span class="line">                        System.out.println(&quot;您转账成功了~~~&quot;);</span><br><span class="line">                        exitTip();</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;您输入的卡号不正确!&quot;);</span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 提示按任意键+Enter退出...</span><br><span class="line">     */</span><br><span class="line">    private void exitTip()&#123;</span><br><span class="line">        System.out.println(&quot;按任意键+Enter退出...&quot;);</span><br><span class="line">        String s = sc.next();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 修改密码</span><br><span class="line">     */</span><br><span class="line">    private void updatePassWord()&#123;</span><br><span class="line">            System.out.println(&quot;==账户密码修改操作==&quot;);</span><br><span class="line">            System.out.println(&quot;请您输入当前账户的密码:&quot;);</span><br><span class="line">            String oldPassWord = sc.next();</span><br><span class="line">            if (m_account.getPassword().equals(oldPassWord))&#123;</span><br><span class="line">                System.out.println(&quot;请输入新密码:&quot;);</span><br><span class="line">                String newPassword = sc.next();</span><br><span class="line">                System.out.println(&quot;请再次输入新密码:&quot;);</span><br><span class="line">                if (newPassword.equals(sc.next()))&#123;</span><br><span class="line">                    m_account.setPassword(newPassword);</span><br><span class="line">                    System.out.println(&quot;恭喜您，您的密码修改成功~~~,下次登录请输入新密码&quot;);</span><br><span class="line">                &#125;else System.out.println(&quot;您输入的2次密码不一致~~,修改密码失败&quot;);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                System.out.println(&quot;您当前输入的密码不正确~~,修改密码失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean deleteAccount()&#123;</span><br><span class="line">        System.out.println(&quot;==进行销户操作==&quot;);</span><br><span class="line">        System.out.println(&quot;请问您确认销户吗？y/n&quot;);</span><br><span class="line">        String command = sc.next();</span><br><span class="line">        if (command.equals(&quot;y&quot;))&#123;</span><br><span class="line">            if (m_account.getBalance()!=0)&#123;</span><br><span class="line">                System.out.println(&quot;对不起，您的账户中存钱金额，不允许销户&quot;);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                accounts.remove(m_account);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if (command.equals(&quot;n&quot;))&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;else</span><br><span class="line">            System.out.println(&quot;您输入的指令有误,销户失败&quot;);</span><br><span class="line">            return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Test类"><a href="#Test类" class="headerlink" title="Test类"></a>Test类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package day09;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ATM atm = new ATM();</span><br><span class="line">        atm.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day09/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-day10(javaSEPro)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1998,17 +2051,65 @@
 
 
   
-    <article id="post-day09" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="day09"><a href="#day09" class="headerlink" title="day09"></a>day09</h1><p>利用所学基本知识实现一个简易ATM银行系统</p>
-<h3 id="Account类"><a href="#Account类" class="headerlink" title="Account类"></a>Account类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">package day09;</span><br><span class="line">//定义一个账户类Account，至少需要包含（卡号、姓名、性别、密码、余额、每次取现额度）</span><br><span class="line">public class Account &#123;</span><br><span class="line">    private String  cardId;//卡号</span><br><span class="line">    private String userName;//用户名</span><br><span class="line">    private char sex;//性别</span><br><span class="line">    private String password;//密码</span><br><span class="line">    private double balance;//余额</span><br><span class="line">    private double limit;//限额</span><br><span class="line"></span><br><span class="line">    public Account() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Account(String cardId, String userName, char sex, String password, double balance, double limit) &#123;</span><br><span class="line">        this.cardId = cardId;</span><br><span class="line">        this.userName = userName;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">        this.password = password;</span><br><span class="line">        this.balance = balance;</span><br><span class="line">        this.limit = limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getCardId() &#123;</span><br><span class="line">        return cardId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setCardId(String cardId) &#123;</span><br><span class="line">        this.cardId = cardId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getUserName() &#123;</span><br><span class="line">        return userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUserName(String userName) &#123;</span><br><span class="line">        this.userName = userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public char getSex() &#123;</span><br><span class="line">        return sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSex(char sex) &#123;</span><br><span class="line">        this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getPassword() &#123;</span><br><span class="line">        return password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPassword(String password) &#123;</span><br><span class="line">        this.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getBalance() &#123;</span><br><span class="line">        return balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setBalance(double balance) &#123;</span><br><span class="line">        this.balance = balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double getLimit() &#123;</span><br><span class="line">        return limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setLimit(double limit) &#123;</span><br><span class="line">        this.limit = limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String toString()&#123;</span><br><span class="line">        return &quot;用户名:&quot;+userName+&quot;,卡号:&quot;+cardId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ATM类"><a href="#ATM类" class="headerlink" title="ATM类"></a>ATM类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br></pre></td><td class="code"><pre><span class="line">package day09;</span><br><span class="line">//定义一个账户类Account，至少需要包含（卡号、姓名、性别、密码、余额、每次取现额度）</span><br><span class="line">//定义一个ATM类，用来代表ATM系统，负责提供所有的业务需求，比如：展示ATM的系统欢迎页、开通帐户、转账……</span><br><span class="line">//定义一个测试类Test，负责对我们开发的ATM系统进行测试。</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Random;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">/**</span><br><span class="line"> * 此类专门用来实现功能</span><br><span class="line"> */</span><br><span class="line">public class ATM &#123;</span><br><span class="line">    private static final int CARD_ID_LENGTH = 8;</span><br><span class="line">    ArrayList&lt;Account&gt; accounts = new ArrayList&lt;&gt;();</span><br><span class="line">    Scanner sc = new Scanner(System.in);</span><br><span class="line">    Account m_account;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 开始界面</span><br><span class="line">     */</span><br><span class="line">        public void start()&#123;</span><br><span class="line"></span><br><span class="line">            accounts.add(new Account(&quot;123456&quot;,&quot;李倍杰&quot;,&#x27;男&#x27;,&quot;123456&quot;,1000,20000.0));</span><br><span class="line">            accounts.add(new Account(&quot;666666&quot;,&quot;夏开宏&quot;,&#x27;男&#x27;,&quot;123456&quot;,1000,20000.0));</span><br><span class="line">            System.out.println(accounts);</span><br><span class="line">            while (true)&#123;</span><br><span class="line">                System.out.println(&quot;==欢迎进入ATM系统==&quot;);</span><br><span class="line">                System.out.println(&quot;1.用户登录&quot;);</span><br><span class="line">                System.out.println(&quot;2.用户开户&quot;);</span><br><span class="line">                System.out.println(&quot;请选择:&quot;);</span><br><span class="line">                int command = sc.nextInt();</span><br><span class="line">                switch (command)&#123;</span><br><span class="line">                    case 1:</span><br><span class="line">                        System.out.println(&quot;进入登录界面&quot;);</span><br><span class="line">                        login();</span><br><span class="line">                        break;</span><br><span class="line">                    case 2:</span><br><span class="line">                        System.out.println(&quot;进入开户界面&quot;);</span><br><span class="line">                        creatAccount();</span><br><span class="line">                        break;</span><br><span class="line">                    default:</span><br><span class="line">                        System.out.println(&quot;错误指令&quot;);</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 实现开户功能</span><br><span class="line">     */</span><br><span class="line">    public void creatAccount()&#123;</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        Account account = new Account();</span><br><span class="line">        //设置账户名称</span><br><span class="line">        System.out.println(&quot;请输入您的账户名称:&quot;);</span><br><span class="line">        String name = sc.next();</span><br><span class="line">        account.setUserName(name);</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;请输入性别&quot;);</span><br><span class="line">            char sex = sc.next().charAt(0);</span><br><span class="line">            if (sex == &#x27;男&#x27; ||sex == &#x27;女&#x27; ) &#123;account.setSex(sex);</span><br><span class="line">                break;&#125;</span><br><span class="line">            else System.out.println(&quot;输入错误,请重新输入&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //设置账户密码</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;请输入密码&quot;);</span><br><span class="line">            String pwd1 = sc.next();</span><br><span class="line">            System.out.println(&quot;请再次输入密码&quot;);</span><br><span class="line">            String pwd2 = sc.next();</span><br><span class="line"></span><br><span class="line">            if (pwd1.equals(pwd2))&#123; account.setPassword(pwd1);break;&#125;</span><br><span class="line">            else System.out.println(&quot;你输入的2次密码不一致，请您确认&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //设置限额</span><br><span class="line">        System.out.println(&quot;请输入限额&quot;);</span><br><span class="line">        double limit = sc.nextDouble();</span><br><span class="line">        account.setLimit(limit);</span><br><span class="line"></span><br><span class="line">        //生成卡号</span><br><span class="line">        //todo</span><br><span class="line">        account.setCardId(creatCardId());</span><br><span class="line"></span><br><span class="line">        //把账号对象存入集合</span><br><span class="line">        accounts.add(account);</span><br><span class="line">        System.out.println(&quot;恭喜您开户成功!&quot;);</span><br><span class="line">        System.out.println(accounts);</span><br><span class="line">        System.out.println(&quot;按任意键+Enter退出...&quot;);</span><br><span class="line">        String s = sc.next();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 返回一个包含8位数字的字符串</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    public String creatId()&#123;</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        String Id = &quot;&quot;;</span><br><span class="line">        for (int i = 0;i&lt;CARD_ID_LENGTH;i++)&#123;</span><br><span class="line">            Id += random.nextInt(10);</span><br><span class="line">        &#125;</span><br><span class="line">        return Id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 创建一个CardId</span><br><span class="line">     * @return CardId</span><br><span class="line">     */</span><br><span class="line">    public String creatCardId()&#123;</span><br><span class="line">        String cardId = creatId();</span><br><span class="line">        for (Account account : accounts) &#123;</span><br><span class="line">            while (account.getCardId().equals(cardId)) &#123;</span><br><span class="line">                cardId = creatId();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return cardId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 实现用户的登录功能</span><br><span class="line">     */</span><br><span class="line">    public void login()&#123;</span><br><span class="line">        System.out.println(&quot;==系统登录==&quot;);</span><br><span class="line">        if (accounts.size()==0)&#123;</span><br><span class="line">            System.out.println(&quot;当前系统数据库无任何账户,请先创建账户再登录&quot;);</span><br><span class="line">            return;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            label:while (true)&#123;</span><br><span class="line">                System.out.println(&quot;请输入登录卡号:&quot;);</span><br><span class="line">                String userInput = sc.next();</span><br><span class="line">                for (Account account : accounts) &#123;</span><br><span class="line">                    if (userInput.equals(account.getCardId())) &#123;</span><br><span class="line">                        System.out.println(&quot;请输入密码:&quot;);</span><br><span class="line">                        String password = sc.next();</span><br><span class="line">                        if (password.equals(account.getPassword())) &#123;</span><br><span class="line">                            System.out.println(&quot;登陆成功！&quot;);</span><br><span class="line">                            m_account = account;</span><br><span class="line">                            showUserCommand();</span><br><span class="line">                            break label;</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            System.out.println(&quot;密码错误,请重新输入&quot;);</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(&quot;卡号不存在,请重新输入&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 展示登录后的操作界面</span><br><span class="line">     */</span><br><span class="line">    public void showUserCommand()&#123;</span><br><span class="line">        while (true)&#123;</span><br><span class="line">            System.out.println(&quot;恭喜&quot; + m_account.getUserName() + &quot;成功登录ATM系统,您的卡号为:&quot; + m_account.getCardId());</span><br><span class="line">            System.out.println(&quot;您可以选择如下功能对您的账户进行处理:&quot;);</span><br><span class="line">            System.out.println(&quot;1、查询账户&quot;);</span><br><span class="line">            System.out.println(&quot;2、存款&quot;);</span><br><span class="line">            System.out.println(&quot;3、取款&quot;);</span><br><span class="line">            System.out.println(&quot;4、转账&quot;);</span><br><span class="line">            System.out.println(&quot;5、密码修改&quot;);</span><br><span class="line">            System.out.println(&quot;6、退出&quot;);</span><br><span class="line">            System.out.println(&quot;7、注销账户&quot;);</span><br><span class="line">            System.out.println(&quot;请选择:&quot;);</span><br><span class="line">            int command = sc.nextInt();</span><br><span class="line">            switch (command)&#123;</span><br><span class="line">                case 1:</span><br><span class="line">                    System.out.println(&quot;查询账户&quot;);</span><br><span class="line">                    showLoginAccount();</span><br><span class="line">                    break;</span><br><span class="line">                case 2:</span><br><span class="line">                    System.out.println(&quot;存款&quot;);</span><br><span class="line">                    depositMoney();</span><br><span class="line">                    break;</span><br><span class="line">                case 3:</span><br><span class="line">                    System.out.println(&quot;取款&quot;);</span><br><span class="line">                    drawMoney();</span><br><span class="line">                    break;</span><br><span class="line">                case 4:</span><br><span class="line">                    System.out.println(&quot;转账&quot;);</span><br><span class="line">                    transferMoney();</span><br><span class="line">                    break;</span><br><span class="line">                case 5:</span><br><span class="line">                    System.out.println(&quot;5、密码修改&quot;);</span><br><span class="line">                    updatePassWord();</span><br><span class="line"></span><br><span class="line">                    break;</span><br><span class="line">                case 6:</span><br><span class="line">                    System.out.println(&quot;已退出&quot;);</span><br><span class="line">                    return;</span><br><span class="line">                case 7:</span><br><span class="line">                    System.out.println(&quot;7、注销账户&quot;);</span><br><span class="line">                        if (deleteAccount())&#123;</span><br><span class="line">                            return;</span><br><span class="line">                        &#125;</span><br><span class="line">                    break;</span><br><span class="line">                default:</span><br><span class="line">                    System.out.println(&quot;指令错误&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查询账户</span><br><span class="line">     */</span><br><span class="line">    private void showLoginAccount()&#123;</span><br><span class="line">        System.out.println(&quot;==当前您的账户信息如下：==&quot;);</span><br><span class="line">        System.out.println(&quot;卡号：&quot; + m_account.getCardId());</span><br><span class="line">        System.out.println(&quot;户主：&quot; + m_account.getUserName());</span><br><span class="line">        System.out.println(&quot;性别：&quot; + m_account.getSex());</span><br><span class="line">        System.out.println(&quot;余额：&quot; + m_account.getBalance());</span><br><span class="line">        System.out.println(&quot;每次取现额度：&quot; + m_account.getLimit());</span><br><span class="line"></span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 存钱</span><br><span class="line">     */</span><br><span class="line">    private void depositMoney()&#123;</span><br><span class="line">            System.out.println(&quot;==存款操作==&quot;);</span><br><span class="line">            System.out.println(&quot;请输入存款金额&quot;);</span><br><span class="line">            double money = sc.nextDouble();</span><br><span class="line">            if (money &gt;=0)&#123;</span><br><span class="line">                m_account.setBalance(m_account.getBalance()+money);</span><br><span class="line">                System.out.println(&quot;存款成功，当前余额为&quot;+m_account.getBalance());</span><br><span class="line">            &#125;else System.out.println(&quot;您的输入错误!&quot;);</span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line">    /**</span><br><span class="line">     * 取钱</span><br><span class="line">     */</span><br><span class="line">    private void drawMoney()&#123;</span><br><span class="line">        if (m_account.getBalance()&lt;100) &#123;</span><br><span class="line">            System.out.println(&quot;您的余额不足,你的账户余额是&quot;+m_account.getBalance()+&quot;元&quot;);</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            System.out.println(&quot;请输入取款金额:&quot;);</span><br><span class="line">            double draw = sc.nextDouble();</span><br><span class="line">                if (draw&gt; m_account.getLimit())&#123;</span><br><span class="line">                    System.out.println(&quot;每次只能取&quot;+m_account.getLimit()+&quot;限额的钱&quot;);</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    m_account.setBalance(m_account.getBalance()-draw);</span><br><span class="line">                    System.out.println(&quot;取款成功，当前余额为&quot;+m_account.getBalance());</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 转账</span><br><span class="line">     */</span><br><span class="line">    private void transferMoney()&#123;</span><br><span class="line">        System.out.println(&quot;==用户转账==&quot;);</span><br><span class="line">        if (accounts.size()&lt;2)&#123;</span><br><span class="line">            System.out.println(&quot;当前系统中只有你一个账户，无法为其他账户转账~~&quot;);</span><br><span class="line">            exitTip();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (m_account.getBalance() == 0)&#123;</span><br><span class="line">            System.out.println(&quot;您自己都没钱，就别转了~~&quot;);</span><br><span class="line">            exitTip();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;输入对方卡号:&quot;);</span><br><span class="line">        String objectId = sc.next();</span><br><span class="line">        if (m_account.getCardId().equals(objectId))&#123;</span><br><span class="line">            System.out.println(&quot;不能给自己转账&quot;);</span><br><span class="line">            exitTip();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0;i &lt; accounts.size();i++)&#123;</span><br><span class="line">            if (accounts.get(i).getCardId().equals(objectId))&#123;</span><br><span class="line">                Account objectAccount = accounts.get(i);</span><br><span class="line">                System.out.println(&quot;*&quot;+objectAccount.getUserName().substring(1));</span><br><span class="line">                System.out.println(&quot;请输入对方姓氏:&quot;);</span><br><span class="line">                char firstName = sc.next().charAt(0);</span><br><span class="line">                if (objectAccount.getUserName().charAt(0) != firstName )&#123;</span><br><span class="line">                    System.out.println(&quot;对不起，您输入的姓氏有问题，转账失败！&quot;);</span><br><span class="line">                    exitTip();</span><br><span class="line">                    return;</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    System.out.println(&quot;请输入转账金额:&quot;);</span><br><span class="line">                    double transfer = sc.nextDouble();</span><br><span class="line">                    if (transfer&gt; m_account.getBalance())&#123;</span><br><span class="line">                        System.out.println(&quot;对不起，余额不足，转账失败!&quot;);</span><br><span class="line">                        exitTip();</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;else &#123;</span><br><span class="line">                        m_account.setBalance(m_account.getBalance()-transfer);</span><br><span class="line">                        objectAccount.setBalance(objectAccount.getBalance()+transfer);</span><br><span class="line">                        System.out.println(&quot;您转账成功了~~~&quot;);</span><br><span class="line">                        exitTip();</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;您输入的卡号不正确!&quot;);</span><br><span class="line">        exitTip();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 提示按任意键+Enter退出...</span><br><span class="line">     */</span><br><span class="line">    private void exitTip()&#123;</span><br><span class="line">        System.out.println(&quot;按任意键+Enter退出...&quot;);</span><br><span class="line">        String s = sc.next();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 修改密码</span><br><span class="line">     */</span><br><span class="line">    private void updatePassWord()&#123;</span><br><span class="line">            System.out.println(&quot;==账户密码修改操作==&quot;);</span><br><span class="line">            System.out.println(&quot;请您输入当前账户的密码:&quot;);</span><br><span class="line">            String oldPassWord = sc.next();</span><br><span class="line">            if (m_account.getPassword().equals(oldPassWord))&#123;</span><br><span class="line">                System.out.println(&quot;请输入新密码:&quot;);</span><br><span class="line">                String newPassword = sc.next();</span><br><span class="line">                System.out.println(&quot;请再次输入新密码:&quot;);</span><br><span class="line">                if (newPassword.equals(sc.next()))&#123;</span><br><span class="line">                    m_account.setPassword(newPassword);</span><br><span class="line">                    System.out.println(&quot;恭喜您，您的密码修改成功~~~,下次登录请输入新密码&quot;);</span><br><span class="line">                &#125;else System.out.println(&quot;您输入的2次密码不一致~~,修改密码失败&quot;);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                System.out.println(&quot;您当前输入的密码不正确~~,修改密码失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean deleteAccount()&#123;</span><br><span class="line">        System.out.println(&quot;==进行销户操作==&quot;);</span><br><span class="line">        System.out.println(&quot;请问您确认销户吗？y/n&quot;);</span><br><span class="line">        String command = sc.next();</span><br><span class="line">        if (command.equals(&quot;y&quot;))&#123;</span><br><span class="line">            if (m_account.getBalance()!=0)&#123;</span><br><span class="line">                System.out.println(&quot;对不起，您的账户中存钱金额，不允许销户&quot;);</span><br><span class="line">                return false;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                accounts.remove(m_account);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if (command.equals(&quot;n&quot;))&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;else</span><br><span class="line">            System.out.println(&quot;您输入的指令有误,销户失败&quot;);</span><br><span class="line">            return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Test类"><a href="#Test类" class="headerlink" title="Test类"></a>Test类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package day09;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ATM atm = new ATM();</span><br><span class="line">        atm.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="day11"><a href="#day11" class="headerlink" title="day11"></a>day11</h1><h3 id="子类构造器的特点"><a href="#子类构造器的特点" class="headerlink" title="子类构造器的特点"></a>子类构造器的特点</h3><ul>
+<li>子类的全部构造器，都会先调用父类的构造器，再执行自己，即默认在子类构造方法第一行存在一个super（）；（不写也默认存在）</li>
+<li>如果父类没有无参数构造，我们必须手动的在子类构造器添加super（…..）；</li>
+</ul>
+<p><strong>如何快捷生成子类构造</strong></p>
+<p>先实现父类构造，再选择子类成员变量</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是在继承&#x2F;实现情况下的一种现象，表现为:对象多态，行为多态</p>
+<p>父类引用子类对象</p>
+<p><strong>new 对象的快捷键 Ctrl+Alt+V</strong></p>
+<p>变量的类型是什么，就必须给这个变量赋值什么样的类型</p>
+<p><em>注意：如果这个变量是引用类型，赋值赋的是一个对象（本类对象，子类对象）</em></p>
+<h3 id="多态的本质"><a href="#多态的本质" class="headerlink" title="多态的本质"></a>多态的本质</h3><p>多态的本质就是父类指针指向子类对象</p>
+<p>父类只能访问自身可访问的函数；</p>
+<p>在栈里定义父类引用指向堆里子类对象，如果子类和父类都有同样的成员变量 对象里会有两份这个成员变量，对哪个成员变量进行操作依具体情况而定</p>
+<p>如果没有，则子类会直接使用父类成员变量进行操作</p>
+<p>子类对象里会有super的全部属性</p>
+<p><em>instanceof关键字可判断某个对象是否属于某个类</em></p>
+<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><ul>
+<li>final可以修饰类、方法、变量</li>
+<li>修饰类：该类不能被继承</li>
+<li>修饰方法：方法不能被重写</li>
+<li>修饰基本类型变量：该变量只能被赋值一次</li>
+<li>修饰引用类型变量：引用变量地址值不可以改变</li>
+</ul>
+<p>final类似于c++里的const</p>
+<p>快捷键：</p>
+<p>ctrl+shift+U:切换大小写</p>
+<p>Ctrl+Alt+V:自动补全new的代码</p>
+<p>Ctrl+Alt+M:抽取方法</p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>&#x3D;&#x3D;抽象类中不一定有抽象方法，有抽象方法的一定是抽象类&#x3D;&#x3D;</li>
+<li>类该有的成员抽象类都可以有</li>
+<li>最关键的特点：抽象类不能有实例，仅仅作为一种特殊父类让子类继承并实现</li>
+<li>一个类继承抽象类，必须写完抽象类的全部抽象方法，否则这个类也必须定义成抽象类</li>
+</ul>
+<p>抽象类的应用：</p>
+<h2 id="模板方法设计模式"><a href="#模板方法设计模式" class="headerlink" title="模板方法设计模式"></a><strong>模板方法设计模式</strong></h2><p>&#x3D;&#x3D;解决方法中存在重复代码的问题&#x3D;&#x3D;</p>
+<p><strong>写法</strong></p>
+<ul>
+<li><p>1.定义一个抽象类</p>
+</li>
+<li><p>2.在里面定义2个方法（一个是模板方法（最好用final修饰）：把相同代码放里面；一个抽象方法：具体实现交给子类完成）</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口中定义的成员变量都是常量——默认被public final static 修饰</p>
+</li>
+</ul>
+<p>接口不能创建对象，可以创建一个接口的实现类来创建对象</p>
+<h3 id="接口的好处"><a href="#接口的好处" class="headerlink" title="接口的好处"></a>接口的好处</h3><ul>
+<li>弥补类单继承的不足</li>
+<li>让程序可以面向接口编程，根据规范开发</li>
+<li>面向接口开发，可以灵活方便的切换各种业务实现</li>
+</ul>
+<h3 id="接口的多继承"><a href="#接口的多继承" class="headerlink" title="接口的多继承"></a>接口的多继承</h3><p>一个接口可以同时继承多个接口</p>
+<h3 id="多继承的好处"><a href="#多继承的好处" class="headerlink" title="多继承的好处"></a>多继承的好处</h3><p>便于实现类去实现</p>
+<h2 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize()方法"></a>finalize()方法</h2><p>类似于c++的析构函数，在对象被销毁时执行，由于Java自动进行垃圾回收，所以不知道JVM何时会执行检查与回收操作，可以使用System.gc();提醒Java检查是否有没被指向的对象，有则进行释放。</p>
 
       
 
@@ -2021,7 +2122,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/18/day09/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/18/day11/">展开全文 >></a>
         </p>
       
 
@@ -2143,479 +2244,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/18/day12/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-day13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="day13"><a href="#day13" class="headerlink" title="day13"></a>day13</h1><h2 id="自动装箱与自动拆箱"><a href="#自动装箱与自动拆箱" class="headerlink" title="自动装箱与自动拆箱"></a>自动装箱与自动拆箱</h2><p><strong>自动装箱：</strong>基本数据类型可以自动转换为包装类型。</p>
-<p><strong>自动拆箱：</strong>包装类型可以自动的转换为基本数据类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//自动装箱</span><br><span class="line">Integer i1 = 10;//Integer i1 = Integer.vauleOf(10);</span><br><span class="line">//自动拆箱</span><br><span class="line">int i2 = i1;//int i2 = i1.int Value();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="常见API"><a href="#常见API" class="headerlink" title="常见API"></a>常见API</h2><h3 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h3><p>主要方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> StringBuilder <span class="title function_">append</span><span class="params">(任意类型)</span>;<span class="comment">// 添加数据并返回StringBuilder对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> StringBuilder <span class="title function_">reverse</span><span class="params">()</span>;<span class="comment">//将对象内容翻转</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">intlength</span><span class="params">()</span>;<span class="comment">//返回对象内容长度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">String</span><span class="params">()</span>;<span class="comment">//将对象转换成字符串类型</span></span><br></pre></td></tr></table></figure>
-
-<p>&#x3D;&#x3D;对于字符串相关的操作，如频繁的拼接，修改等，建议用StringBuilder，效率更高&#x3D;&#x3D;</p>
-<p>注意：如果字符串较少，或者不需要操作，以及定义字符串变量，还是建议用String</p>
-<h3 id="StringJoiner类"><a href="#StringJoiner类" class="headerlink" title="StringJoiner类"></a>StringJoiner类</h3><p>&#x3D;&#x3D;而StringJoiner号称是拼接神器，不仅效率高，而且代码简洁&#x3D;&#x3D;。</p>
-<table>
-<thead>
-<tr>
-<th align="left">public StringJoiner (间隔符号)</th>
-<th>创建一个StringJoiner对象，指定拼接时的间隔符号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">public StringJoiner (间隔符号，开始符号，结束符号)</td>
-<td>创建一个StringJoiner对象，指定拼接时的间隔符号、开始符号、结束符号</td>
-</tr>
-<tr>
-<td align="left">public  StringJoiner add (添加的内容)</td>
-<td>添加数据，并返回对象本身</td>
-</tr>
-<tr>
-<td align="left">public int  length()</td>
-<td>返回长度 ( 字符出现的个数)</td>
-</tr>
-<tr>
-<td align="left">public  String toString()</td>
-<td>返回一个字符串（该字符串就是拼接之后的结果）</td>
-</tr>
-</tbody></table>
-<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><table>
-<thead>
-<tr>
-<th>public static int abs(int a)</th>
-<th>获取参数绝对值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public static double ceil(double a)</td>
-<td>向上取整</td>
-</tr>
-<tr>
-<td>public static double floor(double a)</td>
-<td>向下取整</td>
-</tr>
-<tr>
-<td>public static int round(float a)</td>
-<td>四舍五入</td>
-</tr>
-<tr>
-<td>public static int max(int a,int b)</td>
-<td>获取两个int值中的较大值</td>
-</tr>
-<tr>
-<td>public static double pow(double a,double b)</td>
-<td>返回a的b次幂的值</td>
-</tr>
-<tr>
-<td>public static double random()</td>
-<td>返回值为double的随机值，范围[0.0,1.0)</td>
-</tr>
-</tbody></table>
-<h3 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h3><table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">public static void exit(int status)</td>
-<td>终止当前运行的Java虚拟机。</td>
-</tr>
-<tr>
-<td align="left">public static long currentTimeMillis()</td>
-<td>返回当前系统的时间毫秒值形式。</td>
-</tr>
-</tbody></table>
-<h3 id="Runtinme类"><a href="#Runtinme类" class="headerlink" title="Runtinme类"></a>Runtinme类</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public  static <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/Runtime.html">Runtime</a> getRuntime()</td>
-<td>返回与当前Java应用程序关联的运行时对象</td>
-</tr>
-<tr>
-<td>public void exit(int status)</td>
-<td>终止当前运行的虚拟机</td>
-</tr>
-<tr>
-<td>public int availableProcessors()</td>
-<td>返回Java虚拟机可用的处理器数。</td>
-</tr>
-<tr>
-<td>public long totalMemory()</td>
-<td>返回Java虚拟机中的内存总量</td>
-</tr>
-<tr>
-<td>public long freeMemory()</td>
-<td>返回Java虚拟机中的可用内存</td>
-</tr>
-<tr>
-<td>public <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/Process.html">Process</a> exec(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a> command)</td>
-<td>启动某个程序，并返回代表该程序的对象</td>
-</tr>
-</tbody></table>
-<h3 id="Bigdecimal类"><a href="#Bigdecimal类" class="headerlink" title="Bigdecimal类"></a>Bigdecimal类</h3><table>
-<thead>
-<tr>
-<th><strong>构造器</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public BigDecimal(double val) 注意：不推荐使用这个，double可能会有精度丢失问题</td>
-<td>将 double转换为 BigDecimal</td>
-</tr>
-<tr>
-<td>public BigDecimal(String val)</td>
-<td>把String转成BigDecimal</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public static BigDecimal valueOf(double val)</td>
-<td>转换一个 double成 BigDecimal</td>
-</tr>
-<tr>
-<td>public BigDecimal add(BigDecimal b)</td>
-<td>加法</td>
-</tr>
-<tr>
-<td>public BigDecimal subtract(BigDecimal b)</td>
-<td>减法</td>
-</tr>
-<tr>
-<td>public BigDecimal multiply(BigDecimal b)</td>
-<td>乘法</td>
-</tr>
-<tr>
-<td>public BigDecimal divide(BigDecimal b)</td>
-<td>除法</td>
-</tr>
-<tr>
-<td>public BigDecimal divide (另一个BigDecimal对象，精确几位，舍入模式)</td>
-<td>除法、可以控制精确到小数几位</td>
-</tr>
-<tr>
-<td>public double doubleValue()</td>
-<td>将BigDecimal转换为double</td>
-</tr>
-</tbody></table>
-<h3 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h3><table>
-<thead>
-<tr>
-<th>构造器</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public Date()</td>
-<td>创建一个Date对象，代表的是系统当前此刻日期时间。</td>
-</tr>
-<tr>
-<td>public Date(long time)</td>
-<td>把时间毫秒值转换成Date日期对象。</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>常见方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public long getTime()</td>
-<td>返回从1970年1月1日   00:00:00走到此刻的总的毫秒数</td>
-</tr>
-<tr>
-<td>public void setTime(long time)</td>
-<td>设置日期对象的时间为当前时间毫秒值对应的时间</td>
-</tr>
-</tbody></table>
-<h3 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h3><table>
-<thead>
-<tr>
-<th>常见构造器</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public SimpleDateFormat(String  pattern)</td>
-<td>创建简单日期格式化对象，并封装时间的格式</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>格式化时间的方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public final String format(Date date)</td>
-<td>将日期格式化成日期&#x2F;时间字符串</td>
-</tr>
-<tr>
-<td>public final String format(Object time)</td>
-<td>将时间毫秒值式化成日期&#x2F;时间字符串</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>解析方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public Date  parse(String source)</td>
-<td>把字符串时间解析成日期对象</td>
-</tr>
-</tbody></table>
-<h3 id="Calendar"><a href="#Calendar" class="headerlink" title="Calendar"></a>Calendar</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public  static Calendar getInstance()</td>
-<td>获取当前日历对象</td>
-</tr>
-<tr>
-<td>public int get(int field)</td>
-<td>获取日历中的某个信息。</td>
-</tr>
-<tr>
-<td>public final Date getTime()</td>
-<td>获取日期对象。</td>
-</tr>
-<tr>
-<td>public long getTimeInMillis()</td>
-<td>获取时间毫秒值</td>
-</tr>
-<tr>
-<td>public void set(int field,int value)</td>
-<td>修改日历的某个信息。</td>
-</tr>
-<tr>
-<td>public void add(int field,int amount)</td>
-<td>为某个信息增加&#x2F;减少指定的值</td>
-</tr>
-</tbody></table>
-<h3 id="LocalDate"><a href="#LocalDate" class="headerlink" title="LocalDate"></a>LocalDate</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public static Xxxx now(): 获取系统当前时间对应的该对象</td>
-<td>LocaDate ld &#x3D; LocalDate.now();     LocalTime lt &#x3D; LocalTime.now();     LocalDateTime ldt &#x3D; LocalDateTime.now();</td>
-</tr>
-<tr>
-<td>public static Xxxx of(…)：获取指定时间的对象</td>
-<td>LocalDate localDate1 &#x3D; LocalDate.of(2099 , 11,11);     LocalTime localTime1 &#x3D; LocalTime.of(9, 8, 59);     LocalDateTime localDateTime1 &#x3D; LocalDateTime.of(2025, 11, 16, 14, 30, 01);</td>
-</tr>
-<tr>
-<td>public int geYear()</td>
-<td>获取年</td>
-</tr>
-<tr>
-<td>public int getMonthValue()</td>
-<td>获取月份（1-12）</td>
-</tr>
-<tr>
-<td>public int getDayOfMonth()</td>
-<td>获取日</td>
-</tr>
-<tr>
-<td>public int getDayOfYear()</td>
-<td>获取当前是一年中的第几天</td>
-</tr>
-<tr>
-<td>Public DayOfWeek getDayOfWeek()</td>
-<td>获取星期几：ld.getDayOfWeek().getValue()</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>withYear、withMonth、withDayOfMonth、withDayOfYear</td>
-<td>直接修改某个信息，返回新日期对象</td>
-</tr>
-<tr>
-<td>plusYears、plusMonths、plusDays、plusWeeks</td>
-<td>把某个信息加多少，返回新日期对象</td>
-</tr>
-<tr>
-<td>minusYears、minusMonths、minusDays，minusWeeks</td>
-<td>把某个信息减多少，返回新日期对象</td>
-</tr>
-<tr>
-<td>equals isBefore isAfter</td>
-<td>判断两个日期对象，是否相等，在前还是在后</td>
-</tr>
-</tbody></table>
-<h3 id="LocalTime"><a href="#LocalTime" class="headerlink" title="LocalTime"></a>LocalTime</h3><table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public int getHour()</td>
-<td>获取小时</td>
-</tr>
-<tr>
-<td>public int getMinute()</td>
-<td>获取分</td>
-</tr>
-<tr>
-<td>public int getSecond()</td>
-<td>获取秒</td>
-</tr>
-<tr>
-<td>public int getNano()</td>
-<td>获取纳秒</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>withHour、withMinute、withSecond、withNano</td>
-<td>修改时间，返回新时间对象</td>
-</tr>
-<tr>
-<td>plusHours、plusMinutes、plusSeconds、plusNanos</td>
-<td>把某个信息加多少，返回新时间对象</td>
-</tr>
-<tr>
-<td>minusHours、minusMinutes、minusSeconds、minusNanos</td>
-<td>把某个信息减多少，返回新时间对象</td>
-</tr>
-<tr>
-<td>equals isBefore isAfter</td>
-<td>判断2个时间对象，是否相等，在前还是在后</td>
-</tr>
-</tbody></table>
-<h3 id="LocalDateTime"><a href="#LocalDateTime" class="headerlink" title="LocalDateTime"></a><em>LocalDateTime</em></h3><table>
-<thead>
-<tr>
-<th><strong>方法名</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>getYear、getMonthValue、getDayOfMonth、getDayOfYear  getDayOfWeek、getHour、getMinute、getSecond、getNano</td>
-<td>获取年月日、时分秒、纳秒等</td>
-</tr>
-<tr>
-<td>withYear、withMonth、withDayOfMonth、withDayOfYear  withHour、withMinute、withSecond、withNano</td>
-<td>修改某个信息，返回新日期时间对象</td>
-</tr>
-<tr>
-<td>plusYears、plusMonths、plusDays、plusWeeks  plusHours、plusMinutes、plusSeconds、plusNanos</td>
-<td>把某个信息加多少，返回新日期时间对象</td>
-</tr>
-<tr>
-<td>minusYears、minusMonths、minusDays、minusWeeks  minusHours、minusMinutes、minusSeconds、minusNanos</td>
-<td>把某个信息减多少，返回新日期时间对象</td>
-</tr>
-<tr>
-<td>equals isBefore isAfter</td>
-<td>判断2个时间对象，是否相等，在前还是在后</td>
-</tr>
-</tbody></table>
-<h3 id="LocalDateTime转换成LocalDate、LocalTime"><a href="#LocalDateTime转换成LocalDate、LocalTime" class="headerlink" title="LocalDateTime转换成LocalDate、LocalTime"></a>LocalDateTime转换成LocalDate、LocalTime</h3><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public LocalDate toLocalDate()</td>
-<td>转换成一个LocalDate对象</td>
-</tr>
-<tr>
-<td>public  LocalTime toLocalTime()</td>
-<td>转换成一个LocalTime对象</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/18/day13/">展开全文 >></a>
         </p>
       
 

@@ -152,65 +152,437 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-day11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="day11"><a href="#day11" class="headerlink" title="day11"></a>day11</h1><h3 id="子类构造器的特点"><a href="#子类构造器的特点" class="headerlink" title="子类构造器的特点"></a>子类构造器的特点</h3><ul>
-<li>子类的全部构造器，都会先调用父类的构造器，再执行自己，即默认在子类构造方法第一行存在一个super（）；（不写也默认存在）</li>
-<li>如果父类没有无参数构造，我们必须手动的在子类构造器添加super（…..）；</li>
-</ul>
-<p><strong>如何快捷生成子类构造</strong></p>
-<p>先实现父类构造，再选择子类成员变量</p>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是在继承&#x2F;实现情况下的一种现象，表现为:对象多态，行为多态</p>
-<p>父类引用子类对象</p>
-<p><strong>new 对象的快捷键 Ctrl+Alt+V</strong></p>
-<p>变量的类型是什么，就必须给这个变量赋值什么样的类型</p>
-<p><em>注意：如果这个变量是引用类型，赋值赋的是一个对象（本类对象，子类对象）</em></p>
-<h3 id="多态的本质"><a href="#多态的本质" class="headerlink" title="多态的本质"></a>多态的本质</h3><p>多态的本质就是父类指针指向子类对象</p>
-<p>父类只能访问自身可访问的函数；</p>
-<p>在栈里定义父类引用指向堆里子类对象，如果子类和父类都有同样的成员变量 对象里会有两份这个成员变量，对哪个成员变量进行操作依具体情况而定</p>
-<p>如果没有，则子类会直接使用父类成员变量进行操作</p>
-<p>子类对象里会有super的全部属性</p>
-<p><em>instanceof关键字可判断某个对象是否属于某个类</em></p>
-<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><ul>
-<li>final可以修饰类、方法、变量</li>
-<li>修饰类：该类不能被继承</li>
-<li>修饰方法：方法不能被重写</li>
-<li>修饰基本类型变量：该变量只能被赋值一次</li>
-<li>修饰引用类型变量：引用变量地址值不可以改变</li>
-</ul>
-<p>final类似于c++里的const</p>
-<p>快捷键：</p>
-<p>ctrl+shift+U:切换大小写</p>
-<p>Ctrl+Alt+V:自动补全new的代码</p>
-<p>Ctrl+Alt+M:抽取方法</p>
-<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
-<li>&#x3D;&#x3D;抽象类中不一定有抽象方法，有抽象方法的一定是抽象类&#x3D;&#x3D;</li>
-<li>类该有的成员抽象类都可以有</li>
-<li>最关键的特点：抽象类不能有实例，仅仅作为一种特殊父类让子类继承并实现</li>
-<li>一个类继承抽象类，必须写完抽象类的全部抽象方法，否则这个类也必须定义成抽象类</li>
-</ul>
-<p>抽象类的应用：</p>
-<h2 id="模板方法设计模式"><a href="#模板方法设计模式" class="headerlink" title="模板方法设计模式"></a><strong>模板方法设计模式</strong></h2><p>&#x3D;&#x3D;解决方法中存在重复代码的问题&#x3D;&#x3D;</p>
-<p><strong>写法</strong></p>
-<ul>
-<li><p>1.定义一个抽象类</p>
-</li>
-<li><p>2.在里面定义2个方法（一个是模板方法（最好用final修饰）：把相同代码放里面；一个抽象方法：具体实现交给子类完成）</p>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口中定义的成员变量都是常量——默认被public final static 修饰</p>
-</li>
-</ul>
-<p>接口不能创建对象，可以创建一个接口的实现类来创建对象</p>
-<h3 id="接口的好处"><a href="#接口的好处" class="headerlink" title="接口的好处"></a>接口的好处</h3><ul>
-<li>弥补类单继承的不足</li>
-<li>让程序可以面向接口编程，根据规范开发</li>
-<li>面向接口开发，可以灵活方便的切换各种业务实现</li>
-</ul>
-<h3 id="接口的多继承"><a href="#接口的多继承" class="headerlink" title="接口的多继承"></a>接口的多继承</h3><p>一个接口可以同时继承多个接口</p>
-<h3 id="多继承的好处"><a href="#多继承的好处" class="headerlink" title="多继承的好处"></a>多继承的好处</h3><p>便于实现类去实现</p>
-<h2 id="finalize-方法"><a href="#finalize-方法" class="headerlink" title="finalize()方法"></a>finalize()方法</h2><p>类似于c++的析构函数，在对象被销毁时执行，由于Java自动进行垃圾回收，所以不知道JVM何时会执行检查与回收操作，可以使用System.gc();提醒Java检查是否有没被指向的对象，有则进行释放。</p>
+        <h1 id="day13"><a href="#day13" class="headerlink" title="day13"></a>day13</h1><h2 id="自动装箱与自动拆箱"><a href="#自动装箱与自动拆箱" class="headerlink" title="自动装箱与自动拆箱"></a>自动装箱与自动拆箱</h2><p><strong>自动装箱：</strong>基本数据类型可以自动转换为包装类型。</p>
+<p><strong>自动拆箱：</strong>包装类型可以自动的转换为基本数据类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//自动装箱</span><br><span class="line">Integer i1 = 10;//Integer i1 = Integer.vauleOf(10);</span><br><span class="line">//自动拆箱</span><br><span class="line">int i2 = i1;//int i2 = i1.int Value();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="常见API"><a href="#常见API" class="headerlink" title="常见API"></a>常见API</h2><h3 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h3><p>主要方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> StringBuilder <span class="title function_">append</span><span class="params">(任意类型)</span>;<span class="comment">// 添加数据并返回StringBuilder对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> StringBuilder <span class="title function_">reverse</span><span class="params">()</span>;<span class="comment">//将对象内容翻转</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">intlength</span><span class="params">()</span>;<span class="comment">//返回对象内容长度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">String</span><span class="params">()</span>;<span class="comment">//将对象转换成字符串类型</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;对于字符串相关的操作，如频繁的拼接，修改等，建议用StringBuilder，效率更高&#x3D;&#x3D;</p>
+<p>注意：如果字符串较少，或者不需要操作，以及定义字符串变量，还是建议用String</p>
+<h3 id="StringJoiner类"><a href="#StringJoiner类" class="headerlink" title="StringJoiner类"></a>StringJoiner类</h3><p>&#x3D;&#x3D;而StringJoiner号称是拼接神器，不仅效率高，而且代码简洁&#x3D;&#x3D;。</p>
+<table>
+<thead>
+<tr>
+<th align="left">public StringJoiner (间隔符号)</th>
+<th>创建一个StringJoiner对象，指定拼接时的间隔符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">public StringJoiner (间隔符号，开始符号，结束符号)</td>
+<td>创建一个StringJoiner对象，指定拼接时的间隔符号、开始符号、结束符号</td>
+</tr>
+<tr>
+<td align="left">public  StringJoiner add (添加的内容)</td>
+<td>添加数据，并返回对象本身</td>
+</tr>
+<tr>
+<td align="left">public int  length()</td>
+<td>返回长度 ( 字符出现的个数)</td>
+</tr>
+<tr>
+<td align="left">public  String toString()</td>
+<td>返回一个字符串（该字符串就是拼接之后的结果）</td>
+</tr>
+</tbody></table>
+<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><table>
+<thead>
+<tr>
+<th>public static int abs(int a)</th>
+<th>获取参数绝对值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static double ceil(double a)</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>public static double floor(double a)</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>public static int round(float a)</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>public static int max(int a,int b)</td>
+<td>获取两个int值中的较大值</td>
+</tr>
+<tr>
+<td>public static double pow(double a,double b)</td>
+<td>返回a的b次幂的值</td>
+</tr>
+<tr>
+<td>public static double random()</td>
+<td>返回值为double的随机值，范围[0.0,1.0)</td>
+</tr>
+</tbody></table>
+<h3 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h3><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">public static void exit(int status)</td>
+<td>终止当前运行的Java虚拟机。</td>
+</tr>
+<tr>
+<td align="left">public static long currentTimeMillis()</td>
+<td>返回当前系统的时间毫秒值形式。</td>
+</tr>
+</tbody></table>
+<h3 id="Runtinme类"><a href="#Runtinme类" class="headerlink" title="Runtinme类"></a>Runtinme类</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  static <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/Runtime.html">Runtime</a> getRuntime()</td>
+<td>返回与当前Java应用程序关联的运行时对象</td>
+</tr>
+<tr>
+<td>public void exit(int status)</td>
+<td>终止当前运行的虚拟机</td>
+</tr>
+<tr>
+<td>public int availableProcessors()</td>
+<td>返回Java虚拟机可用的处理器数。</td>
+</tr>
+<tr>
+<td>public long totalMemory()</td>
+<td>返回Java虚拟机中的内存总量</td>
+</tr>
+<tr>
+<td>public long freeMemory()</td>
+<td>返回Java虚拟机中的可用内存</td>
+</tr>
+<tr>
+<td>public <a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/Process.html">Process</a> exec(<a href="mk:@MSITStore:D:\course\最新版Java基础入门教程\API文档\jdk-11中文api修订版.CHM::/java.base/java/lang/String.html">String</a> command)</td>
+<td>启动某个程序，并返回代表该程序的对象</td>
+</tr>
+</tbody></table>
+<h3 id="Bigdecimal类"><a href="#Bigdecimal类" class="headerlink" title="Bigdecimal类"></a>Bigdecimal类</h3><table>
+<thead>
+<tr>
+<th><strong>构造器</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public BigDecimal(double val) 注意：不推荐使用这个，double可能会有精度丢失问题</td>
+<td>将 double转换为 BigDecimal</td>
+</tr>
+<tr>
+<td>public BigDecimal(String val)</td>
+<td>把String转成BigDecimal</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static BigDecimal valueOf(double val)</td>
+<td>转换一个 double成 BigDecimal</td>
+</tr>
+<tr>
+<td>public BigDecimal add(BigDecimal b)</td>
+<td>加法</td>
+</tr>
+<tr>
+<td>public BigDecimal subtract(BigDecimal b)</td>
+<td>减法</td>
+</tr>
+<tr>
+<td>public BigDecimal multiply(BigDecimal b)</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td>public BigDecimal divide(BigDecimal b)</td>
+<td>除法</td>
+</tr>
+<tr>
+<td>public BigDecimal divide (另一个BigDecimal对象，精确几位，舍入模式)</td>
+<td>除法、可以控制精确到小数几位</td>
+</tr>
+<tr>
+<td>public double doubleValue()</td>
+<td>将BigDecimal转换为double</td>
+</tr>
+</tbody></table>
+<h3 id="Date类"><a href="#Date类" class="headerlink" title="Date类"></a>Date类</h3><table>
+<thead>
+<tr>
+<th>构造器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Date()</td>
+<td>创建一个Date对象，代表的是系统当前此刻日期时间。</td>
+</tr>
+<tr>
+<td>public Date(long time)</td>
+<td>把时间毫秒值转换成Date日期对象。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>常见方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public long getTime()</td>
+<td>返回从1970年1月1日   00:00:00走到此刻的总的毫秒数</td>
+</tr>
+<tr>
+<td>public void setTime(long time)</td>
+<td>设置日期对象的时间为当前时间毫秒值对应的时间</td>
+</tr>
+</tbody></table>
+<h3 id="SimpleDateFormat"><a href="#SimpleDateFormat" class="headerlink" title="SimpleDateFormat"></a>SimpleDateFormat</h3><table>
+<thead>
+<tr>
+<th>常见构造器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public SimpleDateFormat(String  pattern)</td>
+<td>创建简单日期格式化对象，并封装时间的格式</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>格式化时间的方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public final String format(Date date)</td>
+<td>将日期格式化成日期&#x2F;时间字符串</td>
+</tr>
+<tr>
+<td>public final String format(Object time)</td>
+<td>将时间毫秒值式化成日期&#x2F;时间字符串</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>解析方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Date  parse(String source)</td>
+<td>把字符串时间解析成日期对象</td>
+</tr>
+</tbody></table>
+<h3 id="Calendar"><a href="#Calendar" class="headerlink" title="Calendar"></a>Calendar</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public  static Calendar getInstance()</td>
+<td>获取当前日历对象</td>
+</tr>
+<tr>
+<td>public int get(int field)</td>
+<td>获取日历中的某个信息。</td>
+</tr>
+<tr>
+<td>public final Date getTime()</td>
+<td>获取日期对象。</td>
+</tr>
+<tr>
+<td>public long getTimeInMillis()</td>
+<td>获取时间毫秒值</td>
+</tr>
+<tr>
+<td>public void set(int field,int value)</td>
+<td>修改日历的某个信息。</td>
+</tr>
+<tr>
+<td>public void add(int field,int amount)</td>
+<td>为某个信息增加&#x2F;减少指定的值</td>
+</tr>
+</tbody></table>
+<h3 id="LocalDate"><a href="#LocalDate" class="headerlink" title="LocalDate"></a>LocalDate</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static Xxxx now(): 获取系统当前时间对应的该对象</td>
+<td>LocaDate ld &#x3D; LocalDate.now();     LocalTime lt &#x3D; LocalTime.now();     LocalDateTime ldt &#x3D; LocalDateTime.now();</td>
+</tr>
+<tr>
+<td>public static Xxxx of(…)：获取指定时间的对象</td>
+<td>LocalDate localDate1 &#x3D; LocalDate.of(2099 , 11,11);     LocalTime localTime1 &#x3D; LocalTime.of(9, 8, 59);     LocalDateTime localDateTime1 &#x3D; LocalDateTime.of(2025, 11, 16, 14, 30, 01);</td>
+</tr>
+<tr>
+<td>public int geYear()</td>
+<td>获取年</td>
+</tr>
+<tr>
+<td>public int getMonthValue()</td>
+<td>获取月份（1-12）</td>
+</tr>
+<tr>
+<td>public int getDayOfMonth()</td>
+<td>获取日</td>
+</tr>
+<tr>
+<td>public int getDayOfYear()</td>
+<td>获取当前是一年中的第几天</td>
+</tr>
+<tr>
+<td>Public DayOfWeek getDayOfWeek()</td>
+<td>获取星期几：ld.getDayOfWeek().getValue()</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>withYear、withMonth、withDayOfMonth、withDayOfYear</td>
+<td>直接修改某个信息，返回新日期对象</td>
+</tr>
+<tr>
+<td>plusYears、plusMonths、plusDays、plusWeeks</td>
+<td>把某个信息加多少，返回新日期对象</td>
+</tr>
+<tr>
+<td>minusYears、minusMonths、minusDays，minusWeeks</td>
+<td>把某个信息减多少，返回新日期对象</td>
+</tr>
+<tr>
+<td>equals isBefore isAfter</td>
+<td>判断两个日期对象，是否相等，在前还是在后</td>
+</tr>
+</tbody></table>
+<h3 id="LocalTime"><a href="#LocalTime" class="headerlink" title="LocalTime"></a>LocalTime</h3><table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int getHour()</td>
+<td>获取小时</td>
+</tr>
+<tr>
+<td>public int getMinute()</td>
+<td>获取分</td>
+</tr>
+<tr>
+<td>public int getSecond()</td>
+<td>获取秒</td>
+</tr>
+<tr>
+<td>public int getNano()</td>
+<td>获取纳秒</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>withHour、withMinute、withSecond、withNano</td>
+<td>修改时间，返回新时间对象</td>
+</tr>
+<tr>
+<td>plusHours、plusMinutes、plusSeconds、plusNanos</td>
+<td>把某个信息加多少，返回新时间对象</td>
+</tr>
+<tr>
+<td>minusHours、minusMinutes、minusSeconds、minusNanos</td>
+<td>把某个信息减多少，返回新时间对象</td>
+</tr>
+<tr>
+<td>equals isBefore isAfter</td>
+<td>判断2个时间对象，是否相等，在前还是在后</td>
+</tr>
+</tbody></table>
+<h3 id="LocalDateTime"><a href="#LocalDateTime" class="headerlink" title="LocalDateTime"></a><em>LocalDateTime</em></h3><table>
+<thead>
+<tr>
+<th><strong>方法名</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getYear、getMonthValue、getDayOfMonth、getDayOfYear  getDayOfWeek、getHour、getMinute、getSecond、getNano</td>
+<td>获取年月日、时分秒、纳秒等</td>
+</tr>
+<tr>
+<td>withYear、withMonth、withDayOfMonth、withDayOfYear  withHour、withMinute、withSecond、withNano</td>
+<td>修改某个信息，返回新日期时间对象</td>
+</tr>
+<tr>
+<td>plusYears、plusMonths、plusDays、plusWeeks  plusHours、plusMinutes、plusSeconds、plusNanos</td>
+<td>把某个信息加多少，返回新日期时间对象</td>
+</tr>
+<tr>
+<td>minusYears、minusMonths、minusDays、minusWeeks  minusHours、minusMinutes、minusSeconds、minusNanos</td>
+<td>把某个信息减多少，返回新日期时间对象</td>
+</tr>
+<tr>
+<td>equals isBefore isAfter</td>
+<td>判断2个时间对象，是否相等，在前还是在后</td>
+</tr>
+</tbody></table>
+<h3 id="LocalDateTime转换成LocalDate、LocalTime"><a href="#LocalDateTime转换成LocalDate、LocalTime" class="headerlink" title="LocalDateTime转换成LocalDate、LocalTime"></a>LocalDateTime转换成LocalDate、LocalTime</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public LocalDate toLocalDate()</td>
+<td>转换成一个LocalDate对象</td>
+</tr>
+<tr>
+<td>public  LocalTime toLocalTime()</td>
+<td>转换成一个LocalTime对象</td>
+</tr>
+</tbody></table>
 
       
 
@@ -223,7 +595,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/18/day11/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/03/18/day13/">展开全文 >></a>
         </p>
       
 
@@ -534,12 +906,75 @@
 
 
   
+    <article id="post-day03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="day03"><a href="#day03" class="headerlink" title="day03"></a>day03</h1><p>Java的控制流程结构与C和C++的控制流程结构一样，只有很少的例外情况。没有goto语句，但break语句可以带标签，可以利用它实现从内层循环跳出的目的（这种情况C语言采用goto语句实现）。</p>
+<p>在C++中，可以在嵌套的块中重定义一个变量。在内层定义的变量会覆盖在外层定义的变量。这样，有可能会导致程序设计错误，因此在Java中不允许这样做。</p>
+<p>&#x3D;&#x3D;一定不要使用 &#x3D;&#x3D;运算符检测两个字符串是否相等&#x3D;&#x3D;这个运算符只能够确定两个字符串是否放置在同一个位置上。当然，如果字符串放置在同一个位置上，它们必然相等。但是，完全有可能将内容相同的多个字符串的拷贝放置在不同的位置上。</p>
+<h3 id="for-each循环"><a href="#for-each循环" class="headerlink" title="for each循环"></a>for each循环</h3><p>Java有一种功能很强的循环结构，可以用来依次处理数组中的每个元素（其他类型的元素集合亦可）而不必为指定下标值而分心。</p>
+<p>for each循环语句的循环变量将会遍历数组中的每个元素，而不需要使用下标值。</p>
+<h3 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h3><p>在Java中，允许将一个数组变量拷贝给另一个数组变量。这时，两个变量将引用同一个数组（浅拷贝）</p>
+<p>如果希望将一个数组的所有值拷贝到一个新的数组中去，就要使用Arrays类的copyOf方法（深拷贝）</p>
+<p>Java数组与C++数组在堆栈上有很大不同，但基本上与分配在堆（heap）上的数组指针一样。</p>
+<p>Java中的[]运算符被预定义为检查数组边界，而且没有指针运算，即不能通过a加1得到数组的下一个元素。</p>
+<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>每一个Java应用程序都有一个带String arg[]参数的main方法。这个参数表明main方法将接收一个字符串数组，也就是命令行参数。</p>
+<p>在Java应用程序的main方法中，程序名并没有存储在args数组中。</p>
+<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><p>要想对数值型数组进行排序，可以使用Arrays类中的sort方法</p>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><p>for each循环语句不能自动处理二维数组的每一个元素。它是按照行，也就是一维数组处理的。要想访问二维数组a的所有元素，需要使用两个嵌套的循环。</p>
+<h3 id="不规则数组"><a href="#不规则数组" class="headerlink" title="不规则数组"></a>不规则数组</h3><p>Java实际上没有多维数组，只有一维数组。多维数组被解释为“数组的数组。”</p>
+<p>可以方便地构造一个“不规则”数组，即数组的每一行有不同的长度。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/18/day03/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-day02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="day02"><a href="#day02" class="headerlink" title="day02"></a>day02</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>略</p>
+        <p>title: day02 </p>
+<h1 id="day02"><a href="#day02" class="headerlink" title="day02"></a>day02</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>略</p>
 <p><strong>注意</strong>：空串””是长度为0的字符串。空串是一个Java对象，有自己的串长度（0）和内容（空）。不过，String变量还可以存放一个特殊的值，名为null，这表示目前没有任何对象与该变量关联。</p>
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p><strong>自动类型转换：</strong>小范围类型的变量——&gt;大范围的变量</p>
 <p>数据范围小的变量可以直接赋值给数据范围大的变量（byte、short 和char在表达式中是直接转换成int类型参与运算的）</p>
@@ -591,68 +1026,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/03/18/day02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-day03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="day03"><a href="#day03" class="headerlink" title="day03"></a>day03</h1><p>Java的控制流程结构与C和C++的控制流程结构一样，只有很少的例外情况。没有goto语句，但break语句可以带标签，可以利用它实现从内层循环跳出的目的（这种情况C语言采用goto语句实现）。</p>
-<p>在C++中，可以在嵌套的块中重定义一个变量。在内层定义的变量会覆盖在外层定义的变量。这样，有可能会导致程序设计错误，因此在Java中不允许这样做。</p>
-<p>&#x3D;&#x3D;一定不要使用 &#x3D;&#x3D;运算符检测两个字符串是否相等&#x3D;&#x3D;这个运算符只能够确定两个字符串是否放置在同一个位置上。当然，如果字符串放置在同一个位置上，它们必然相等。但是，完全有可能将内容相同的多个字符串的拷贝放置在不同的位置上。</p>
-<h3 id="for-each循环"><a href="#for-each循环" class="headerlink" title="for each循环"></a>for each循环</h3><p>Java有一种功能很强的循环结构，可以用来依次处理数组中的每个元素（其他类型的元素集合亦可）而不必为指定下标值而分心。</p>
-<p>for each循环语句的循环变量将会遍历数组中的每个元素，而不需要使用下标值。</p>
-<h3 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h3><p>在Java中，允许将一个数组变量拷贝给另一个数组变量。这时，两个变量将引用同一个数组（浅拷贝）</p>
-<p>如果希望将一个数组的所有值拷贝到一个新的数组中去，就要使用Arrays类的copyOf方法（深拷贝）</p>
-<p>Java数组与C++数组在堆栈上有很大不同，但基本上与分配在堆（heap）上的数组指针一样。</p>
-<p>Java中的[]运算符被预定义为检查数组边界，而且没有指针运算，即不能通过a加1得到数组的下一个元素。</p>
-<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>每一个Java应用程序都有一个带String arg[]参数的main方法。这个参数表明main方法将接收一个字符串数组，也就是命令行参数。</p>
-<p>在Java应用程序的main方法中，程序名并没有存储在args数组中。</p>
-<h3 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h3><p>要想对数值型数组进行排序，可以使用Arrays类中的sort方法</p>
-<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><p>for each循环语句不能自动处理二维数组的每一个元素。它是按照行，也就是一维数组处理的。要想访问二维数组a的所有元素，需要使用两个嵌套的循环。</p>
-<h3 id="不规则数组"><a href="#不规则数组" class="headerlink" title="不规则数组"></a>不规则数组</h3><p>Java实际上没有多维数组，只有一维数组。多维数组被解释为“数组的数组。”</p>
-<p>可以方便地构造一个“不规则”数组，即数组的每一行有不同的长度。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/18/day03/">展开全文 >></a>
         </p>
       
 
@@ -736,6 +1109,21 @@
   
     <article id="post-day01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/18/day01/">day01 java入门</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/18/day01/" class="archive-article-date">
+  	<time datetime="2023-03-18T07:15:19.882Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-18</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
